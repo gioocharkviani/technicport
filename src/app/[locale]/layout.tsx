@@ -3,7 +3,7 @@ interface RootLayoutProps {
     params : {locale:string}
   }
 
-  import "../globals.css";
+  import "./globals.css";
   
   import { NextIntlClientProvider } from "next-intl";
   

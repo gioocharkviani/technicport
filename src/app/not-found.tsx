@@ -1,5 +1,13 @@
 import Link from 'next/link'
- 
+
+const stylesdss = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  flexDirection:'column',
+  minHeight:'100vh'
+};
+
 export default function NotFound() {
   return (
     <div className='notFound'>
