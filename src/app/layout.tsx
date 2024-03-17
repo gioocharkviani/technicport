@@ -2,9 +2,16 @@
 interface RootLayoutProps {
   children: React.ReactNode;
 }
+import "./globals.css";
 
 export default function Layout({
   children,
 }: RootLayoutProps ) {
-  return children;
+  return (
+    <html>
+      <body>
+      {children}
+      </body>
+    </html>
+  );
 }

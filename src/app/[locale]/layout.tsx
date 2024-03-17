@@ -1,18 +1,24 @@
-
 interface RootLayoutProps {
-  children: React.ReactNode;
-  params : {locale:string}
-}
+    children: React.ReactNode;
+    params : {locale:string}
+  }
 
-export default function RootLayout({
-  children,
-  params
-}: RootLayoutProps ) {
-  return (
-    <html lang={params.locale}>
-      <body>
-        {children}
-      </body>
-    </html>
-  );
-}
+  import "../globals.css";
+  
+  import { NextIntlClientProvider } from "next-intl";
+  
+  export default function RootLayout({
+    children,
+    params
+  }: RootLayoutProps ) {
+    return (
+      <html lang={params.locale}>
+        <body>
+          <NextIntlClientProvider>
+            {children}
+          </NextIntlClientProvider>
+        </body>
+      </html>
+    );
+  }
+  

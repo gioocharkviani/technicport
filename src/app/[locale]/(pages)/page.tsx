@@ -1,4 +1,6 @@
 import MaxWidthWrapper from "@/components/contentwrapper/maxWidthWrapper";
+import Info from "@/components/info/info";
+import Ourservices from "@/components/ourservices/ourservices";
 import PhoneNumber from "@/components/phone/phoneNumber";
 import Search from "@/components/search/search";
 import React from "react";
@@ -19,6 +21,21 @@ export default function Home() {
           <PhoneNumber />
         </div>
       </MaxWidthWrapper>
+
+      <MaxWidthWrapper>
+        <div className="flex gap-14 mt-[40px]">
+          <Info />
+          <Ourservices />
+        </div>
+      </MaxWidthWrapper>
+
+      <MaxWidthWrapper>
+        <div className="flex gap-14 mt-[100px] px-[10px] rounded-lg py-[10px] whiteBoxShadow"> 
+        asdsad
+        </div>
+      </MaxWidthWrapper>
+
+
 
     </main>
   );

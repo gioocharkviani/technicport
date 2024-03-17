@@ -1,5 +1,6 @@
 import {notFound} from 'next/navigation';
 import {getRequestConfig} from 'next-intl/server';
+import NotFound from './app/not-found';
  
 // Can be imported from a shared config
 const locales = ['ru', 'ge' , 'en'];
