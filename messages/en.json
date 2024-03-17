@@ -1,0 +1,13 @@
+{
+    "header": {
+        "login": "login"
+    },
+    
+    "navigation": {
+        "home":"home",
+        "shop":"shop",
+        "contact":"contact",
+        "servises":"servises",
+        "about":"about"
+    }
+}

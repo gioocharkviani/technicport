@@ -1,0 +1,13 @@
+{
+    "header":{
+        "login": "Войти"
+    },
+    
+    "navigation" : {
+        "home":"главная",
+        "shop":"магазин",
+        "contact":"контакт",
+        "servises":"услуги",
+        "about":"о-нас"
+    }
+}

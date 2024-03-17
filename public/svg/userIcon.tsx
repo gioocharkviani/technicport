@@ -1,0 +1,15 @@
+import React from 'react'
+
+const UserIcon = () => {
+  return (
+    <>
+        <svg width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8.5 9H3.5C2.11929 9 1 10.1939 1 11.6667V13H11V11.6667C11 10.1939 9.88071 9 8.5 9Z" stroke="#3B3B3B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M6 6.33333C7.38071 6.33333 8.5 5.13943 8.5 3.66667C8.5 2.19391 7.38071 1 6 1C4.61929 1 3.5 2.19391 3.5 3.66667C3.5 5.13943 4.61929 6.33333 6 6.33333Z" stroke="#3B3B3B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+
+    </>
+  )
+}
+
+export default UserIcon
