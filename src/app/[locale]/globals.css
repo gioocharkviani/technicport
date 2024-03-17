@@ -60,3 +60,35 @@ li {
   align-items: center;
   min-height: 100vh;
 }
+
+.ProjectgridArea {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 20px;
+}
+
+@media only screen and (max-width: 764px) {
+  .ProjectgridArea {
+    grid-template-columns: repeat(3, 1fr);
+  }}
+@media only screen and (max-width: 450px) {
+  .ProjectgridArea {
+    grid-template-columns: 2fr;
+  }}
+
+  @media only screen and (min-width: 764px) {
+    .gridprjItem:nth-child(1){
+      grid-column-start: 1;
+      grid-column-end: 2;
+      grid-row-start: 1;
+      grid-row-end: 3;
+      height: auto;
+    }
+
+  }
+
+.gridprjItem {
+  border-radius: 10px;
+  background-color: #cdcdcd;
+  height: 170px;
+}

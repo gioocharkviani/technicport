@@ -8,8 +8,13 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        'ssm':'390px',
+        'smd':'450px'
+      },
       colors: {
         'color1': '#27BF9B',
+        'color2': '#FBBC05',
       },
     },
   },

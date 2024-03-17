@@ -1,7 +1,9 @@
 import MaxWidthWrapper from "@/components/contentwrapper/maxWidthWrapper";
 import Info from "@/components/info/info";
+import LandingShop from "@/components/landingShop/landingShop";
 import Ourservices from "@/components/ourservices/ourservices";
 import PhoneNumber from "@/components/phone/phoneNumber";
+import Projects from "@/components/projects/projects";
 import Search from "@/components/search/search";
 import React from "react";
 
@@ -16,23 +18,25 @@ export default function Home() {
       </MaxWidthWrapper>
 
       <MaxWidthWrapper>
-        <div className="flex gap-5 items-center">
+        <div className="flex flex-col-reverse md:flex-row  gap-5 items-center">
           <Search />
           <PhoneNumber />
         </div>
       </MaxWidthWrapper>
 
       <MaxWidthWrapper>
-        <div className="flex gap-14 mt-[40px]">
+        <div className="flex flex-col md:flex-row items-center md:items-start gap-14 mt-[40px]">
           <Info />
           <Ourservices />
         </div>
       </MaxWidthWrapper>
 
       <MaxWidthWrapper>
-        <div className="flex gap-14 mt-[100px] px-[10px] rounded-lg py-[10px] whiteBoxShadow"> 
-        asdsad
-        </div>
+        <LandingShop />
+      </MaxWidthWrapper>
+
+      <MaxWidthWrapper>
+        <Projects />
       </MaxWidthWrapper>
 
 

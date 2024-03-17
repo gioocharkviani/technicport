@@ -2,22 +2,22 @@ import Link from 'next/link'
 import React from 'react'
 import Image from 'next/image'
 import { FaLongArrowAltRight } from 'react-icons/fa'
-import { useLocale } from 'next-intl'
 interface pagePrps {
     title: String,
     link?: string ,
     image? : any,
 }
+import { useLocale } from 'next-intl'
 
-const Title1 = ({title , link , image}:pagePrps) => {
+const Title2 = ({title , link , image}:pagePrps) => {
   const locale = useLocale();
   return (
     <div className='w-full flex justify-between items-center'>
         <div className='flex gap-3 items-center w-max'>
-        <div className='w-[40px] h-[40px] bg-[#FBBC05] rounded-md flex justify-center items-center'>
-          <Image width={25} height={25} src={image || ''} alt='1'/>
+        <div className='w-[40px] h-[40px] bg-color1 rounded-md flex justify-center items-center'>
+          <Image width={20} height={20} src={image || ''} alt='1'/>
         </div>
-        <span className='text-[18px] font-bold'>{title}</span>
+        <span className='text-[18px] capitalize font-bold'>{title}</span>
         </div>
 
         {link &&
@@ -31,4 +31,4 @@ const Title1 = ({title , link , image}:pagePrps) => {
   )
 }
 
-export default Title1
+export default Title2
