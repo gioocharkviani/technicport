@@ -19,7 +19,7 @@ const MenuLink = ({link , name}:{link:string, name:string}) => {
 
   return (
     <li className={`${active ? 'text-color1' : 'hover:text-color1 transition-all'}`}>
-        <Link href={`/${locale}/${link}`}>{name}</Link>
+        <Link href={`${link}`}>{name}</Link>
     </li>
   )
 }

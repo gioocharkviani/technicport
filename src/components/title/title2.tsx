@@ -8,10 +8,8 @@ interface pagePrps {
   image? : any,
   moreInfo? : string
 }
-import { useLocale } from 'next-intl'
 
 const Title2 = ({title , link , image , moreInfo}:pagePrps) => {
-  const locale = useLocale();
   return (
     <div className='w-full flex justify-between items-center'>
         <div className='flex gap-3 items-center w-max'>
@@ -22,7 +20,7 @@ const Title2 = ({title , link , image , moreInfo}:pagePrps) => {
         </div>
 
         {link &&
-        <Link href={`/${locale}${link}`} className='flex hover:opacity-[0.5] transition-all capitalize gap-2 items-center font-medium text-[15px]'>
+        <Link href={`/${link}`} className='flex hover:opacity-[0.5] transition-all capitalize gap-2 items-center font-medium text-[15px]'>
             {moreInfo}
             <FaLongArrowAltRight className='text-color1'/>
         </Link>
