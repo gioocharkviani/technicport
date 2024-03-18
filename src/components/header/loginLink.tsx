@@ -6,7 +6,7 @@ import LocaleLink from '../links/localeLink'
 const LoginLink = () => {
   const t = useTranslations('header')
   return (
-    <div className='listStyle-1 w-max'>
+    <div className='listStyle-1 w-max hidden lg:block'>
         <LocaleLink link='/login'>
           <div className='flex gap-1 text-[13px] items-center capitalize' >
             <UserIcon />

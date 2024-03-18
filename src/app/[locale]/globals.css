@@ -89,6 +89,114 @@ li {
 
 .gridprjItem {
   border-radius: 10px;
-  background-color: #cdcdcd;
-  height: 170px;
+  height: 190px;
+}
+
+.Contact-Card {
+  background-color: white ;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0 , 0.5);
+  border-radius: 4px;
+  padding: 8px 10px;
+}
+
+
+/* HumBurger Button */
+.humburger-btn {
+  width: 25px;
+  height: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 99;
+  cursor: pointer;
+  
+}
+
+.bar-line {
+  width: 100%;
+  height: 3px;
+  background-color: rgb(51 65 85);
+  box-shadow: small;
+  border-radius: 2px;
+  transition: all .5s ease-in-out;
+}
+
+.bar-line::before ,
+.bar-line::after
+ {
+  content: '';
+  display: block;
+  width: 100%;
+  border-radius: 2px;
+  position: absolute;
+  height: 3px;
+  background-color: rgb(51 65 85);
+  transition: all .5s ease-in-out;
+}
+
+.bar-line::before {
+  transform: translateY(-10px);
+  transition: all .5s ease-in-out;
+}
+.bar-line::after {
+  transform: translateY(10px);
+}
+
+.humburger-active .bar-line {
+   transform: translateX(-100%);
+   background: transparent;
+}
+.humburger-active .bar-line::before {
+  background-color: rgb(255, 255, 255);
+  transform: rotate(45deg) translate(18px , -18px)
+}
+.humburger-active .bar-line::after {
+  background-color: rgb(255, 255, 255);
+  transform: rotate(-45deg) translate(18px , 18px)
+}
+/* HumBurger Button */
+
+.humburgerMenuWrapper {
+  position: fixed;
+  top:0;
+  right: 0;
+  width: 0%;
+  min-height: 100vh;
+  background-color:rgb(23, 42, 59);
+  transform: translateX(100%);
+  animation: deactivehumburger 0.5s ease-in-out;
+}
+
+
+.humburgerMenuWrapper.active {
+  display: block; 
+  background-color:rgb(23, 42, 59);
+  transform: translateX(0%);
+  width: 100%;
+  animation: humburger 0.5s ease-in-out;
+}
+
+
+
+@keyframes humburger {
+  from{
+    width: 0;
+    transform: translateX(100%);
+  }
+  to{
+    width: 100%;
+    transform: translateX(0%);
+  }
+}
+
+@keyframes deactivehumburger {
+  from{
+    width: 100%;
+    transform: translateX(0%);
+  }
+  to{
+    width: 0;
+    transform: translateX(100%);
+  }
 }

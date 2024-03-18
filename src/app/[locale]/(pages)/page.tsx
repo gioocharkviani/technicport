@@ -1,3 +1,5 @@
+import BrandsComp from "@/components/brands/brandsComp";
+import ContactComp from "@/components/contactComp/contactComp";
 import MaxWidthWrapper from "@/components/contentwrapper/maxWidthWrapper";
 import Info from "@/components/info/info";
 import LandingShop from "@/components/landingShop/landingShop";
@@ -39,6 +41,13 @@ export default function Home() {
         <Projects />
       </MaxWidthWrapper>
 
+      <MaxWidthWrapper>
+        <ContactComp />
+      </MaxWidthWrapper>
+
+      <MaxWidthWrapper>
+        <BrandsComp />
+      </MaxWidthWrapper>
 
 
     </main>

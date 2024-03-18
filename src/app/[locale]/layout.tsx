@@ -5,16 +5,17 @@ interface RootLayoutProps {
 
   import "./globals.css";
   
-  import { NextIntlClientProvider } from "next-intl";
+  import { NextIntlClientProvider, useMessages } from "next-intl";
   
   export default function RootLayout({
     children,
     params
   }: RootLayoutProps ) {
+    const messages = useMessages();
     return (
       <html lang={params.locale}>
         <body>
-          <NextIntlClientProvider>
+          <NextIntlClientProvider locale={params.locale} messages={messages}>
             {children}
           </NextIntlClientProvider>
         </body>

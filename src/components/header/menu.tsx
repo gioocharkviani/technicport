@@ -10,7 +10,7 @@ const NavMenu = () => {
 
 
   return (
-   <div className='w-max'>
+   <div className='w-max lg:block hidden'>
     <ul className='flex gap-4 text-[15px]'>
         <MenuLink link='/' name={t('home')}/>
         <MenuLink link='/shop' name={t('shop')}/>

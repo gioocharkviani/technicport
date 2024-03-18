@@ -3,13 +3,14 @@ import React from 'react'
 import Image from 'next/image'
 import { FaLongArrowAltRight } from 'react-icons/fa'
 interface pagePrps {
-    title: String,
-    link?: string ,
-    image? : any,
+  title: String,
+  link?: string ,
+  image? : any,
+  moreInfo? : string
 }
 import { useLocale } from 'next-intl'
 
-const Title2 = ({title , link , image}:pagePrps) => {
+const Title2 = ({title , link , image , moreInfo}:pagePrps) => {
   const locale = useLocale();
   return (
     <div className='w-full flex justify-between items-center'>
@@ -22,7 +23,7 @@ const Title2 = ({title , link , image}:pagePrps) => {
 
         {link &&
         <Link href={`/${locale}${link}`} className='flex hover:opacity-[0.5] transition-all capitalize gap-2 items-center font-medium text-[15px]'>
-            more
+            {moreInfo}
             <FaLongArrowAltRight className='text-color1'/>
         </Link>
         }

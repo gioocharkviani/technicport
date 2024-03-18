@@ -1,12 +1,10 @@
 'use client'
-import Link from 'next/link'
-import React, { use, useState } from 'react'
+import React from 'react'
 import GeoFlag from '../../../public/flag/ge'
 import UkFlag from '../../../public/flag/uk'
 import RuFlag from '../../../public/flag/ru'
 import { usePathname } from 'next/navigation'
 import { useRouter } from 'next/navigation'
-import { useTranslations } from 'next-intl'
 import { useParams } from 'next/navigation'
 
 const Lang = () => {

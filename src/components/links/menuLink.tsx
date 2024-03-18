@@ -10,7 +10,6 @@ const MenuLink = ({link , name}:{link:string, name:string}) => {
     const [active ,setActive] = useState(false);
 
     useEffect(()=>{
-      console.log(link)
       if((pathname === `/${locale}${link}`) || (link === "/" && pathname === `/${locale}`) || (pathname.includes(`${locale}`) && pathname.includes(`${link}`) && (link !== "/")) ) {
         setActive(true);
       } else {
