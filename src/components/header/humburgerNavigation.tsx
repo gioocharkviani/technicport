@@ -26,7 +26,15 @@ const HumburgerNavigation = () => {
         </div>
         
         <div className={`humburgerMenuWrapper ${open? 'active' : ''}`}>
-            
+          {open &&
+            <div className="mt-[50px] relative flex flex-col text-black">
+              <li>menu</li>
+              <li>menu</li>
+              <li>menu</li>
+              <li>menu</li>
+              <li>menu</li>
+            </div>
+          }
         </div>
         
 

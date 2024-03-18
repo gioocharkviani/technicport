@@ -30,11 +30,11 @@
     },
     
     "project" : {
-        "projectTitle" : "проекты"
+        "projectTitle" : "projects"
     },
 
     "contactinfo" : {
-        "contactinfoTitle" : "Контакт"
+        "contactinfoTitle" : "contact"
     },
 
     "partners" : {

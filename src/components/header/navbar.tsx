@@ -10,7 +10,7 @@ const Navbar = () => {
         <div className='max-w-[1500px] w-full px-[10px] md:px-[30px] flex lg:flex-row flex-row-reverse justify-between'>
 
             <NavMenu />
-
+            
             <HumburgerNavigation />
 
             <div className='w-max flex flex-row gap-[30px]'>
