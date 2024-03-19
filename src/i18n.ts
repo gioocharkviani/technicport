@@ -2,7 +2,7 @@ import {notFound} from 'next/navigation';
 import {getRequestConfig} from 'next-intl/server';
  
 // Can be imported from a shared config
-const locales = ['ru', 'ge' , 'en'];
+const locales = ['ru', 'ge' , 'uk'];
  
 export default getRequestConfig(async ({locale}) => {
 
@@ -11,11 +11,7 @@ export default getRequestConfig(async ({locale}) => {
  
   return {
     messages: (
-      await (locale === 'ge'
-        ? // When using Turbopack, this will enable HMR for `en`
-          import('../messages/ge.json')
-        : import(`../messages/${locale}.json`))
-    ).default,
+      await (import(`../messages/${locale}.json`))).default,
     
     now: new Date(),
     timeZone: 'Europe/Tbilisi',

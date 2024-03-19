@@ -38,7 +38,7 @@ const Lang = () => {
                 </div>
             </button>
 
-            <button className='listStyle-1' onClick={() => lagChange('en')}>
+            <button className='listStyle-1' onClick={() => lagChange('uk')}>
                 <div  className='flex gap-1 text-[13px] items-center uppercase'>
                 en
                  <UkFlag/>
