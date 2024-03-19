@@ -12,9 +12,13 @@ export default getRequestConfig(async ({locale}) => {
   return {
     messages: (
       await (locale === 'ge'
-        ? 
+        ? // When using Turbopack, this will enable HMR for `en`
           import('../messages/ge.json')
         : import(`../messages/${locale}.json`))
-    ).default
+    ).default,
+    
+    now: new Date(),
+    timeZone: 'Europe/Tbilisi',
+
   };
 });
