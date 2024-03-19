@@ -14,10 +14,6 @@ const LandingShop = () => {
             <ShopingCard />
             <ShopingCard />
             <ShopingCard />
-            <ShopingCard />
-            <ShopingCard />
-            <ShopingCard />
-            <ShopingCard />
         </div>
     </div>
   )
