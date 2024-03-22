@@ -14,7 +14,7 @@ export const pathnames = {
 // Use the default: `always`
 
 export const localePrefix = undefined;
-export const localeDetection = true;
+export const localeDetection = undefined;
 export const defaultLocale = 'ge';
 
 export type AppPathnames = keyof typeof pathnames;
