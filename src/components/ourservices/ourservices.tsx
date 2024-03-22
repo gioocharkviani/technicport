@@ -71,7 +71,9 @@ const t = useTranslations();
 const locale: string = useLocale();
   return (
     <div className='w-full flex flex-col'>
+
         <Title1 title={t('ourservices.title')} image={serviceimage} moreInfo={t('global.moreInfo')} link={`/services`}/>
+        
         <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5 justify-between mt-[20px]'>
           {data.map((item : itemProps) => 
             <div key={item.id} className='ssm:h-[170px]  relative p-[0px] h-[100px] rounded-lg bg-[#efefef]'>
