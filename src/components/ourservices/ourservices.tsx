@@ -3,6 +3,12 @@ import Title1 from '../title/title1'
 import serviceimage from '../../../public/png/service.png'
 import { useLocale, useTranslations } from 'next-intl'
 
+interface itemProps {
+  id: number,
+  title: any,
+  image:string
+}
+
 const data = [
   {
       id:1,
@@ -62,12 +68,12 @@ const data = [
 
 const Ourservices = () => {
 const t = useTranslations();
-const locale = useLocale();
+const locale: string = useLocale();
   return (
     <div className='w-full flex flex-col'>
         <Title1 title={t('ourservices.title')} image={serviceimage} moreInfo={t('global.moreInfo')} link={`/services`}/>
         <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5 justify-between mt-[20px]'>
-          {data.map(item=> 
+          {data.map((item : itemProps) => 
             <div key={item.id} className='ssm:h-[170px]  relative p-[0px] h-[100px] rounded-lg bg-[#efefef]'>
 
               <div className='w-full absolute   px-[5px] py-[5px] bottom-5 text-center text-[13px] '>
