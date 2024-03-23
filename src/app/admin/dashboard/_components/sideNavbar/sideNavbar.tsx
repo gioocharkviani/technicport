@@ -1,11 +1,27 @@
-import styles from './sideNavbar.module.css'
+'use client'
+import { useState } from 'react';
 
 const SideNavbar = () => {
-  return (
-    <div className={styles.mainWrapper} >
-        content
-    </div>
-  )
-}
+  const [open, setOpen] = useState<boolean>(false);
 
-export default SideNavbar
+  return (
+    <div className={`sideBar ${open ? 'active' : ''}`}>
+
+      <div  className='sideBarButtonWrapper' >
+        <button className='sideBarButton' onClick={() => setOpen(!open)}>
+          <div className='line'></div>
+        </button>
+      </div>
+
+      <div className='sideBarMenuWrapper'>
+        <ul className=''>
+sadasdassadasdasdas
+          
+        </ul>
+      </div>
+
+    </div>
+  );
+};
+
+export default SideNavbar;

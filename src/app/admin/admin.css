@@ -1,0 +1,121 @@
+.mainLayoutWrapper {
+    background-color: rgb(230, 230, 230);
+    position: relative;
+    width: 100%;
+    display: flex;
+    min-height: 100vh;
+    flex-shrink: 0;
+   }
+   
+   @media only screen and (max-width: 764px) {
+       .mainLayoutWrapper {
+         gap: 20px;
+       }
+   }
+   
+   .sideBarWrapper {
+       max-height: 100vh;
+       position: sticky;
+       top: 0;
+       width: max-content;
+       max-width: 300px;
+       left: 0;
+       display: flex;
+       align-items: center;
+   }
+   
+   @media only screen and (max-width: 764px) {
+   
+   }
+   
+   .dashobardWrapper {
+     position: relative;
+     width: 100%;
+     padding: 0 20px;
+     display: flex;
+     flex-direction: column;
+     gap:15px;
+   }
+   
+   @media only screen and (max-width: 764px) {
+       .dashobardWrapper {
+         padding: 5px 0px;
+       }
+   }
+
+
+   /* SideBar */
+   .sideBar{
+    height: 100%;
+    padding: 20px 10px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    width: 50px;
+    transition: all 0.5s ease-in-out;
+   }
+
+   .sideBar.active {
+    max-width: 288px;
+    transition: all 0.5s ease-in-out;
+    width: max-content;
+   }
+
+
+   .sideBarButtonWrapper {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+    transition: all .3s ease-in-out;
+   }
+
+  .sideBarButton {
+    flex-shrink: 0;
+    width: 24px;
+    position: relative;
+    height: 20px
+  } 
+
+   .sideBarButton:hover > .line {
+    width: 100%;
+   }
+   .sideBarButton:hover > .line::after{
+    width: 70%;
+   }
+
+  .line {
+    width: 80%;
+    height: 2px;
+    flex-direction: column;
+    display: flex;
+    gap: 5px;
+    border-radius: 1px;
+    background-color: rgb(14, 30, 50);
+    transition: all .2s ease-in-out;
+  }
+  .line::before{
+    display: block;
+    content: '';
+    width: 100%;
+    position: absolute;
+    height: 2px;
+    top: 0;
+    border-radius: 1px;
+    background-color: rgb(14, 30, 50);
+  }
+  .line::after{
+    display: block;
+    content: '';
+    width: 100%;
+    position: absolute;
+    height: 2px;
+    bottom: 0;
+    border-radius: 1px;
+    background-color: rgb(14, 30, 50);
+    transition: all .2s ease-in-out; 
+  }
+
+   /* SideBar */

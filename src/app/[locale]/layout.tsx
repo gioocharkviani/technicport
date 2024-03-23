@@ -6,7 +6,6 @@ interface RootLayoutProps {
   
   import {useTimeZone} from 'next-intl';
   import { useNow } from 'next-intl';
-  import useLocale from 'next-intl';
  
   
   import "./globals.css";
