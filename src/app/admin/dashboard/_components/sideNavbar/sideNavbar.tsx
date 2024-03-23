@@ -13,12 +13,7 @@ const SideNavbar = () => {
         </button>
       </div>
 
-      <div className='sideBarMenuWrapper'>
-        <ul className=''>
-sadasdassadasdasdas
-          
-        </ul>
-      </div>
+
 
     </div>
   );

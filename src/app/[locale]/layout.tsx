@@ -8,8 +8,6 @@ interface RootLayoutProps {
   import { useNow } from 'next-intl';
  
   
-  import "./globals.css";
-  
   import { NextIntlClientProvider, useMessages } from "next-intl";
   
   export default function RootLayout({
