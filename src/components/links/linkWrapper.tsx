@@ -1,23 +1,23 @@
-'use client'
+// 'use client'
 
-import Link from 'next/link';
-import React from 'react';
-import { useLocale } from 'next-intl'; 
+// import Link from 'next/link';
+// import React from 'react';
+// import { useLocale } from 'next-intl'; 
 
-interface LinkWrapperProps {
-    children: React.ReactNode;
-    link: string;
-}
+// interface LinkWrapperProps {
+//     children: React.ReactNode;
+//     link: string;
+// }
 
-const LinkWrapper = ({ children, link }:LinkWrapperProps) => {
-    const locale = useLocale(); 
-    const href = `/${locale}${link}`;
+// const LinkWrapper = ({ children, link }:LinkWrapperProps) => {
+//     const locale = useLocale(); 
+//     const href = `/${locale}${link}`;
 
-    return (
-        <Link href={href}>
-            {children}
-        </Link>
-    );
-}
+//     return (
+//         <Link href={href}>
+//             {children}
+//         </Link>
+//     );
+// }
 
-export default LinkWrapper;
+// export default LinkWrapper;

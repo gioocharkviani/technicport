@@ -13,11 +13,9 @@ import { Metadata } from 'next';
   
   export default function Layout({ children }: LayoutProps) {
     return (
-      <html>
-      <body>
-          {children}
-      </body>
-    </html>
+      <main>
+        {children}
+      </main>
     )
   }
   

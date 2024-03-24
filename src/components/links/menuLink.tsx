@@ -2,7 +2,7 @@
 import { useLocale } from "next-intl"
 import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
-import LinkWrapper from "./linkWrapper"
+import Link from "next/link"
 
 const MenuLink = ({link , name}:{link:string, name:string}) => {
     const locale = useLocale();
@@ -20,9 +20,10 @@ const MenuLink = ({link , name}:{link:string, name:string}) => {
   return (
     <li className={`${active ? 'text-color1' : 'hover:text-color1 transition-all'}`}>
 
-      <LinkWrapper link={link}>
+      <Link href={link}>
           {name}
-      </LinkWrapper>
+      </Link>
+
     </li>
   )
 }

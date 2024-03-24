@@ -2,7 +2,6 @@ import Link from 'next/link'
 import React from 'react'
 import Image from 'next/image'
 import { FaLongArrowAltRight } from 'react-icons/fa'
-import LinkWrapper from '../links/linkWrapper'
 interface pagePrps {
   title: String,
   link?: string ,
@@ -21,12 +20,12 @@ const Title2 = ({title , link , image , moreInfo}:pagePrps) => {
         </div>
 
         {link &&
-        <LinkWrapper link={link}>
+        <Link href={link}>
         <div className='flex hover:opacity-[0.5] transition-all capitalize gap-2 items-center font-medium text-[15px]'>
             {moreInfo}
             <FaLongArrowAltRight className='text-color1'/>
         </div>
-        </LinkWrapper>
+        </Link>
         }
 
     </div>

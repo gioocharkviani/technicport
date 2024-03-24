@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { useTranslations } from 'next-intl';
-import LinkWrapper from '../links/linkWrapper';
+import Link from 'next/link';
 
 const Info = () => {
     const t = useTranslations('info');
@@ -11,12 +11,12 @@ const Info = () => {
         <div className='w-full flex justify-between items-center'>
             <h2 className='font-bold uppercase text-[15px] smd:text-[20px] md:text-[30px]'>{t('header')}</h2>
 
-            <LinkWrapper link='/about'>
+            <Link href='/about'>
                 <div  className='flex capitalize gap-2 md:text-[15px] items-center font-medium text-[13px]'>
                 {t('moreAboutUs')}
                 <FaLongArrowAltRight className='text-color1'/>
                 </div>
-            </LinkWrapper>
+            </Link>
 
         </div>
 

@@ -1,13 +1,14 @@
 'use client';
  
-import Error from 'next/error';
  
 export default function NotFound(
 ) {
   return (
     <html>
       <body>
-        <Error statusCode={404} />
+        <main className="flex w-full min-h-screen justify-center items-center">
+          Error
+        </main>
       </body>
     </html>
   );
