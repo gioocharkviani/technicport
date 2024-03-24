@@ -1,5 +1,7 @@
 import createMiddleware from 'next-intl/middleware';
-import { Pathnames } from 'next-intl/navigation';
+import { NextRequest } from 'next/server';
+
+
 
 export const locales = ['ge', 'uk', 'ru'];
 
@@ -17,15 +19,15 @@ export const config = {
     '/',
     '/(ge|uk|ru)/:path*',
     // (e.g. `/pathnames` -> `/en/pathnames`)
-    '/((?!_next|_vercel|.*\\..*).*)',
-  ]
+    '/((?!api|_next|_vercel|.*\\..*).*)',
+  ],
 };
 
 export const localePrefix = undefined;
 export const localeDetection = undefined;
 export const defaultLocale = 'ge';
 
-export default createMiddleware({
+const handleLocaleMiddlewere  =  createMiddleware({
   defaultLocale,
   locales,
   pathnames,
@@ -33,4 +35,8 @@ export default createMiddleware({
   localeDetection
 });
 
-export type AppPathnames = keyof typeof pathnames;
+
+export default async function middleware(request: NextRequest) {
+  const response = handleLocaleMiddlewere(request);
+  return response;
+}
