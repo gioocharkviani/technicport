@@ -76,9 +76,9 @@ const locale: string = useLocale();
         
         <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5 justify-between mt-[20px]'>
           {data.map((item : itemProps) => 
-            <div key={item.id} className='ssm:h-[170px]  relative p-[0px] h-[100px] rounded-lg bg-[#efefef]'>
+            <div key={item.id} className='ssm:h-[170px]  p-[0px] h-[100px] rounded-lg bg-[#efefef]'>
 
-              <div className='w-full absolute   px-[5px] py-[5px] bottom-5 text-center text-[13px] '>
+              <div className='w-full    px-[5px] py-[5px] bottom-5 text-center text-[13px] '>
                 {item.title[locale]}
               </div>
 
