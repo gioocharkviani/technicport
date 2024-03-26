@@ -3,7 +3,13 @@ import React from 'react'
 const Header = () => {
   return (
     <div className='AdminHeader'>
-            Header
+
+      <div></div>
+
+        <div className='bg-white'>
+          notification bar
+        </div>
+
     </div>
   )
 }

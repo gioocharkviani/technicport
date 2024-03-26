@@ -7,7 +7,7 @@ const SideNavbar = () => {
   return (
     <div className={`sideBar ${open ? 'active' : ''}`}>
 
-      <div  className='sideBarButtonWrapper' >
+      <div className={`sideBarButtonWrapper ${open ? 'activeBtn' : ''}`}>
         <button className='sideBarButton' onClick={() => setOpen(!open)}>
           <div className='line'></div>
         </button>
