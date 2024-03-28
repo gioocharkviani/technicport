@@ -81,12 +81,17 @@ li {
 
 @media only screen and (max-width: 764px) {
   .ProjectgridArea {
-    grid-template-columns: repeat(3, 1fr);
-  }}
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .gridprjItem:last-child{
+    display: none;
+  }
+}
 @media only screen and (max-width: 450px) {
   .ProjectgridArea {
     grid-template-columns: 2fr;
-  }}
+  }
+}
 
   @media only screen and (min-width: 764px) {
     .gridprjItem:nth-child(1){

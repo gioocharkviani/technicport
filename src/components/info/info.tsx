@@ -6,9 +6,10 @@ import Link from 'next/link';
 const Info = () => {
     const t = useTranslations('info');
   return (
-    <div className='w-full flex flex-col'>
+    <div className='w-full flex flex-col bg-[#FFF] rounded-lg py-[20px] px-[20px] '>
 
         <div className='w-full flex justify-between items-center'>
+            
             <h2 className='font-bold uppercase text-[15px] smd:text-[20px] md:text-[30px]'>{t('header')}</h2>
 
             <Link href='/about'>

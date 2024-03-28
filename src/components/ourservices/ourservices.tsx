@@ -70,7 +70,7 @@ const Ourservices = () => {
 const t = useTranslations();
 const locale: string = useLocale();
   return (
-    <div className='w-full flex flex-col'>
+    <div className='w-full flex flex-col bg-[#FFF] rounded-lg py-[20px] px-[20px] h-full'>
 
         <Title1 title={t('ourservices.title')} image={serviceimage} moreInfo={t('global.moreInfo')} link={`/services`}/>
         

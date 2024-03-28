@@ -20,14 +20,14 @@ export default function Home() {
       </MaxWidthWrapper>
 
       <MaxWidthWrapper>
-        <div className="flex flex-col-reverse md:flex-row  gap-5 items-center">
+        <div className="flex flex-col-reverse md:flex-row bg-[#FFF] rounded-lg py-[20px] px-[20px]  gap-5 items-center">
           <Search />
           <PhoneNumber />
         </div>
       </MaxWidthWrapper>
 
       <MaxWidthWrapper>
-        <div className="flex flex-col md:flex-row items-center md:items-start gap-14 mt-[40px]">
+        <div className="flex flex-col md:flex-row items-center md:items-start gap-[20px] mt-[40px]">
           <Info />
           <Ourservices />
         </div>

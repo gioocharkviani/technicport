@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main className={`${noto_Sans_Georgian.className} w-full min-h-screen justify-between flex-col items-center flex overflow-x-hidden`}>
+    <main className={`${noto_Sans_Georgian.className} bg-[#f2f3f6] w-full min-h-screen justify-between flex-col items-center flex overflow-x-hidden`}>
       <Header />
         {children}
       <Footer />

@@ -13,8 +13,8 @@ const Title2 = ({title , link , image , moreInfo}:pagePrps) => {
   return (
     <div className='w-full flex justify-between items-center'>
         <div className='flex gap-3 items-center w-max'>
-        <div className='w-[40px] h-[40px] bg-color1 rounded-md flex justify-center items-center'>
-          <Image width={20} height={20} src={image || ''} alt='1'/>
+        <div className='w-[32px] h-[32px] bg-color1 rounded-md flex justify-center items-center'>
+          <Image width={18} height={18} src={image || ''} alt='1'/>
         </div>
         <span className='text-[18px] capitalize font-bold'>{title}</span>
         </div>
