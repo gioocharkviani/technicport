@@ -27,7 +27,7 @@ export default function Home() {
       </MaxWidthWrapper>
 
       <MaxWidthWrapper>
-        <div className="grid lg:max-h-[300px] lg:overflow-hidden lg:grid-cols-2 grid-cols-1 gap-[20px] mt-[40px]">
+        <div className="grid lg:h-[300px] lg:overflow-hidden h-auto lg:grid-cols-2 grid-cols-1 gap-[20px] mt-[40px]">
           <Info />
           <Ourservices />
         </div>
