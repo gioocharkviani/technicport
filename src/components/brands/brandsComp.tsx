@@ -7,7 +7,7 @@ import motule from '../../../public/motul.png'
 const BrandsComp = () => {
   const t = useTranslations();
   return (
-    <div className="flex items-center overflow-hidden  gap-3 mt-[30px] bg-[#272a37] rounded-lg py-[20px] px-[20px]  ">
+    <div className="flex items-center overflow-hidden  gap-3 mt-[40px] bg-[#272a37] rounded-lg py-[20px] px-[20px]  ">
 
       <div className="text-[15] w-max shrink-0 text-white pr-[30px]">{t('partners.partnerTitle')}</div>
 

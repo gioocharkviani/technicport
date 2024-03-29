@@ -15,7 +15,7 @@ import { FreeMode, Pagination } from 'swiper/modules';
 const LandingShop = () => {
   const t = useTranslations()
   return (
-    <div className="flex mt-[50px] px-[20px] rounded-lg pb-[20px] pt-[10px] bg-[#FFF]  py-[20px] flex-col"> 
+    <div className="flex mt-[40px] px-[20px] rounded-lg pb-[20px] pt-[10px] bg-[#FFF]  py-[20px] flex-col"> 
         <Title1 title={t('shop.landingtitle')} moreInfo={t('global.moreInfo')} image={waterScooter} link='/shop'/>
         
         <div className='w-full mt-[20px]'>
@@ -23,6 +23,9 @@ const LandingShop = () => {
         <Swiper
         breakpoints={{
           // when window width is >= 768px
+          1300: {
+            slidesPerView: 5,
+          },
           1000: {
             slidesPerView: 4,
           },
@@ -42,6 +45,14 @@ const LandingShop = () => {
         modules={[FreeMode, Pagination]}
         className="swiper"
       >
+
+        <SwiperSlide>
+            <ShopingCard />
+        </SwiperSlide>
+
+        <SwiperSlide>
+            <ShopingCard />
+        </SwiperSlide>
 
         <SwiperSlide>
             <ShopingCard />

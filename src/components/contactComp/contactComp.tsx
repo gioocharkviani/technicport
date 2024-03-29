@@ -15,7 +15,7 @@ import { useTranslations } from 'next-intl';
 const ContactComp = () => {
   const t = useTranslations('contactinfo');
   return (
-    <div className='flex w-full flex-col mt-[50px] bg-[#FFF] rounded-lg py-[20px] px-[20px] '>
+    <div className='flex w-full flex-col mt-[40px] bg-[#FFF] rounded-lg py-[20px] px-[20px] '>
         <Title1 title={t('contactinfoTitle')} image={contactimg}/>
 
         <div className='mt-[25px] flex gap-8 flex-col md:flex-row justify-between'>
