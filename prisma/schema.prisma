@@ -43,4 +43,17 @@ model Payments {
   user    User @relation(fields: [userId] , references: [id])
 }
 
+model Products {
+  id         Int      @id @default(autoincrement())
+  title      String
+  price      Float
+  qty        Int
+  cat   Category? 
+}
 
+model Category {
+  id         Int      @id @default(autoincrement())
+  name       String   @unique
+  productId  Int @unique
+  products   Products @relation(fields: [productId] , references: [id])
+}

@@ -8,7 +8,7 @@ const NavMenu = () => {
 
   return (
    <div className='w-max lg:block hidden'>
-    <ul className='flex gap-4 text-[15px]'>
+    <ul className='flex gap-4 text-[15px] capitalize'>
         <MenuLink link='/' name={t('home')}/>
         <MenuLink link='/shop' name={t('shop')}/>
         <MenuLink link='/about' name={t('about')}/>
