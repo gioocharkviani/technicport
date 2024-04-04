@@ -37,7 +37,6 @@ const LandingShop = () => {
           },
         }}
         spaceBetween={30}
-        
         freeMode={true}
         pagination={{
           clickable: true,
