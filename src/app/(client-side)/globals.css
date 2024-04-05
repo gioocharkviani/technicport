@@ -184,6 +184,7 @@ li {
   background-color: rgb(23, 42, 59);
   transform: translateX(100%);
   transition: all 0.5s ease-in-out;
+  z-index: 10;
 }
 
 .humburgerMenuWrapper.active {
