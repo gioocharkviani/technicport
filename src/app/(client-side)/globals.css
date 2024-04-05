@@ -223,3 +223,7 @@ li {
 .swiper-pagination-bullet-active {
   background-color: #27BF9B !important;
 }
+
+.blackBgRgba {
+  background-color: rgba(0, 0, 0, 0.5);
+}

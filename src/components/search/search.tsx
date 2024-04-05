@@ -5,7 +5,7 @@ const Search = () => {
   return (
     <div className='w-full flex-col flex gap-[10px]'>
 
-        <div className='flex justify-between gap-4'>
+        {/* <div className='flex justify-between gap-4'>
           
           <select name="category" id="category"  className='px-[10px] py-[10px] rounded-md border-[1px] border-[gray] w-full text-[13px]'>
           <option value="">კატეგორია</option>
@@ -38,7 +38,7 @@ const Search = () => {
             <option value="2015">2015</option>
          </select>
 
-        </div>
+        </div> */}
 
         <div className='w-full flex gap-4 items-center '>
 
