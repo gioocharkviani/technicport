@@ -2,8 +2,10 @@
 import React, { useState } from 'react'
 import UserIcon from '../../../public/svg/userIcon'
 import { useTranslations } from 'next-intl'
+
 import { Modal } from '../modal/modal'
 import Signin from '../forms/signin/signin'
+import SignUp from '../forms/register/singUp'
 
 const LoginLink = () => {
   const t = useTranslations('header')
@@ -11,11 +13,30 @@ const LoginLink = () => {
   const [modal, setModal] = useState(false);
   const openModal = () => setModal(true);
 
+  const [login, setLogin] = useState(true);
+  
   return (
     <>
+    <Modal title={login? 'ავტორიზაცია' : 'რეგისტრაცია'} openModal={modal} closeModal={()=> setModal(false)}> 
 
-    <Modal title='ავტორიზაცია' openModal={modal} closeModal={()=> setModal(false)}> 
-      <Signin />
+      {login &&
+        <Signin />
+      }
+
+      {
+        !login && 
+        <SignUp />
+      }
+
+      <div className='w-full border-t-[1px] border-gray-200 mt-[15px] py-[10px]'>
+        {login &&
+        <button onClick={()=> setLogin(false)} className='w-full text-[13px]'>შექმენი ახალი ანგარიში</button>
+        }
+        {!login &&
+          <button onClick={()=> setLogin(true)} className='w-full text-[13px]'>ავტორიზაცია</button>
+        }
+      </div>
+
     </Modal>
 
 
