@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import UserIcon from '../../../public/svg/userIcon'
 import { useTranslations } from 'next-intl'
 import { Modal } from '../modal/modal'
+import Signin from '../forms/signin/signin'
 
 const LoginLink = () => {
   const t = useTranslations('header')
@@ -13,8 +14,8 @@ const LoginLink = () => {
   return (
     <>
 
-    <Modal openModal={modal} closeModal={()=> setModal(false)}> 
-      
+    <Modal title='ავტორიზაცია' openModal={modal} closeModal={()=> setModal(false)}> 
+      <Signin />
     </Modal>
 
 

@@ -228,3 +228,22 @@ li {
 .blackBgRgba {
   background-color: rgba(0, 0, 0, 0.5);
 }
+
+.input1 {
+  border: 1px solid gray;
+  outline: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-size: 13px;
+}
+.input1:focus {
+  border: 1px solid rgb(4, 244, 172);
+}
+
+.btn1 {
+  background-color: #27BF9B;
+  color: white;
+  font-size: 14px;
+  border-radius: 4px;
+  padding: 6px 10px;
+}
