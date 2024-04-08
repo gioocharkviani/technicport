@@ -1,0 +1,9 @@
+{
+    "links": {
+        "home":"home",
+        "shop":"shop",
+        "contact":"contact",
+        "services":"services",
+        "about":"about"
+    }
+}

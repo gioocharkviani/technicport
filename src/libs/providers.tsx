@@ -1,20 +1,16 @@
+import { LocaleProvider } from '@/hooks/locale-provider'
+import { getLocale } from "@/i18n/server";
 
-import { NextIntlClientProvider, useMessages } from "next-intl";
+interface ProviderProps {
+    children : React.ReactNode
+}
 
-import {useTimeZone} from 'next-intl';
-import { useNow } from 'next-intl';
-import React from "react";
-
-
-const Providers = ({children}: {children: React.ReactNode}) => {
-    const messages = useMessages();
-    const timeZone = useTimeZone();
-    const now = useNow();
-
+const Providers = ({children}:ProviderProps) => {
+    const locale = getLocale();
   return (
-    <NextIntlClientProvider messages={messages} timeZone={timeZone} now={now}>
+    <LocaleProvider value={locale}>
         {children}
-    </NextIntlClientProvider>
+    </LocaleProvider>
   )
 }
 

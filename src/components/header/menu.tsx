@@ -1,19 +1,18 @@
 import React from 'react'
-import { useTranslations } from 'next-intl'
 import MenuLink from '../links/menuLink'
+import { createTranslation } from '@/i18n/server';
 
-const NavMenu = () => {
-  const t  = useTranslations('navigation')
-
+const NavMenu = async () => {
+  const {t} = await createTranslation('navigation');
 
   return (
    <div className='w-max lg:block hidden'>
     <ul className='flex gap-4 text-[15px] capitalize'>
-        <MenuLink link='/' name={t('home')}/>
-        <MenuLink link='/shop' name={t('shop')}/>
-        <MenuLink link='/about' name={t('about')}/>
-        <MenuLink link='/services' name={t('services')}/>
-        <MenuLink link='/contact' name={t('contact')}/>
+        <MenuLink link='/' name={t('links.home')}/>
+        <MenuLink link='/shop' name={t('links.shop')}/>
+        <MenuLink link='/about' name={t('links.about')}/>
+        <MenuLink link='/services' name={t('links.services')}/>
+        <MenuLink link='/contact' name={t('links.contact')}/>
     </ul>
    </div>
   )

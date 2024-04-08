@@ -1,7 +1,5 @@
 'use client'
 import BrandsCard from "../cards/brandsCard";
-import { useTranslations } from "next-intl";
-
 import motule from '../../../public/brands/motul.png'
 import solas from '../../../public/brands/solas.png'
 import ngk from '../../../public/brands/ngk.png'
@@ -16,11 +14,10 @@ import { FreeMode, Autoplay } from 'swiper/modules';
 
 
 const BrandsComp = () => {
-  const t = useTranslations();
   return (
     <div className="flex md:flex-row flex-col items-center overflow-hidden  gap-6 md:gap-3 mt-[40px] bg-[#272a37] rounded-lg py-[40px] px-[20px]  ">
 
-      <div className="text-[18px] w-max shrink-0 text-white pr-[30px]">{t('partners.partnerTitle')}</div>
+      <div className="text-[18px] w-max shrink-0 text-white pr-[30px]">დასახელება</div>
 
         <div className="flex gap-5 justify-between overflow-hidden w-full">
 

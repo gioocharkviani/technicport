@@ -8,15 +8,12 @@ import phone from '../../../public/png/telephone.png';
 import telegram from '../../../public/png/telegram.png';
 import watsup from '../../../public/png/watsup.png';
 import viber from '../../../public/png/viber.png';
-import { useTranslations } from 'next-intl';
-
 
 
 const ContactComp = () => {
-  const t = useTranslations('contactinfo');
   return (
     <div className='flex w-full flex-col mt-[40px] bg-[#FFF] rounded-lg py-[20px] px-[20px] '>
-        <Title1 title={t('contactinfoTitle')} image={contactimg}/>
+        <Title1 title='კოტაქტი' image={contactimg}/>
 
         <div className='mt-[25px] flex gap-8 flex-col md:flex-row justify-between'>
 

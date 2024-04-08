@@ -1,30 +1,15 @@
 'use client'
 import React from 'react'
-
 import GeoFlag from '../../../public/flag/ge'
 import UkFlag from '../../../public/flag/uk'
 import RuFlag from '../../../public/flag/ru'
 
-import { usePathname } from 'next/navigation'
-import { useRouter } from 'next/navigation'
-import { useParams } from 'next/navigation'
+import {switchLocaleAction} from '../../actions/switch-locale';
 
 const Lang = () => {
-    const pathname = usePathname();
-    const params = useParams();
-    const router = useRouter();
 
     const lagChange = async (lang:any) => {
-        const newLocale = lang;
-        const newPathname =  pathname.replace(`/${params.locale}/` ,`/${newLocale}/`)
-
-        if(params.locale !== newLocale && pathname !== `/${params.locale}`){
-            router.replace(`${newPathname}`)
-        }
-
-        if(pathname === `/${params.locale}`){
-            router.replace(`${newLocale}`)
-        }
+        switchLocaleAction(lang)
     }
 
   return (
@@ -38,7 +23,7 @@ const Lang = () => {
                 </div>
             </button>
 
-            <button className='listStyle-1' onClick={() => lagChange('uk')}>
+            <button className='listStyle-1' onClick={() => lagChange('en')}>
                 <div  className='flex gap-1 text-[13px] items-center uppercase'>
                 en
                  <UkFlag/>
@@ -47,7 +32,8 @@ const Lang = () => {
 
             <button className='listStyle-1' onClick={() => lagChange('ru')}>
                 <div  className='flex gap-1 text-[13px] items-center uppercase'>
-                    ru<RuFlag />
+                    ru
+                    <RuFlag />
                 </div>
             </button>
 

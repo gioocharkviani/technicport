@@ -3,7 +3,6 @@ import React from 'react'
 import Title1 from '../title/title1'
 import waterScooter from '../../../public/png/whaterScooter.png'
 import ShopingCard from '../cards/shopingCard'
-import { useTranslations } from 'next-intl'
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -13,10 +12,9 @@ import 'swiper/css/pagination';
 import { FreeMode, Pagination } from 'swiper/modules';
 
 const LandingShop = () => {
-  const t = useTranslations()
   return (
     <div className="flex mt-[40px] px-[20px] rounded-lg pb-[20px] pt-[10px] bg-[#FFF]  py-[20px] flex-col"> 
-        <Title1 title={t('shop.landingtitle')} moreInfo={t('global.moreInfo')} image={waterScooter} link='/shop'/>
+        <Title1 title='' moreInfo='' image={waterScooter} link='/shop'/>
         
         <div className='w-full mt-[20px]'>
 

@@ -1,14 +1,12 @@
 'use client'
 import React, { useState } from 'react'
 import UserIcon from '../../../public/svg/userIcon'
-import { useTranslations } from 'next-intl'
 
 import { Modal } from '../modal/modal'
 import Signin from '../forms/signin/signin'
 import SignUp from '../forms/register/singUp'
 
 const LoginLink = () => {
-  const t = useTranslations('header')
 
   const [modal, setModal] = useState(false);
   const openModal = () => setModal(true);
@@ -45,7 +43,7 @@ const LoginLink = () => {
         <button onClick={openModal}>
           <div className='flex gap-1 text-[13px] items-center capitalize' >
             <UserIcon />
-             {t('login')} 
+             ავტორიზაცია
           </div>
         </button>
 
