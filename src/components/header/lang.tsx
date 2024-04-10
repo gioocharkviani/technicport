@@ -6,6 +6,7 @@ import RuFlag from '../../../public/flag/ru'
 
 import {switchLocaleAction} from '../../actions/switch-locale';
 
+
 const Lang = () => {
 
     const lagChange = async (lang:any) => {

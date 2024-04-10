@@ -3,7 +3,7 @@ import MenuLink from '../links/menuLink'
 import { createTranslation } from '@/i18n/server';
 
 const NavMenu = async () => {
-  const {t} = await createTranslation('navigation');
+  const {t} = await createTranslation('common');
 
   return (
    <div className='w-max lg:block hidden'>

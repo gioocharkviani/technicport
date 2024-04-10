@@ -5,5 +5,7 @@
         "contact":"contact",
         "services":"services",
         "about":"about"
-    }
+    },
+
+    "loginBtn" : "sign in" 
 }

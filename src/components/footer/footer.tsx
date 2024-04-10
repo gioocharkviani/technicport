@@ -9,10 +9,7 @@ const Footer = () => {
  
               <div className='flex justify-between items-center py-[10px]'>
 
-                <div>
-                  
-                </div>
-
+                <div></div>
                 <div></div>
 
               </div>

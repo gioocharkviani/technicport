@@ -1,6 +1,8 @@
 'use client'
 import React, { useState } from 'react'
 import UserIcon from '../../../public/svg/userIcon'
+import { useTranslation } from '@/i18n/client';
+
 
 import { Modal } from '../modal/modal'
 import Signin from '../forms/signin/signin'
@@ -10,7 +12,7 @@ const LoginLink = () => {
 
   const [modal, setModal] = useState(false);
   const openModal = () => setModal(true);
-
+  const {t} =  useTranslation('common');
   const [login, setLogin] = useState(true);
   
   return (
@@ -43,7 +45,7 @@ const LoginLink = () => {
         <button onClick={openModal}>
           <div className='flex gap-1 text-[13px] items-center capitalize' >
             <UserIcon />
-             ავტორიზაცია
+             {t('loginBtn')}
           </div>
         </button>
 

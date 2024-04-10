@@ -4,13 +4,14 @@ import {initReactI18next} from 'react-i18next/initReactI18next';
 import {FALLBACK_LOCALE,getOptions,Locales,LANGUAGE_COOKIE} from './settings';
 import {cookies}  from 'next/headers';
 
+
 async function initI18next(lang: Locales, namespace: string) {
   const i18nInstance = createInstance();
   await i18nInstance
     .use(initReactI18next)
     .use(
       resourcesToBackend(
-        (lang: string, ns: string) => import(`./locales/${lang}/${ns}.json`),
+        (lang: string, ns: any) => import(`./locales/${lang}/${ns}.json`),
       ),
     )
     // Initialize i18next with the options we created earlier
@@ -20,7 +21,7 @@ async function initI18next(lang: Locales, namespace: string) {
 }
 
 // This function will be used in our server components for the translation
-export async function createTranslation(ns: string) {
+export async function createTranslation(ns: string ) {
   const lang = getLocale();
   const i18nextInstance = await initI18next(lang, ns);
 

@@ -1,5 +1,4 @@
 import { getLocale } from "@/i18n/server";
-import Providers from '@/libs/providers';
 import './globals.css'
 
 interface RootLayoutProps {
@@ -15,9 +14,7 @@ interface RootLayoutProps {
     return (
       <html lang={locale}>
         <body>
-          <Providers>
             {children}
-          </Providers>
         </body>
       </html>
     );
