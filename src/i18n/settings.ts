@@ -9,7 +9,7 @@ export const LANGUAGE_COOKIE = 'LOCALE';
 
 export function getOptions(lang = FALLBACK_LOCALE, ns = 'common'): InitOptions {
   return {
-    debug: true,
+    debug: false,
     supportedLngs: supportedLocales,
     fallbackLng: FALLBACK_LOCALE,
     lng: lang,

@@ -9,21 +9,27 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id      Int      @id @default(autoincrement())
-  email String @unique
-  password String 
-  fistName String
-  lastName String
-  Phone    String @unique
-  orders   Orders[]
+  id            Int      @id @default(autoincrement())
+  email         String @unique
+  password      String 
+  firstName     String?
+  lastName      String
+  phone         String @unique
+  role          Role @default(BASIC)
+  status        UserStatus @default(BASIC)
+  isVerifyd     Boolean @default(false)
+  photo        String?
+  orders        Orders[]
   shippingAddress Address[]
   payment  Payments[] 
 }
+
+
 
 model Orders {
   id      Int      @id @default(autoincrement())
@@ -59,4 +65,17 @@ model Category {
   name       String   @unique
   productId  Int @unique
   products   Products @relation(fields: [productId] , references: [id])
+}
+
+
+enum UserStatus {
+  BASIC
+  MEDIUM
+  VIP
+}
+
+enum Role {
+  BASIC
+  ADMIN
+  EDITOR
 }
