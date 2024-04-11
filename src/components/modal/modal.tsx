@@ -28,7 +28,7 @@ export const Modal = ({ title ,openModal , children, closeModal }:modalTypes) =>
         return () => {
             document.removeEventListener('mousedown', handleOutsideClick);
         };
-    }, [openModal]);
+    }, [openModal , closeModal]);
 
 
   return (
