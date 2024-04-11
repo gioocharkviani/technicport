@@ -36,11 +36,16 @@ li {
     box-shadow: 0px 0px 5px rgba(0, 0, 0 , 0.5);
     transition: all .2s ease-in-out;
 }
+
 .listStyle-1:hover {
     padding: 3px 5px;
     border-radius: 4px;
     background-color: white;
     box-shadow: 0px 0px 5px rgb(6, 195, 167);
+}
+
+.listStyle-1.active {
+  box-shadow: 0px 0px 5px rgb(6, 195, 167);
 }
 
 .infoUl li {
@@ -230,18 +235,19 @@ li {
 }
 
 .input1 {
-  border: 1px solid gray;
+  border: 2px solid rgb(233, 233, 233);
   outline: none;
-  padding: 8px 12px;
+  padding: 12px 12px;
   border-radius: 5px;
   font-size: 13px;
+  transition: all .2s ease-in-out;
 }
 .input1::placeholder {
   text-transform: capitalize;
 }
 
 .input1:focus {
-  border: 1px solid rgb(4, 244, 172);
+  border: 2px solid rgb(4, 244, 172);
 }
 
 .btn1 {
