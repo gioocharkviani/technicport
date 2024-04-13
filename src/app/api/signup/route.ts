@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
     }
 
     //CREATE NEW USER
-    const USER = await prisma.user.create({
+    const newUser = await prisma.user.create({
         data : {
             email,
             password : await bcrypt.hash(password , 10),
@@ -40,10 +40,12 @@ export async function POST(req: NextRequest) {
             phone
         }
     })
+
+    const { password: _, ...user } = newUser;
   
     return (
         NextResponse.json({
-          USER
+          user
         })
     )
   } 

@@ -15,8 +15,7 @@ const Lang = () => {
     }
 
     const locale = useLocale();
-    console.log(locale)
-
+    
   return (
     <div className='w-max'>
         <ul className='flex gap-3'>
