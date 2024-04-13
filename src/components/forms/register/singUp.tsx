@@ -25,7 +25,7 @@ const SignUp = () => {
   const userRegister : SubmitHandler<inputType> = async (data) => {
     const { confirmPassword, ...user } = data;
     try {
-      axios.post('/api/signup', user)
+      axios.post('/api/auth/register', user)
       .then(function (response) {
         toast.success(`Hello ${response.data.user.firstName}`);
         reset();

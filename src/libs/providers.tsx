@@ -1,16 +1,23 @@
+'use client'
 import { LocaleProvider } from '@/hooks/locale-provider'
-import { getLocale } from "@/i18n/server";
+import { useLocale } from '@/hooks/locale-provider'
+import { SessionProvider } from 'next-auth/react'
+import { useSession } from 'next-auth/react'
+
+
 
 interface ProviderProps {
     children : React.ReactNode
 }
 
 const Providers = ({children}:ProviderProps) => {
-    const locale = getLocale();
+    const locale = useLocale();
   return (
-    <LocaleProvider value={locale}>
+    <SessionProvider>
+      <LocaleProvider value={locale}>
         {children}
-    </LocaleProvider>
+      </LocaleProvider>
+    </SessionProvider>
   )
 }
 

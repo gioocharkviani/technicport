@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import UserIcon from '../../../public/svg/userIcon'
 import { useTranslation } from '@/i18n/client';
+import { useSession } from 'next-auth/react';
 
 
 import { Modal } from '../modal/modal'
@@ -14,14 +15,17 @@ const LoginLink = () => {
   const openModal = () => setModal(true);
   const {t} =  useTranslation('common');
   const [login, setLogin] = useState(true);
+  const se = useSession();
+  console.log(se.status)
   
   return (
     <>
     <Modal title={login? 'ავტორიზაცია' : 'რეგისტრაცია'} openModal={modal} closeModal={()=> setModal(false)}> 
 
-      {login &&
-        <Signin />
-      }
+      
+        {login &&
+          <Signin />
+        }
 
       {
         !login && 
@@ -36,6 +40,7 @@ const LoginLink = () => {
           <button onClick={()=> setLogin(true)} className='w-full text-[13px]'>ავტორიზაცია</button>
         }
       </div>
+      
 
     </Modal>
 

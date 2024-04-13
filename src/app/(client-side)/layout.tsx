@@ -1,15 +1,15 @@
 import { getLocale } from "@/i18n/server";
 import './globals.css'
 
+
 interface RootLayoutProps {
     children: React.ReactNode;
   }
   
-  export default function RootLayout({
+  export default async function RootLayout({
     children,
   }: RootLayoutProps ) {
     const locale = getLocale();
-
 
     return (
       <html lang={locale}>
