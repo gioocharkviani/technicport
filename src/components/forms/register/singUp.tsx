@@ -17,7 +17,8 @@ const SignUp = () => {
 
   useEffect(()=>{
     Object.entries(errors).forEach(([key , value]) => {
-      toast.error(errors[key].message)
+      const errorMessage = (errors as any)[key].message; // Type assertion
+      toast.error(errorMessage);
     })
   },[errors])
 
