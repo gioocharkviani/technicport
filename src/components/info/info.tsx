@@ -1,14 +1,18 @@
+
 import React from 'react'
 import Title1 from '../title/title1';
+import { createTranslation } from '@/i18n/server';
 
-const Info = () => {
-
+const Info = async () => {
+  const {t} = await createTranslation('common');
   return (
     <div className='w-full flex h-full flex-col bg-[#FFF] rounded-lg py-[20px] px-[20px] '>
-    <Title1 title='' image={''} moreInfo='' link={`/about`}/>
+    <Title1 title={t('info.header')} moreInfo={t('global.moreInfo')} link={`/about`}/>
 
         <ul className='infoUl px-[20px] md:px-[0] flex flex-col gap-3 mt-[20px] text-[13px]'>
-            <li></li>
+            <li>
+              {t('info.info1')}
+            </li>
         </ul>
         
     </div>

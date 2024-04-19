@@ -1,14 +1,14 @@
-'use client'
 import Title1 from '../title/title1'
-import serviceimage from '../../../public/png/service.png'
+import { createTranslation } from '@/i18n/server';
 
-
-const Ourservices = () => {
+const Ourservices = async () => {
+  const {t} = await createTranslation('common');
 
   return (
+    
     <div className='w-full flex flex-col bg-[#FFF] rounded-lg py-[20px] px-[20px] h-full'>
 
-        <Title1 title='' image={serviceimage} moreInfo='' link={`/services`}/>
+        <Title1 title={t('ourservices.title')}  moreInfo={t('global.moreInfo')} link={`/services`}/>
         
         <div className='flex justify-center items-center'>
           ToDo -  Task-1 research icons for all services

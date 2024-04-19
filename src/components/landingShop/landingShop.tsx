@@ -1,7 +1,6 @@
 'use client'
 import React from 'react'
 import Title1 from '../title/title1'
-import waterScooter from '../../../public/png/whaterScooter.png'
 import ShopingCard from '../cards/shopingCard'
 
 // Import Swiper React components
@@ -11,10 +10,14 @@ import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 import { FreeMode, Pagination } from 'swiper/modules';
 
+//Local Module
+import { useTranslation } from '@/i18n/client';
+
 const LandingShop = () => {
+  const {t} = useTranslation('common');
   return (
     <div className="flex mt-[40px] px-[20px] rounded-lg pb-[20px] pt-[10px] bg-[#FFF]  py-[20px] flex-col"> 
-        <Title1 title='' moreInfo='' image={waterScooter} link='/shop'/>
+        <Title1 title={t('shop.landingtitle')} moreInfo={t('global.moreInfo')} link='/shop'/>
         
         <div className='w-full mt-[20px]'>
 

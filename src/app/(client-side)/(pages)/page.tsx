@@ -3,6 +3,7 @@ import ContactComp from "@/components/contactComp/contactComp";
 import MaxWidthWrapper from "@/components/contentwrapper/maxWidthWrapper";
 import Info from "@/components/info/info";
 import LandingShop from "@/components/landingShop/landingShop";
+import Logo from "@/components/logo/Logo";
 import Ourservices from "@/components/ourservices/ourservices";
 import PhoneNumber from "@/components/phone/phoneNumber";
 import Projects from "@/components/projects/projects";
@@ -15,7 +16,9 @@ export default function Home() {
       
       <MaxWidthWrapper>
         <div className="w-full h-[200px] flex justify-center items-center">
-          HERE WILL BE LOGO
+          <div className="w-[400px]">
+            <Logo />
+          </div>
         </div>
       </MaxWidthWrapper>
 

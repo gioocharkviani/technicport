@@ -34,3 +34,13 @@ export const registationSchema = z.object({
     message : 'Password and confirm password does not math',
     path: [ "confirmPassword"]
   })
+
+export const signInSchema = z.object({
+  email : z 
+    .string()
+    .email('Please add valide email adress'),
+  password : z
+    .string()
+    .min(6 , 'Password name must be atleast 6 characters')
+    .max(45 , 'Password name must be lest than 45 characters'),
+  })

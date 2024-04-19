@@ -12,21 +12,21 @@ const handler = NextAuth({
               },
 
               async authorize(credentials, req) {
-
-                const userData = {
+                const reqData = {
                     email: credentials?.email,
                     password: credentials?.password,
                 }
-              
-                
-                const res = await axios.post(`${process.env.NEXTAUTH_URL}/api/auth/login` , userData);
-                const user = await res.data;
-                if(user){
-                    return user;
-                } else {
+                try {
+                    const res = await axios.post(`${process.env.NEXTAUTH_URL}/api/auth/login`, reqData);
+                    const user = res.data;
+                    if (user) {
+                        return user;
+                    } else {
+                        return res;
+                    }
+                } catch (error:any) {
                     return null;
                 }
-
               }
 
         })
@@ -44,9 +44,13 @@ const handler = NextAuth({
           return session;
         },
         
-      }, 
-
-   
+      },  
+    secret: process.env.NEXTAUTH_SECRET,
+    session: {
+        strategy: 'jwt',
+        maxAge: 1 * 24 * 60 * 60,
+    },
+    
 })
 
 export { handler as GET, handler as POST };

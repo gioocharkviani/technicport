@@ -1,13 +1,14 @@
+'use client'
 import React from 'react'
 import MenuLink from '../links/menuLink'
-import { createTranslation } from '@/i18n/server';
+import { useTranslation } from '@/i18n/client';
 
-const NavMenu = async () => {
-  const {t} = await createTranslation('common');
+const NavMenu = () => {
+  const {t} =  useTranslation('common');
 
   return (
    <div className='w-max lg:block hidden'>
-    <ul className='flex gap-4 text-[15px] capitalize'>
+    <ul className='flex leading-none gap-4 text-[15px] capitalize'>
         <MenuLink link='/' name={t('links.home')}/>
         <MenuLink link='/shop' name={t('links.shop')}/>
         <MenuLink link='/about' name={t('links.about')}/>

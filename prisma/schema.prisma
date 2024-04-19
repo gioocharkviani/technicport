@@ -23,7 +23,7 @@ model User {
   role          Role @default(BASIC)
   status        UserStatus @default(BASIC)
   isVerifyd     Boolean @default(false)
-  photo        String?
+  photo         String?
   orders        Orders[]
   shippingAddress Address[]
   payment  Payments[] 

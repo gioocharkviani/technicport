@@ -2,8 +2,9 @@
 import { useEffect , useRef,} from 'react'
 import { IoClose } from "react-icons/io5";
 import React from 'react'
+import { useSession } from 'next-auth/react';
 
-interface modalTypes {
+interface ModalProps  {
     openModal: any
     children? : React.ReactNode
     closeModal? : any
@@ -11,11 +12,15 @@ interface modalTypes {
 }
 
 
-export const Modal = ({ title ,openModal , children, closeModal }:modalTypes) => {
+export const Modal: React.FC<ModalProps> = ({ title ,openModal , children, closeModal }) => {
     const modalRef = useRef(null);
 
     useEffect(() => {
-        document.body.style.overflow = openModal ? 'hidden' : '';
+          if (openModal) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto'; 
+        }
 
         const handleOutsideClick = (event: MouseEvent) => {
             if(modalRef.current === event.target){
@@ -28,7 +33,7 @@ export const Modal = ({ title ,openModal , children, closeModal }:modalTypes) =>
         return () => {
             document.removeEventListener('mousedown', handleOutsideClick);
         };
-    }, [openModal , closeModal]);
+    }, [openModal , closeModal ]);
 
 
   return (

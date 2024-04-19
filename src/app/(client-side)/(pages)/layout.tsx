@@ -10,6 +10,11 @@ import { Toaster } from "react-hot-toast";
 export const metadata: Metadata = {
   title: "Techno-port",
   description: "Techno-port",
+  icons: {
+    icon: [
+      './favicon.png'
+    ]
+  }
 };
 
 export default function RootLayout({

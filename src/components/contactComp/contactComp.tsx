@@ -1,6 +1,5 @@
 import React from 'react'
 import Title1 from '../title/title1'
-import contactimg from '../../../public/png/contact.png'
 import ContactCard from '../cards/contactCard'
 
 import email from '../../../public/png/email.png';
@@ -9,11 +8,14 @@ import telegram from '../../../public/png/telegram.png';
 import watsup from '../../../public/png/watsup.png';
 import viber from '../../../public/png/viber.png';
 
+import { createTranslation } from '@/i18n/server';
 
-const ContactComp = () => {
+
+const ContactComp = async () => {
+  const {t} = await createTranslation('common');
   return (
     <div className='flex w-full flex-col mt-[40px] bg-[#FFF] rounded-lg py-[20px] px-[20px] '>
-        <Title1 title='კოტაქტი' image={contactimg}/>
+        <Title1 title={t('contactinfo.contactinfoTitle')}/>
 
         <div className='mt-[25px] flex gap-8 flex-col md:flex-row justify-between'>
 

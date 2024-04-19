@@ -18,28 +18,28 @@ const Lang = () => {
     
   return (
     <div className='w-max'>
-        <ul className='flex gap-3'>
+        <ul className='flex gap-3 items-center'>
             
         <button disabled={locale === 'ge'} className={`${locale === 'ge' ? 'listStyle-1 active' : 'listStyle-1'}`} onClick={() => lagChange('ge')}>
-                    <div className='flex gap-1 text-[13px] items-center uppercase'>
-                        ge
-                        <GeoFlag />
-                    </div>
-                </button>
+            <div className='flex gap-1 text-[13px] items-center uppercase'>
+                 ge
+                <GeoFlag />
+            </div>
+        </button>
 
-                <button disabled={locale === 'en'} className={`${locale === 'en' ? 'listStyle-1 active' : 'listStyle-1'}`} onClick={() => lagChange('en')}>
-                    <div className='flex gap-1 text-[13px] items-center uppercase'>
-                        en
-                        <UkFlag/>
-                    </div>
-                </button>
+        <button disabled={locale === 'en'} className={`${locale === 'en' ? 'listStyle-1 active' : 'listStyle-1'}`} onClick={() => lagChange('en')}>
+            <div className='flex gap-1 text-[13px] items-center uppercase'>
+                en
+                <UkFlag/>
+            </div>
+        </button>
 
-                <button disabled={locale === 'ru'} className={`${locale === 'ru' ? 'listStyle-1 active' : 'listStyle-1'}`} onClick={() => lagChange('ru')}>
-                    <div className='flex gap-1 text-[13px] items-center uppercase'>
-                        ru
-                        <RuFlag />
-                    </div>
-                </button>
+        <button disabled={locale === 'ru'} className={`${locale === 'ru' ? 'listStyle-1 active' : 'listStyle-1'}`} onClick={() => lagChange('ru')}>
+            <div className='flex gap-1 text-[13px] items-center uppercase'>
+                ru
+                <RuFlag />
+            </div>
+        </button>
 
         </ul>
     </div>

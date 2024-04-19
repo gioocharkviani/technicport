@@ -1,12 +1,13 @@
-import { getLocale } from "@/i18n/server";
+import ClientSideProviers from '@/libs/clientSideProviers';
 import './globals.css'
+import { getLocale } from '@/i18n/server';
 
 
 interface RootLayoutProps {
     children: React.ReactNode;
   }
   
-  export default async function RootLayout({
+  export default function RootLayout({
     children,
   }: RootLayoutProps ) {
     const locale = getLocale();
@@ -14,7 +15,9 @@ interface RootLayoutProps {
     return (
       <html lang={locale}>
         <body>
+          <ClientSideProviers>
             {children}
+          </ClientSideProviers>
         </body>
       </html>
     );

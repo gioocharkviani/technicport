@@ -6,6 +6,7 @@ import { zodResolver  } from '@hookform/resolvers/zod';
 import z from 'zod'
 import { toast } from 'react-hot-toast';
 import axios from 'axios'
+import { signIn } from 'next-auth/react';
 
 const SignUp = () => {
   
@@ -17,7 +18,7 @@ const SignUp = () => {
 
   useEffect(()=>{
     Object.entries(errors).forEach(([key , value]) => {
-      const errorMessage = (errors as any)[key].message; // Type assertion
+      const errorMessage = (errors as any)[key].message; 
       toast.error(errorMessage);
     })
   },[errors])
@@ -27,7 +28,12 @@ const SignUp = () => {
     try {
       axios.post('/api/auth/register', user)
       .then(function (response) {
-        toast.success(`Hello ${response.data.user.firstName}`);
+        signIn('credentials' , {
+          email:user.email,
+          password: user.password,
+          redirect:true,
+        })
+        toast.success(`hello ${user.firstName}`)
         reset();
       })
       .catch(function (error) {

@@ -7,19 +7,15 @@ import { FaLongArrowAltRight } from 'react-icons/fa'
 interface pagePrps {
     title: String,
     link?: string ,
-    image? : any,
     moreInfo? : string
 }
 
-const Title1 = ({title , link , image , moreInfo}:pagePrps) => {
+const Title1 = ({title , link , moreInfo}:pagePrps) => {
   return (
     <div className='w-full flex justify-between items-center'>
-        <div className='flex gap-3 items-center w-max'>
-        <div className='w-[32px] h-[32px] bg-[#FBBC05] rounded-md flex justify-center items-center'>
-          <Image width={18} height={18} src={image || ''} alt='1'/>
-        </div>
-
-        <span className='text-[18px] font-bold'>{title}</span>
+        <div className='flex gap-[4px] w-max flex-col'>
+          <span className='text-[16px] font-bold  capitalize text-color3'>{title}</span>
+          <div className='max-w-[80%] h-[2px] bg-color3 block'></div>
         </div>
 
         {link &&
