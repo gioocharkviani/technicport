@@ -83,6 +83,10 @@ li {
   gap: 20px;
 }
 
+.ProjectgridArea:hover > :not(:hover){
+  opacity: 0.5;
+}
+
 @media only screen and (max-width: 764px) {
   .ProjectgridArea {
     grid-template-columns: repeat(2, 1fr);
@@ -109,7 +113,9 @@ li {
 
 .gridprjItem {
   border-radius: 10px;
+  transition: all .3s ease-in-out;
 }
+
 
 .Contact-Card {
   background-color: white ;
