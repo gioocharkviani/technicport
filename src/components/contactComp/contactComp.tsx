@@ -20,11 +20,11 @@ const ContactComp = async () => {
         <div className='mt-[25px] flex gap-8 flex-col md:flex-row justify-between'>
 
             <div className='w-full flex-1 flex flex-col gap-5'>
-              <ContactCard  info='gioocharkviani@gmail.com' image={email}/>
-              <ContactCard  info='+995 555 55 55 55' image={phone}/>
-              <ContactCard  info='+995 555 55 55 55' image={telegram}/>
-              <ContactCard  info='+995 555 55 55 55' image={watsup}/>
-              <ContactCard  info='+995 555 55 55 55' image={viber}/>
+              <ContactCard  info='info@technicport.com' image={email}/>
+              <ContactCard  info='+995 593 69 66 33' image={phone}/>
+              <ContactCard  info='+995 593 69 66 33' image={telegram}/>
+              <ContactCard  info='+995 593 69 66 33' image={watsup}/>
+              <ContactCard  info='+995 593 69 66 33' image={viber}/>
             </div>
           
             <div className='w-full flex-1 min-h-[220px] smd:h-[350px]  rounded-md overflow-hidden bg-gray-200'>
