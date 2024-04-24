@@ -6,6 +6,7 @@ import { useTranslation } from '@/i18n/client';
 const NavMenu = () => {
   const {t} =  useTranslation('common');
 
+
   return (
    <div className='w-max lg:block hidden'>
     <ul className='flex leading-none gap-4 text-[15px] capitalize'>

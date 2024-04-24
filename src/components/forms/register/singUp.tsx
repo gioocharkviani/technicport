@@ -7,6 +7,8 @@ import z from 'zod'
 import { toast } from 'react-hot-toast';
 import axios from 'axios'
 import { signIn } from 'next-auth/react';
+import { useModal } from '@/context/ModalContext';
+import Signin from '../signin/signin';
 
 const SignUp = () => {
   
@@ -44,6 +46,12 @@ const SignUp = () => {
     }
   }
 
+  const {updateModalContent , updateModalTitle} = useModal();
+  const changeModalContent = ()=> {
+    updateModalTitle('ავტორიზაცია');
+    updateModalContent(<Signin />);
+  }
+
   return (
     <div className='min-w-[250px] md:min-w-[300px] h-auto mt-[20px]'>
         <form className='flex flex-col w-full gap-3' onSubmit={handleSubmit(userRegister)}>
@@ -62,6 +70,9 @@ const SignUp = () => {
                 <button className='btn1'>რეგისტრაცია</button>
             </div>
         </form>
+      <div className='w-full border-t-[1px] border-gray-200 mt-[15px] py-[10px]'>
+      <button onClick={changeModalContent} className='w-full text-[13px]'>შექმენი ახალი ანგარიში</button>
+    </div>
     </div>
   )
 }

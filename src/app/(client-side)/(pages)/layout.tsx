@@ -7,6 +7,7 @@ import { Noto_Sans_Georgian } from 'next/font/google'
 const noto_Sans_Georgian = Noto_Sans_Georgian({ subsets: ['georgian' , 'latin'] , weight: ['300' , '400' , '500' , '600', '700' ,'800'] })
 import { Toaster } from "react-hot-toast";
 import BottomNav from "@/components/bottonNavigation/bottomNav";
+import { Modal } from "@/components/modal/modal1";
 
 export const metadata: Metadata = {
   title: "Techno-port",
@@ -32,6 +33,7 @@ export default function RootLayout({
       toastOptions={{
         className: 'toastContainer',}}
     />
+    <Modal />
       <Header />
         {children}
         <BottomNav />

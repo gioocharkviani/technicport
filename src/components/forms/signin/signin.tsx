@@ -7,8 +7,9 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver  } from '@hookform/resolvers/zod';
 import z from 'zod'
 import toast from 'react-hot-toast';
-
 import { useSession } from 'next-auth/react';
+import { useModal } from '@/context/ModalContext';
+import SignUp from '../register/singUp';
 
 const Signin = () => {
 
@@ -45,7 +46,14 @@ const Signin = () => {
     } catch (err:any) {  
       console.error(err)
     }
-  } 
+  }
+  
+  const {updateModalContent , updateModalTitle} = useModal();
+
+  const changeModalContent = ()=> {
+    updateModalTitle('რეგისტრაცია');
+    updateModalContent(<SignUp />);
+  }
 
   return (
     <div className='min-w-[250px] md:min-w-[300px] h-auto mt-[20px]'>
@@ -56,6 +64,11 @@ const Signin = () => {
                 <button disabled={status === 'loading'} className='btn1'>შესვლა</button>
             </div>
         </form>
+ 
+    <div className='w-full border-t-[1px] border-gray-200 mt-[15px] py-[10px]'>
+      <button onClick={changeModalContent} className='w-full text-[13px]'>შექმენი ახალი ანგარიში</button>
+    </div>
+
     </div>
   )
 }

@@ -10,7 +10,6 @@ interface ProviderProps {
 const Providers = ({children}:ProviderProps) => {
     const locale = getLocale();
   return (
-
       <LocaleProvider value={locale}>
         {children}
       </LocaleProvider>
