@@ -3,14 +3,26 @@ import React from 'react'
 import { useSession } from 'next-auth/react'
 import userAvatar from '../../../../public/userIcon.svg';
 import Image from 'next/image';
+import { useState } from 'react';
+import ChangePasswordForm from './changePasswordForm';
+import ChangeUserInfo from './changeUserInfo';
 
 const UserParameters = () => {
   const {data : session} = useSession();
+  const [content, setContent] = useState<string | null>(null);
 
   return (
   <div className='flex flex-col gap-3 items-center'>
 
-    <div className='flex  justify-between w-full gap-[20px] mt-[20px] px-[30px]'>
+    {content === 'changePassword' && 
+        <ChangePasswordForm />
+    }
+    {content === 'changeUserInfo' && 
+      <ChangeUserInfo />
+    }
+
+    {!content &&
+      <div className='flex items-center justify-between w-full gap-[50px] mt-[20px] px-[30px]'>
       
       <div className='w-[100px] h-[100px] bg-[#e3e3e3] rounded-[50%] flex justify-center items-center overflow-hidden object-contain'>
         <Image className='object-contain' src={session?.user.photo ? session?.user.photo : userAvatar} alt='' width={50} height={50} />
@@ -45,14 +57,30 @@ const UserParameters = () => {
       </div>
 
     </div>
+    }
 
     <div className='flex justify-between w-full gap-4 mt-[20px]'>
-      <button className="btn3">
+
+      {content !== null &&
+        <button onClick={()=> setContent(null)} className="btn4">
+        უკან
+       </button>
+      }
+
+      {content !== 'changePassword' &&
+        <button onClick={()=> setContent('changePassword')} className="btn4">
         პაროლის განახლება
       </button>
-      <button className="btn3">
+      }
+
+
+      {content !== 'changeUserInfo' &&
+      <button onClick={()=> setContent('changeUserInfo')} className="btn4">
         მონაცემების შეცვლა
       </button>
+      }
+
+
     </div>
 
   </div>  

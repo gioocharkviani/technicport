@@ -65,7 +65,7 @@ const AccountB = () => {
       {modalContent === "parameters" && <UserParameters />}
     </Modal>
     
-    <div className=" relative flex flex-col justify-center items-center">
+    <div className="md:flex relative hidden flex-col justify-center items-center">
 
         <button onClick={toggleOpen}  className="w-max rounded-md flex gap-2 items-center whiteBoxShadow px-[10px] py-[4px]">
         <div className="w-[22px] flex items-center justify-center shrink-0 h-[22px] rounded-[50%] bg-[#dadada]">
