@@ -1,6 +1,7 @@
 'use client'
 import { useSession } from "next-auth/react"
 import { signOut } from "next-auth/react"
+import { useModal } from "@/context/ModalContext";
 
 import Image from "next/image";
 import UserIcon from "../../../public/svg/userIcon";
@@ -12,7 +13,6 @@ import { LuShoppingBag } from "react-icons/lu";
 
 import { useState , useRef, useEffect } from "react";
 
-import { Modal } from "@/components/modal/modal";
 import ShippingAddress from "./address/shippingAddress";
 import Orders from "./orders/orders";
 import Payments from "./payments/payments";
@@ -21,12 +21,7 @@ import UserParameters from './profile/userParameters'
 const AccountB = () => {
 
     //Modal options//
-    const [modal , setModal] = useState(false)
-    const [modalContent , setModalContent] = useState(null)
-    const handleButtonClick = (content:any) => {
-      setModalContent(content);
-      setModal(true); 
-    };
+    const {openModal} = useModal();
     //Modal options//
 
   //Open and close Prifle menu
@@ -38,14 +33,14 @@ const AccountB = () => {
         setOpen(false);
       }
     }
-    if(modal){
+    if(1+1===0){
       setOpen(false)
     }
     document.addEventListener("mousedown", closeMenu);
     return () => {
       document.removeEventListener("mousedown", closeMenu);
     };
-  }, [modal , open]);
+  }, [open]);
   
   const toggleOpen = () => {
     setOpen(!open);
@@ -54,16 +49,24 @@ const AccountB = () => {
 
 
   const {data : session} = useSession();
+  
+  const handleButtonClick = (content: string) => {
+    let contentForModal = null;
+    if (content === 'orders') {
+        contentForModal = <Orders />;
+    } else if (content === 'payments') {
+        contentForModal = <Payments />;
+    } else if (content === 'parameters') {
+        contentForModal = <UserParameters />;
+    } else if (content === 'address') {
+        contentForModal = <ShippingAddress />;
+    }
+    openModal(content, contentForModal);
+};
 
 
   return (
   <>
-    <Modal openModal={modal} closeModal={()=> setModal(false)}>
-      {modalContent === "orders" && <Orders />}
-      {modalContent === "payments" && <Payments />}
-      {modalContent === "address" && <ShippingAddress />}
-      {modalContent === "parameters" && <UserParameters />}
-    </Modal>
     
     <div className="md:flex relative hidden flex-col justify-center items-center">
 

@@ -12,6 +12,7 @@ import { useModal } from '@/context/ModalContext';
 import SignUp from '../register/singUp';
 
 const Signin = () => {
+  const {updateModalContent , updateModalTitle ,closeModal} = useModal();
 
   const {status} = useSession();
 
@@ -39,7 +40,8 @@ const Signin = () => {
         redirect: false,
       }); 
       if(result?.ok){
-        toast.success('welcome')
+        closeModal();
+        toast.success('welcome');
       }if(result?.status === 401 && result.error === "CredentialsSignin" && !result.ok){
         toast.error('Invalid Credentias')
       }
@@ -48,7 +50,6 @@ const Signin = () => {
     }
   }
   
-  const {updateModalContent , updateModalTitle} = useModal();
 
   const changeModalContent = ()=> {
     updateModalTitle('რეგისტრაცია');

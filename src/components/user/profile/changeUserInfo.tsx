@@ -25,12 +25,12 @@ const ChangeUserInfo = () => {
                 {/* PHOTO CHANGE */}
                 <div className="flex flex-col gap-3 justify-center">
                     <div className='w-[100px] h-[100px] relative  bg-[#e3e3e3] rounded-[50%] flex justify-center items-center'>
-                        <div className="w-full h-full rounded-[100%] flex justify-center items-center">
+                        <div className="w-full h-full relative overflow-hidden rounded-[100%] flex justify-center items-center">
                             {!photo &&
-                                <Image src={userAvatar} alt="" width={30} height={30} />
+                                <Image src={userAvatar} alt="123" width={30} height={30} />
                             }
                             {photo &&
-                                <Image src={photo} alt="" width={100} height={0} />
+                                <Image className='w-[100px] h-[100px] object-contain' src={photo} alt="123" width={100} height={100} />
                             }
                         </div>
 
