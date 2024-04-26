@@ -8,7 +8,7 @@ const MenuLink = ({link , name}:{link:string, name:string}) => {
     const [active ,setActive] = useState(false);
  
     useEffect(()=>{
-      if((pathname === `/${link}`) || (pathname.includes(`${link}`) && (link !== "/")) ) {
+      if((pathname === `/${link}`)|| (pathname === '/' ) && (link === '/') || (pathname.includes(`${link}`) && (link !== "/")) ) {
         setActive(true);
       } else {
         setActive(false);

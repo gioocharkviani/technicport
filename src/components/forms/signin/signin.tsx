@@ -1,7 +1,6 @@
 'use client'
 import React, {useEffect } from 'react'
 import {signIn } from "next-auth/react"
-
 import { signInSchema } from '@/libs/validationSchema';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver  } from '@hookform/resolvers/zod';
@@ -10,9 +9,11 @@ import toast from 'react-hot-toast';
 import { useSession } from 'next-auth/react';
 import { useModal } from '@/context/ModalContext';
 import SignUp from '../register/singUp';
+import { useTranslation } from '@/i18n/client';
 
 const Signin = () => {
   const {updateModalContent , updateModalTitle ,closeModal} = useModal();
+  const {t} = useTranslation('response')
 
   const {status} = useSession();
 
@@ -41,9 +42,9 @@ const Signin = () => {
       }); 
       if(result?.ok){
         closeModal();
-        toast.success('welcome');
+        toast.success(t('success.welcome'));
       }if(result?.status === 401 && result.error === "CredentialsSignin" && !result.ok){
-        toast.error('Invalid Credentias')
+        toast.error(t('error.credential'))
       }
     } catch (err:any) {  
       console.error(err)

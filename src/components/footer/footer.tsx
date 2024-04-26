@@ -1,8 +1,11 @@
+
 import React from 'react'
 import MaxWidthWrapper from '../contentwrapper/maxWidthWrapper'
 
+
 const Footer = () => {
   return (
+
     <div className='w-full bg-[#F4F4F4] mt-[80px] py-[5px] flex justify-center'>
         <MaxWidthWrapper>
             <div className='flex flex-col'>

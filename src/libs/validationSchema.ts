@@ -44,3 +44,27 @@ export const signInSchema = z.object({
     .min(6 , 'Password name must be atleast 6 characters')
     .max(45 , 'Password name must be lest than 45 characters'),
   })
+
+
+
+  export const updateProfileInfo = z.object({
+    email : z 
+    .string()
+    .email('Please add valide email adress'),
+  firstName : z 
+    .string()
+    .min(2 , 'First name must be atleast 2 characters')
+    .max(45 , 'First name must be lest than 45 characters')
+    .regex(new RegExp("^[a-zA-Z]+$") , "No special character allowed!"),
+  lastName : z 
+    .string()
+    .min(2 , 'Last name must be atleast 2 characters')
+    .max(45 , 'Last name must be lest than 45 characters')
+    .regex(new RegExp("^[a-zA-Z]+$") , "No special character allowed!"),
+  phone : z 
+    .string()
+    .regex(phoneRegex , 'Invalid Number'),
+  photo: z
+    .string()
+    .nullable(),
+  });

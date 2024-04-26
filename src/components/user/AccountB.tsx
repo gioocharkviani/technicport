@@ -18,7 +18,8 @@ import Orders from "./orders/orders";
 import Payments from "./payments/payments";
 import UserParameters from './profile/userParameters'
 
-const AccountB = () => {
+const AccountB = () => {  
+
 
     //Modal options//
     const {openModal} = useModal();

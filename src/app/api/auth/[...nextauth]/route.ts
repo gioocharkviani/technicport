@@ -11,7 +11,7 @@ const handler = NextAuth({
                 password: {},
               },
 
-              async authorize(credentials, req) {
+            async authorize(credentials, req) {
                 const reqData = {
                     email: credentials?.email,
                     password: credentials?.password,

@@ -1,9 +1,6 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -13,59 +10,56 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model User {
-  id            Int      @id @default(autoincrement())
-  email         String @unique
-  password      String 
-  firstName     String?
-  lastName      String
-  phone         String @unique
-  role          Role @default(BASIC)
-  status        UserStatus @default(BASIC)
-  isVerifyd     Boolean @default(false)
-  photo         String?
-  orders        Orders[]
-  shippingAddress Address[]
-  payment  Payments[] 
+  id          String      @id @default(uuid())
+  email       String      @unique
+  password    String 
+  firstName   String?
+  lastName    String
+  phone       String      @unique
+  role        Role        @default(BASIC)
+  status      UserStatus  @default(BASIC)
+  isVerified  Boolean     @default(false)
+  photo       String?
+  orders      Order[]
+  addresses   Address[]
+  payments    Payment[]
 }
 
-
-
-model Orders {
+model Order {
   id      Int      @id @default(autoincrement())
-  userId  Int @unique
-  user    User @relation(fields: [userId] , references: [id])
+  userId  String
+  user    User     @relation(fields: [userId], references: [id])
 }
 
 model Address {
   id      Int      @id @default(autoincrement())
-  userId  Int @unique
-  user    User @relation(fields: [userId] , references: [id])
+  userId  String
+  user    User     @relation(fields: [userId], references: [id])
   city    String
   address String
   phone   String
 }
 
-model Payments {
+model Payment {
   id      Int      @id @default(autoincrement())
-  userId  Int @unique
-  user    User @relation(fields: [userId] , references: [id])
+  userId  String
+  user    User     @relation(fields: [userId], references: [id])
 }
 
-model Products {
-  id         Int      @id @default(autoincrement())
+model Product {
+  id         Int        @id @default(autoincrement())
   title      String
   price      Float
   qty        Int
-  cat   Category? 
+  categoryId Int
+  category   Category   @relation(fields: [categoryId], references: [id])
 }
 
 model Category {
-  id         Int      @id @default(autoincrement())
-  name       String   @unique
-  productId  Int @unique
-  products   Products @relation(fields: [productId] , references: [id])
+  id         Int        @id @default(autoincrement())
+  name       String     @unique
+  products   Product[]
 }
 
 

@@ -1,0 +1,11 @@
+{
+    "success":{
+        "welcome": "Welcome"
+    },
+
+    "error":{
+        "credential": "Invalid credential",
+        "emailExist": "Email already exist",
+        "phoneExist": "Email already exist"
+    }
+}

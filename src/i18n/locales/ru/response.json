@@ -1,0 +1,9 @@
+{
+    "success":{
+        "welcome": "welcome"
+    },
+
+    "error":{
+        "credential": "Invalid credential"
+    }
+}
