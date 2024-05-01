@@ -8,7 +8,7 @@ export async function PATCH(req: NextRequest) {
     const token = await getToken({ req });
     const reqData = await req.json();
 
-    if (token && token.id) {
+    if (token && typeof token.id === 'string') {
         // Check if the provided email already exists in the database
         const isExistingEmail = await prisma.user.findFirst({
             where: {

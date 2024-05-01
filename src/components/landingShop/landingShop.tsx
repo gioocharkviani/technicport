@@ -19,7 +19,7 @@ const LandingShop = () => {
     <div className="flex mt-[40px] px-[20px] rounded-lg pb-[20px] pt-[10px] bg-[#FFF]  py-[20px] flex-col"> 
         <Title1 title={t('shop.landingtitle')} moreInfo={t('global.moreInfo')} link='/shop'/>
         
-        <div className='w-full mt-[20px]'>
+        <div className='w-full  mt-[20px]'>
 
         <Swiper
         breakpoints={{
@@ -37,8 +37,9 @@ const LandingShop = () => {
             slidesPerView: 2,
           },
         }}
+  
         spaceBetween={30}
-        freeMode={true}
+        freeMode={false}
         pagination={{
           clickable: true,
         }}

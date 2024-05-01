@@ -2,7 +2,7 @@ import React from 'react'
 
 const AdminPage = () => {
   return (
-    <div className='h-[200vh] w-full'>
+    <div className='w-full'>
       Main page
     </div>
   )

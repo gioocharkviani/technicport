@@ -39,6 +39,7 @@ model Address {
   city    String
   address String
   phone   String
+  zip     String?
 }
 
 model Payment {
@@ -48,12 +49,21 @@ model Payment {
 }
 
 model Product {
-  id         Int        @id @default(autoincrement())
-  title      String
-  price      Float
-  qty        Int
-  categoryId Int
-  category   Category   @relation(fields: [categoryId], references: [id])
+  id             Int        @id @default(autoincrement())
+  title_en       String?
+  title_ru       String?
+  title_ge       String
+  description_en String?
+  description_ru String?
+  description_ge String
+  price          Int?
+  quantity       Int
+  categoryId     Int
+  thumbnail      String
+  productImages  ProductImages[]
+  category       Category   @relation(fields: [categoryId], references: [id])
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
 }
 
 model Category {
@@ -62,6 +72,19 @@ model Category {
   products   Product[]
 }
 
+model ProductImages {
+  id         Int        @id @default(autoincrement())
+  imageUrl   String    
+  product    Product    @relation(fields: [productId], references: [id])
+  productId  Int
+}
+
+model About {
+  id         Int        @id @default(autoincrement())
+  aboutus_ge String
+  aboutus_en String?
+  aboutus_ru String?
+}
 
 enum UserStatus {
   BASIC
@@ -74,3 +97,4 @@ enum Role {
   ADMIN
   EDITOR
 }
+

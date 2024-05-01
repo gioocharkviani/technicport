@@ -37,7 +37,7 @@ const BrandsComp = () => {
           },
         }}
         spaceBetween={50}
-        freeMode={true}
+        freeMode={false}
         autoplay={{
           delay: 2000, 
           disableOnInteraction: false,

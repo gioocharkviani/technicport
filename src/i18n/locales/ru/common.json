@@ -35,5 +35,21 @@
 
     "partners" : {
         "partnerTitle" : "Наши партнеры"
-    } 
+    },
+    
+    "buttons":{
+        "passwordchange" : "პაროლის შეცვლა",
+        "changeparameters": "მონაცემების შეცვლა",
+        "change" : "განახლება",
+        "search" : "ძებნა",
+        "orders": "შეკვეთები",
+        "payments": "გადახდები",
+        "address": "მისამართები",
+        "parameters" : "პარამეტრები",
+        "signin" : "შესვლა",
+        "signup" : "რეგისტრაცია",
+        "signout" : "გასვლა",
+        "add" : "დამატება",
+        "back" : "უკან"
+    }
 }

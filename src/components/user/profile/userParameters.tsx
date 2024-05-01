@@ -25,8 +25,8 @@ const UserParameters = () => {
     {!content &&
       <div className='flex items-center justify-between w-full gap-[50px] mt-[20px] px-[30px]'>
       
-      <div className='w-[100px] h-[100px] bg-[#e3e3e3] rounded-[50%] flex justify-center items-center overflow-hidden object-contain'>
-        <Image className='object-contain' src={session?.user.photo ? session?.user.photo : logo} alt='' width={50} height={50} />
+      <div className='w-[100px] h-[100px] bg-[#f2f2f2] rounded-[50%] flex justify-center items-center overflow-hidden object-contain'>
+        <Image className='object-contain' src={session?.user.photo ? session?.user.photo : logo} alt='' width={80} height={80} />
       </div>
 
       <div className='flex flex-col gap-4'>

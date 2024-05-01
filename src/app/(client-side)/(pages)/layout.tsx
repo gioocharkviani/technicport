@@ -26,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
   <Providers>
-    <main className={`${noto_Sans_Georgian.className} bg-[#f2f3f6] w-full min-h-screen justify-between flex-col items-center flex overflow-x-hidden`}>
+    <main className={`${noto_Sans_Georgian.className} bg-[#f2f3f6] w-full min-h-screen flex-col items-center flex overflow-x-hidden`}>
     <Toaster position="top-right" reverseOrder={false} toastOptions={{className: 'toastContainer',}}/>
     <Modal />
       <Header />

@@ -366,3 +366,16 @@ li {
   font-size: 12px;
   color:#da2837;
 }
+
+.AddBtn {
+  border:1px solid rgb(66, 66, 66);
+  border-radius: 8px;
+  padding: 5px 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(66, 66, 66);
+  font-size: 14px;
+  gap: 12px;
+}

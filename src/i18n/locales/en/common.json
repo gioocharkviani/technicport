@@ -35,5 +35,21 @@
 
     "partners" : {
         "partnerTitle" : "our partners"
+    },
+
+    "buttons":{
+        "passwordchange" : "change password",
+        "changeparameters": "change parameters",
+        "change" : "change",
+        "search" : "search",
+        "orders": "orders",
+        "payments": "payments",
+        "address": "address",
+        "parameters" : "parameters",
+        "signin" : "Sign in",
+        "signup" : "Sign up",
+        "signout" : "Sign out",
+        "add" : "add",
+        "back" : "back"
     }
 }

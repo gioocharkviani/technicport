@@ -45,6 +45,25 @@ export const signInSchema = z.object({
     .max(45 , 'Password name must be lest than 45 characters'),
   })
 
+export const updatePassword = z.object({
+  password : z
+    .string()
+    .min(6 , 'Password name must be atleast 6 characters')
+    .max(45 , 'Password name must be lest than 45 characters'),
+  existingpassword : z
+    .string()
+    .min(6 , 'Password name must be atleast 6 characters')
+    .max(45 , 'Password name must be lest than 45 characters'),
+  confirmPassword : z
+    .string()
+    .min(6 , 'Confirm password is require')
+    .max(45 , 'Confirm password is require'),
+  })
+  .refine(data => data.confirmPassword === data.password , {
+    message : 'Password and confirm password does not math',
+    path: [ "confirmPassword"]
+  })
+
 
 
   export const updateProfileInfo = z.object({

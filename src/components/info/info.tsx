@@ -1,22 +1,37 @@
-
-import React from 'react'
+'use client'
+import React, { useState, useEffect } from 'react';
 import Title1 from '../title/title1';
-import { createTranslation } from '@/i18n/server';
+import { useTranslation } from '@/i18n/client';
+import axios from 'axios';
+import { useLocale } from '@/hooks/locale-provider';
 
-const Info = async () => {
-  const {t} = await createTranslation('common');
+const Info = () => {
+  const [data, setData] = useState<any>(null);
+  const locale = useLocale();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('/api/about');
+        setData(response.data); // Store the response data in the state
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, [locale]); 
+
+  const { t } = useTranslation('common');
+
   return (
     <div className='w-full flex h-full flex-col bg-[#FFF] rounded-lg py-[20px] px-[20px] '>
-    <Title1 title={t('info.header')} moreInfo={t('global.moreInfo')} link={`/about`}/>
-
-        <ul className='infoUl px-[20px] md:px-[0] flex flex-col gap-3 mt-[20px] text-[13px]'>
-            <li>
-              {t('info.info1')}
-            </li>
-        </ul>
-        
+      <Title1 title={t('info.header')} moreInfo={t('global.moreInfo')} link={`/about`} />
+      <ul className='infoUl px-[20px] md:px-[0] h-[200px] relative overflow-y-auto flex flex-col gap-3 mt-[20px] text-[13px]'>
+        <li>{data ? data : null}</li> 
+      </ul>
     </div>
-  )
-}
+  );
+};
 
-export default Info
+export default Info;

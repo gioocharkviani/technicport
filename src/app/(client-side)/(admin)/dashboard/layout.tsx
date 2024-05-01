@@ -15,7 +15,9 @@ export default function Layout({ children }: LayoutProps) {
 
       <div className='dashobardWrapper'>
         <Header />
-        {children}
+        <div className='ml-[20px]'>
+          {children}
+        </div>
       </div>
 
     </main>
