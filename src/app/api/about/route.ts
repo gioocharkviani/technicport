@@ -5,7 +5,6 @@ export async function GET(req: NextRequest) {
     try {
         let data = null;
         const locale = req.cookies.get('LOCALE');
-        console.log(locale?.value)
         const aboutInfo = await prisma.about.findMany({});
         
         if (aboutInfo.length === 0) {

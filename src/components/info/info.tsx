@@ -14,7 +14,9 @@ const Info = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get('/api/about');
-        setData(response.data); 
+        setData([
+          response.data
+        ]); 
       } catch (error) {
         return null
       }
@@ -29,7 +31,8 @@ const Info = () => {
     <div className='w-full flex h-full flex-col bg-[#FFF] rounded-lg py-[20px] px-[20px] '>
       <Title1 title={t('info.header')} moreInfo={t('global.moreInfo')} link={`/about`} />
       <ul className='infoUl px-[20px] md:px-[0] h-[200px] relative overflow-y-auto flex flex-col gap-3 mt-[20px] text-[13px]'>
-        <li>{data ? data : 'null'}</li> 
+        {data ? data.map((i:any) => <li key={i}>{i}</li>) : null
+        }
       </ul>
     </div>
   );
