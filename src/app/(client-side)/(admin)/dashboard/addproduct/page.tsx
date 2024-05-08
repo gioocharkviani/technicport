@@ -37,13 +37,20 @@ const AddProduct = () => {
     },[])
 
     //after creatigng product create product images
-    const addProductImages = async ()=>{
+    const addProductImages = async (id : any) =>{
       try {
         for(let i =0 ; i < uploadedImages.length ; i++ ){
-          console.log(i)
+          const data = {
+            imageUrl: uploadedImages[i] ,
+            productId:id 
+          }
+          const res= await axios.post('/api/products/createproductimage' , data)
+          if(res.status === 200){
+            toast.success('პროდუქტი დაემატა წარმატებით')
+          }
         }
       } catch (error) {
-        
+          toast.error('შეცდომა დამატების დროს')
       }
     }
     //after creatigng product create product images
@@ -79,8 +86,9 @@ const AddProduct = () => {
           };
           const res = await axios.post('/api/products/create', data);
           if (res.status === 200) {
-              toast.success('პროდუქტი დაემატა წარმატებით');
-              addProductImages();
+              setTimeout(() => {
+                addProductImages(res.data.res.id);
+              }, 100);
           }
       } catch (error) {
           toast.error('შეცდომა პროდუქტის დამატების დროს');

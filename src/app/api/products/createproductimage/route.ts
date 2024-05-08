@@ -4,9 +4,6 @@ import prisma from "@/libs/db";
 export async function POST(req: NextRequest) {
     try {
         const { imageUrl, productId } = await req.json();
-        if (!imageUrl || !productId) {
-            return NextResponse.json(new Error("Invalid request data"), { status: 400 });
-        }
 
         await prisma.productImages.create({
             data: {
