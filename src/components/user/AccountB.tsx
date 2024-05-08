@@ -34,9 +34,6 @@ const AccountB = () => {
         setOpen(false);
       }
     }
-    if(1+1===0){
-      setOpen(false)
-    }
     document.addEventListener("mousedown", closeMenu);
     return () => {
       document.removeEventListener("mousedown", closeMenu);

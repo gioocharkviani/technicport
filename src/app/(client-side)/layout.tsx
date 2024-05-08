@@ -1,6 +1,7 @@
 import ClientSideProviers from '@/libs/clientSideProviers';
 import './globals.css'
 import { getLocale } from '@/i18n/server';
+import { Toaster } from 'react-hot-toast';
 
 
 interface RootLayoutProps {
@@ -15,6 +16,7 @@ interface RootLayoutProps {
     return (
       <html lang={locale}>
         <body>
+        <Toaster position="top-right" reverseOrder={false} toastOptions={{className: 'toastContainer',}}/>
           <ClientSideProviers>
             {children}
           </ClientSideProviers>

@@ -56,11 +56,13 @@ model Product {
   description_en String?
   description_ru String?
   description_ge String
+  code           String?
+  oem            String?
   price          Int?
   quantity       Int
-  categoryId     Int
   thumbnail      String
   productImages  ProductImages[]
+  categoryId     Int
   category       Category   @relation(fields: [categoryId], references: [id])
   createdAt      DateTime   @default(now())
   updatedAt      DateTime   @updatedAt
@@ -68,7 +70,9 @@ model Product {
 
 model Category {
   id         Int        @id @default(autoincrement())
-  name       String     @unique
+  title_ge       String     @unique
+  title_en       String?     @unique
+  title_ru       String?     @unique
   products   Product[]
 }
 

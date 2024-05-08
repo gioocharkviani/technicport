@@ -67,7 +67,7 @@ export const updatePassword = z.object({
 
 
   export const updateProfileInfo = z.object({
-    email : z 
+  email : z 
     .string()
     .email('Please add valide email adress'),
   firstName : z 
@@ -83,7 +83,22 @@ export const updatePassword = z.object({
   phone : z 
     .string()
     .regex(phoneRegex , 'Invalid Number'),
-  photo: z
+  });
+
+  export const addressValidator = z.object({
+  city : z 
     .string()
-    .nullable(),
+    .min(2 , 'First name must be atleast 2 characters')
+    .max(45 , 'First name must be lest than 45 characters'),
+  address : z 
+    .string()
+    .min(2 , 'Address name must be atleast 2 characters')
+    .max(45 , 'Address name must be lest than 45 characters'),
+  zip : z 
+    .string()
+    .min(2 , 'ZIP code must be atleast 2 characters')
+    .max(10 , 'ZIP code must be lest than 45 characters'),
+  phone : z 
+    .string()
+    .regex(phoneRegex , 'Invalid Number'),
   });

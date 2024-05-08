@@ -16,7 +16,7 @@ const AboutPage = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get('/api/about');
-        setData([response.data]);
+        setData(response.data);
       } catch (error) {
         console.log(error);
       }
@@ -33,7 +33,7 @@ const AboutPage = () => {
           <Title1 title={t('info.header')} />
           <div className='flex flex-col md:flex-row gap-[40px] mb-[50px] mt-[20px]'>
             <div className='w-full text-[13px] text-[gray]'>
-              {data? data.map((i:any) => <span key={i}>{i}</span>) : null}
+              {data? data : null}
             </div>
             <div className='flex whiteBoxShadow1 px-[20px] py-[20px] rounded-lg justify-center items-center'>
               <Image src={logo} alt={'logo'} width={800} height={800} />

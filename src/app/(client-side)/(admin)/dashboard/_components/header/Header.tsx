@@ -1,13 +1,16 @@
+'use client'
 import React from 'react'
+import { useSession } from 'next-auth/react'
 
 const Header = () => {
+  const {data} = useSession();
   return (
     <div className='AdminHeader'>
 
       <div></div>
 
         <div className='bg-white'>
-          notification bar
+          {data?.user.firstName}
         </div>
 
     </div>

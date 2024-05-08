@@ -5,7 +5,7 @@ export async function POST(req:NextRequest) {
     try {
         const data = await req.json();
         const res = await prisma.category.create({
-            data: data,
+            data: data
         });
         if(res){
             return NextResponse.json({ 

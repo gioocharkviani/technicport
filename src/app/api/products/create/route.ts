@@ -3,6 +3,7 @@ import prisma from "@/libs/db";
 
 export async function POST(req: NextRequest) {
     const data = await req.json();
+    console.log(data)
     try {
         const res = await prisma.product.create({
             data: data,
