@@ -1,7 +1,8 @@
 'use client'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Title1 from '../title/title1'
 import ShopingCard from '../cards/shopingCard'
+
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -12,9 +13,27 @@ import { FreeMode, Pagination } from 'swiper/modules';
 
 //Local Module
 import { useTranslation } from '@/i18n/client';
+import axios from 'axios';
 
 const LandingShop = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+      const fetchData = async () => {
+          try {
+              const req = await axios.get('https://technicport.vercel.app/api/products/get');
+              const data = req.data;
+              setProducts(data.products);
+          } catch (error) {
+              console.error('Error fetching products:', error);
+          }
+      };
+
+      fetchData();
+  }, []);
+
   const {t} = useTranslation('common');
+
   return (
     <div className="flex mt-[40px] px-[20px] rounded-lg pb-[20px] pt-[10px] bg-[#FFF]  py-[20px] flex-col"> 
         <Title1 title={t('shop.landingtitle')} moreInfo={t('global.moreInfo')} link='/shop'/>
@@ -46,34 +65,11 @@ const LandingShop = () => {
         modules={[FreeMode, Pagination]}
         className="swiper"
       >
-
-        <SwiperSlide>
-            <ShopingCard />
-        </SwiperSlide>
-
-        <SwiperSlide>
-            <ShopingCard />
-        </SwiperSlide>
-
-        <SwiperSlide>
-            <ShopingCard />
-        </SwiperSlide>
-
-        <SwiperSlide>
-            <ShopingCard />
-        </SwiperSlide>
-
-        <SwiperSlide>
-            <ShopingCard />
-        </SwiperSlide>
-
-        <SwiperSlide>
-            <ShopingCard />
-        </SwiperSlide>
-
-        <SwiperSlide>
-            <ShopingCard />
-        </SwiperSlide>
+            {products.map((product:any) => (
+              <SwiperSlide  key={product.id}>
+                <ShopingCard data={product}/>
+              </SwiperSlide>
+            ))}
 
       </Swiper>
 

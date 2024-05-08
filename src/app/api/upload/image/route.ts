@@ -2,8 +2,15 @@ import { writeFile } from "fs/promises";
 import { NextRequest, NextResponse } from "next/server";
 import { join } from "path";
 import { promises as fs } from "fs";
+import { getToken } from "next-auth/jwt";
 
 export async function POST(req: NextRequest) {
+    const token = await getToken({req});
+    if (!token ||  token.role !== 'ADMIN') { 
+        return new NextResponse('Not Authorized', { status: 401 });
+    }
+    
+
     const data = await req.formData();
     const files: File[] | null = data.getAll('image') as unknown as File[];
 
