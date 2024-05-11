@@ -22,6 +22,7 @@ const Products = () => {
 
     return (
         <div className='grid grid-cols-4 gap-5 w-full'>
+
             {products.map((product:any) => (
                 <ShopingCard key={product.id} data={product}/>
             ))}

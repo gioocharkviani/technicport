@@ -13,7 +13,7 @@ const Info = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://technicport.vercel.app/api/about');
+        const response = await axios.get('/api/about');
         setData([
           response.data
         ]); 

@@ -1,5 +1,6 @@
 import Title1 from '../title/title1'
 import { createTranslation } from '@/i18n/server';
+import SwiperService from './swiperService';
 
 const Ourservices = async () => {
   const {t} = await createTranslation('common');
@@ -10,8 +11,10 @@ const Ourservices = async () => {
 
         <Title1 title={t('ourservices.title')}  moreInfo={t('global.moreInfo')} link={`/services`}/>
         
-        <div className='flex justify-center items-center'>
-          ToDo -  Task-1 research icons for all services
+        <div className='flex justify-center flex-col h-full items-center'>
+         <div className='mt-[10px] flex flex-col justify-between w-full min-h-[200px] lg:h-full gap-5 '>
+            <SwiperService />
+         </div>
         </div>
 
     </div>

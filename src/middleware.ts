@@ -11,4 +11,4 @@ export default withAuth({
   },
 });
 
-export const config = { matcher: ['/dashboard','/dashboard/addproduct' ] };
+export const config = { matcher: ['/dashboard' ] };

@@ -102,16 +102,7 @@ li {
 }
 
 /* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
 
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
-}
 
   @media only screen and (min-width: 764px) {
     .gridprjItem:nth-child(1){
@@ -245,6 +236,12 @@ input[type=number] {
 .swiper-pagination-bullet-active {
   background-color: #27BF9B !important;
 }
+.swiper-button-prev , .swiper-button-next {
+  color: #27BF9B !important;
+  width: 30px !important;
+}
+
+
 
 .blackBgRgba {
   background-color: rgba(0, 0, 0, 0.5);
@@ -285,6 +282,19 @@ input[type=number] {
 }
 .btn1:hover {
   background-color: #448e7d;
+}
+
+.btn6 {
+  color: white;
+  line-height: 2;
+  font-size: 14px;
+  border-radius: 4px;
+  padding: 8px 10px;
+  width: 100%;
+  background-color: #FBBC05;
+}
+.btn6:hover {
+  background-color: #c19100;
 }
 
 .btn5 {

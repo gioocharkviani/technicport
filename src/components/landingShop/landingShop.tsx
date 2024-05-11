@@ -21,7 +21,7 @@ const LandingShop = () => {
   useEffect(() => {
       const fetchData = async () => {
           try {
-              const req = await axios.get('https://technicport.vercel.app/api/products/get');
+              const req = await axios.get('/api/products/get');
               const data = req.data;
               setProducts(data.products);
           } catch (error) {

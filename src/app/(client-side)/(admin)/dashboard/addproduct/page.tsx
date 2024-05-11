@@ -7,176 +7,127 @@ import { CiTrash } from "react-icons/ci";
 import { FcAddImage } from "react-icons/fc";
 
 const AddProduct = () => {
-    const [images, setImages] = useState<any>(null);
-    const [uploadedImages, setUploadedImages] = useState<any | null>(null);
-    console.log(uploadedImages)
-    const [thumbnailIndex, setThumbnailIndex] = useState<any | null>(null);
-    const [categoryData , setCategoryData] = useState<any>(null);
+    const [images, setImages] = useState<any>([]);
+    const [thumbnailIndex, setThumbnailIndex] = useState<any | null >(0); 
+    const [categoryData, setCategoryData] = useState([]);
+    const [formData, setFormData] = useState<any>({
+        titleGe: "",
+        titleRu: "",
+        titleEn: "",
+        descrGE: "",
+        descrEN: "",
+        descrRU: "",
+        oem: "",
+        techCode: "",
+        price: null,
+        quantity: null,
+        categoryid: Number || null,
+        thumbnailindex: 0
+    });
 
-    const [titleGe , setTitleGe] = useState<string | null>(null);
-    const [titleRu , setTitleRu] = useState<string | null>(null);
-    const [titleEn , setTitleEn] = useState<string | null>(null);
-    const [descrGE , setDescrGE] = useState<string | null>(null);
-    const [descrEN , setDescrEN] = useState<string | null>(null);
-    const [descrRU , setDescrRU] = useState<string | null>(null);
-    const [oem , setOem] = useState<string | null>(null);
-    const [techCode , setTechOem] = useState<string | null>(null);
-    const [price , setPrice] = useState<number | null>(null); 
-    const [quantity , setQuantity] = useState<number | null>(null);
-    const [categoryid , setCategoryId] = useState<number | null>(null);
-    const [thumbnail , setThumbnail] = useState<any>(null);
-    
-    useEffect(()=>{
-      const getCategory = async ()=> {
-        const res = await axios.get('/api/category/get');
-        if(res.status === 200){
-          setCategoryData(res.data)
-        }
-      }
-      getCategory();
-    },[])
-
-    //after creatigng product create product images
-    const addProductImages = async (id : any) =>{
-      try {
-        for(let i =0 ; i < uploadedImages.length ; i++ ){
-          const data = {
-            imageUrl: uploadedImages[i] ,
-            productId:id 
-          }
-          const res= await axios.post('/api/products/createproductimage' , data)
-          if(res.status === 200){
-            toast.success('პროდუქტი დაემატა წარმატებით')
-          }
-        }
-      } catch (error) {
-          toast.error('შეცდომა დამატების დროს')
-      }
+    const handleSetThumbnail =(index:number)=>{
+        setFormData({...formData , thumbnailindex:index})
     }
-    //after creatigng product create product images
-    
-    const addProductHandler = async () => {
-      if (thumbnailIndex === null) {
-          setThumbnailIndex(0);
-          // Check if uploadedImages is not null before accessing its elements
-          if (uploadedImages && uploadedImages.length > 0) {
-              setThumbnail(uploadedImages[0]);
-          }
-      } else {
-          // Check if uploadedImages is not null before accessing its elements
-          if (uploadedImages && uploadedImages.length > parseInt(thumbnailIndex)) {
-              setThumbnail(uploadedImages[parseInt(thumbnailIndex)]);
-          }
-      }
-  
-      try {
-          const data = {
-              title_ge: titleGe,
-              title_ru: titleRu,
-              title_en: titleEn,
-              description_en: descrEN,
-              description_ge: descrGE,
-              description_ru: descrRU,
-              code: techCode,
-              oem: oem,
-              price: price,
-              quantity: quantity,
-              categoryId: categoryid,
-              thumbnail: thumbnail
-          };
-          const res = await axios.post('/api/products/create', data);
-          if (res.status === 200) {
-              setTimeout(() => {
-                addProductImages(res.data.res.id);
-              }, 100);
-          }
-      } catch (error) {
-          toast.error('შეცდომა პროდუქტის დამატების დროს');
-      }
-  };
-  
-    
+
+    useEffect(() => {
+        const getCategory = async () => {
+            try {
+                const res = await axios.get('/api/category/get');
+                if (res.status === 200) {
+                    setCategoryData(res.data);
+                }
+            } catch (error) {
+                console.error("Error fetching categories:", error);
+            }
+        };
+        getCategory();
+    }, []);
+
+    const imagesHandler = (e:any) => {
+        setImages([...images, ...e.target.files]);
+    };
+
     const handleRemoveImage = (index: number) => {
-      if (images) {
-        const filteredImages = Array.from(images).filter((_, i) => i !== index);
+        const filteredImages = images.filter((i: number) => i !== index);
         setImages(filteredImages);
-      }
-  };
+    };
 
     const submitFormHandler = async () => {
-        if (!images || images.length === 0) {
+        if (!images.length) {
+            toast.error('Please select images');
             return;
         }
 
+        const data = new FormData();
+        
+            // Append formData to FormData
+        Object.entries(formData).forEach(([key, value]:any) => {
+            data.append(key, value);
+        });
+
+        images.forEach((image:any) => {
+            data.append('image', image);
+        });
         try {
-            const data = new FormData();
-            for (let i = 0; i < images.length; i++) {
-                data.append('image', images[i]);
-            }
-            const res = await axios.post('/api/upload/image', data);
+            const res = await axios.post('/api/products/create', data);
             if (res.status === 200) {
-              setUploadedImages(res.data.images);
-              addProductHandler();
+                toast.success('Product added successfully');
+                console.log(res)
             }
         } catch (error) {
-            console.error(error);
-            toast.error('Error uploading images');
+            console.error("Error adding product:", error);
+            toast.error('Error adding product');
         }
     };
 
-    const handleSetThumbnail = (index: number) => {
-        setThumbnailIndex(index);
-
-    };
-    
-    const imagesHandler = (e: any) => {
-      setImages(e.target.files);
+    const handleCategoryChange = (e:any) => {
+        const catId = parseInt(e.target.value);
+        setFormData({ ...formData, categoryid: catId  });
     };
 
-    const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-      const categoryId = parseInt(e.target.value);
-      setCategoryId(categoryId);
-  };
+    const handleInputChange = (e:any) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
   
     return (
-        <div className='w-full px-[10px]'>
+        <div className='w-full p-[10px] bg-white rounded-xl'>
 
             <form className="w-full flex flex-col gap-4">
 
                 <div className="w-full flex justify-between gap-3">
                     <div className="w-full gap-1 flex flex-col flex-1">
                       <label className="text-[13px]">TITLE GE*</label>
-                      <input onChange={(e)=> setTitleGe(e.target.value)} type="text" className="input1" />
+                      <input name='titleGe' onChange={(e)=>handleInputChange(e)} type="text" className="input1" />
                     </div>
                     <div className="w-full gap-1 flex flex-col flex-1">
                       <label className="text-[13px]">TITLE EN</label>
-                      <input onChange={(e)=> setTitleEn(e.target.value)} type="text" className="input1" />
+                      <input name='titleEn' onChange={(e)=>handleInputChange(e)} type="text" className="input1" />
                     </div>
                     <div className="w-full gap-1 flex flex-col flex-1">
                       <label className="text-[13px]">TITLE RU</label>
-                      <input onChange={(e)=> setTitleRu(e.target.value)} type="text" className="input1" />
+                      <input name='titleRu' onChange={(e)=>handleInputChange(e)} type="text" className="input1" />
                     </div>
                 </div>
 
                 <div className="w-full flex justify-between gap-3">
                     <div className="w-full gap-1 flex flex-col flex-1">
                       <label className="text-[13px]">TECHNICPORT CODE*</label>
-                      <input onChange={(e)=> setTechOem(e.target.value)} type="text" className="input1" />
+                      <input name='techCode' onChange={(e)=>handleInputChange(e)} type="text" className="input1" />
                     </div>
                     <div className="w-full gap-1 flex flex-col flex-1">
                       <label className="text-[13px]">OEM CODE</label>
-                      <input onChange={(e)=> setOem(e.target.value)} type="text" className="input1" />
+                      <input name='oem' onChange={(e)=>handleInputChange(e)} type="text" className="input1" />
                     </div>
                 </div>
 
                 <div className="w-full flex justify-between gap-3">
                     <div className="w-full gap-1 flex flex-col flex-1">
                       <label className="text-[13px]">PRICE</label>
-                      <input onChange={(e)=> setPrice(parseInt(e.target.value))} type="number" className="input1" />
+                      <input name="price" onChange={(e)=>handleInputChange(e)} type="number" className="input1" />
                     </div>
                     <div className="w-full gap-1 flex flex-col flex-1">
                       <label className="text-[13px]">QUANTITY</label>
-                      <input onChange={(e)=> setQuantity(parseInt(e.target.value))} type="number" className="input1" />
+                      <input name="quantity" onChange={(e)=>handleInputChange(e)} type="number" className="input1" />
                     </div>
 
                     <div className="w-full gap-1 flex flex-col flex-1">
@@ -193,15 +144,15 @@ const AddProduct = () => {
                 <div className="w-full flex justify-between gap-3">
                     <div className="w-full gap-1 flex flex-col flex-1">
                       <label className="text-[13px]">DESCRIPTION GE*</label>
-                      <textarea onChange={(e)=> setDescrGE(e.target.value)} className='w-full input1 min-h-[160px]'/>
+                      <textarea name="descrGE" onChange={(e)=>handleInputChange(e)} className='w-full input1 min-h-[160px]'/>
                     </div>
                     <div className="w-full gap-1 flex flex-col flex-1">
                       <label className="text-[13px]">DESCRIPTION EN</label>
-                      <textarea onChange={(e)=> setDescrEN(e.target.value)} className='w-full input1 min-h-[160px]'/>
+                      <textarea name="descrEN"  onChange={(e)=>handleInputChange(e)} className='w-full input1 min-h-[160px]'/>
                     </div>
                     <div className="w-full gap-1 flex flex-col flex-1">
                       <label className="text-[13px]">DESCRIPTION RU</label>
-                      <textarea onChange={(e)=> setDescrRU(e.target.value)} className='w-full input1 min-h-[160px]'/>
+                      <textarea name="descrRU"  onChange={(e)=>handleInputChange(e)} className='w-full input1 min-h-[160px]'/>
                     </div>
                 </div>
 
@@ -215,7 +166,7 @@ const AddProduct = () => {
                         <button onClick={() => handleRemoveImage(index)} className="absolute flex items-center justify-center top-[0px] right-[0px] bg-red-500 text-white w-[20px] h-[20px] rounded">
                             <CiTrash className="text-white" />
                         </button>
-                        {index === thumbnailIndex && <span className="absolute bottom-0 left-0 bg-green-500 text-white px-1 rounded">Thumbnail</span>}
+                        {index === formData.thumbnailindex && <span className="absolute bottom-0 left-0 bg-green-500 text-white px-1 rounded">Thumbnail</span>}
                     </div>
                 ))}
 
