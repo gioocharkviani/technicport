@@ -10,6 +10,7 @@ const AddProduct = () => {
     const [images, setImages] = useState<any>([]);
     const [thumbnailIndex, setThumbnailIndex] = useState<any | null >(0); 
     const [categoryData, setCategoryData] = useState([]);
+    const [brandData, setBrandData] = useState([]);
     const [formData, setFormData] = useState<any>({
         titleGe: "",
         titleRu: "",
@@ -22,6 +23,7 @@ const AddProduct = () => {
         price: null,
         quantity: null,
         categoryid: Number || null,
+        brandId: Number || null,
         thumbnailindex: 0
     });
 
@@ -32,15 +34,26 @@ const AddProduct = () => {
     useEffect(() => {
         const getCategory = async () => {
             try {
-                const res = await axios.get('/api/category/get');
-                if (res.status === 200) {
-                    setCategoryData(res.data);
+                const resCat = await axios.get('/api/category/get');
+                if (resCat.status === 200) {
+                    setCategoryData(resCat.data);
                 }
             } catch (error) {
                 console.error("Error fetching categories:", error);
             }
         };
+        const getBrand = async () => {
+            try {
+                const resBrand = await axios.get('/api/brand/get');
+                if (resBrand.status === 200) {
+                    setBrandData(resBrand.data);
+                }
+            } catch (error) {
+                console.error("Error fetching Brands:", error);
+            }
+        };
         getCategory();
+        getBrand();
     }, []);
 
     const imagesHandler = (e:any) => {
@@ -85,6 +98,11 @@ const AddProduct = () => {
         setFormData({ ...formData, categoryid: catId  });
     };
 
+    const handleBrandChange = (e:any) => {
+        const brandId = parseInt(e.target.value);
+        setFormData({ ...formData, brandId: brandId  });
+    };
+
     const handleInputChange = (e:any) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
@@ -121,14 +139,7 @@ const AddProduct = () => {
                 </div>
 
                 <div className="w-full flex justify-between gap-3">
-                    <div className="w-full gap-1 flex flex-col flex-1">
-                      <label className="text-[13px]">PRICE</label>
-                      <input name="price" onChange={(e)=>handleInputChange(e)} type="number" className="input1" />
-                    </div>
-                    <div className="w-full gap-1 flex flex-col flex-1">
-                      <label className="text-[13px]">QUANTITY</label>
-                      <input name="quantity" onChange={(e)=>handleInputChange(e)} type="number" className="input1" />
-                    </div>
+    
 
                     <div className="w-full gap-1 flex flex-col flex-1">
                     <label className="text-[13px]">CATEGORY</label>
@@ -140,7 +151,30 @@ const AddProduct = () => {
                     </select>
                     </div>
 
+                    <div className="w-full gap-1 flex flex-col flex-1">
+                    <label className="text-[13px]">BRAND</label>
+                    <select onChange={handleBrandChange} className="input1">
+                        <option value="">Select Brand</option>
+                        {brandData && brandData.map((item: any) => (
+                            <option key={item.id} value={item.id}>{item.brand_ge}</option> 
+                        ))}
+                    </select>
+                    </div>
+
                 </div>
+
+                <div className="w-full flex justify-between gap-3">
+                    <div className="w-full gap-1 flex flex-col flex-1">
+                      <label className="text-[13px]">PRICE</label>
+                      <input name="price" onChange={(e)=>handleInputChange(e)} type="number" className="input1" />
+                    </div>
+                    <div className="w-full gap-1 flex flex-col flex-1">
+                      <label className="text-[13px]">QUANTITY</label>
+                      <input name="quantity" onChange={(e)=>handleInputChange(e)} type="number" className="input1" />
+                    </div>
+
+                </div>
+
                 <div className="w-full flex justify-between gap-3">
                     <div className="w-full gap-1 flex flex-col flex-1">
                       <label className="text-[13px]">DESCRIPTION GE*</label>

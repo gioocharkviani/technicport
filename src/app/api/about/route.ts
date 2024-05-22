@@ -9,12 +9,12 @@ export async function GET(req: NextRequest) {
         
         if (aboutInfo.length === 0) {
             // If there is no data in the database, provide default data
-            data = "technicport";
+            data = null;
         } else {
             // Determine which language data to use based on the locale
             switch (locale?.value) {
-                case 'ge':
-                    data = aboutInfo[0].aboutus_ge || "technicport";
+                case 'ka':
+                    data = aboutInfo[0].aboutus_ge || null;
                     break;
                 case 'en':
                     data = aboutInfo[0].aboutus_en || aboutInfo[0].aboutus_ge;

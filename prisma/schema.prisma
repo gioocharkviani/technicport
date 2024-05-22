@@ -7,8 +7,9 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = env("DATABASE_URL")
+  url      = env("DATABASE_URL_LOCAL")
 }
+
 
 model User {
   id          String      @id @default(uuid())
@@ -61,9 +62,11 @@ model Product {
   price          Int?
   quantity       Int
   thumbnail      String
-  categoryId     Int
   productImages  ProductImages[]
+  categoryId     Int
   category       Category   @relation(fields: [categoryId], references: [id])
+  brandId        Int
+  brand          Brand   @relation(fields: [brandId], references: [id])
   createdAt      DateTime   @default(now())
   updatedAt      DateTime   @updatedAt
 }
@@ -73,6 +76,14 @@ model Category {
   title_ge       String     @unique
   title_en       String?     @unique
   title_ru       String?     @unique
+  products   Product[]
+}
+
+model Brand {
+  id         Int        @id @default(autoincrement())
+  brand_ge       String     @unique
+  brand_en       String?     @unique
+  brand_ru       String?     @unique
   products   Product[]
 }
 

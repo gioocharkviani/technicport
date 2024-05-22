@@ -28,7 +28,7 @@ export default function RootLayout({
     <main className={`${noto_Sans_Georgian.className} bg-[#f2f3f6] w-full min-h-screen flex-col items-center flex overflow-x-hidden`}>
     <Modal />
       <Header />
-      <div className="flex flex-col w-full mt-[60px]">
+      <div className="flex flex-col items-center w-full min-h-screen mt-[60px]">
         {children}
       </div>
       <Footer />

@@ -13,14 +13,13 @@ const Lang = () => {
     const lagChange = async (lang:any) => {
         switchLocaleAction(lang)
     }
-
     const locale = useLocale();
-    
+
   return (
     <div className='w-max'>
         <ul className='flex gap-3 items-center'>
             
-        <button disabled={locale === 'ge'} className={`${locale === 'ge' ? 'listStyle-1 active' : 'listStyle-1'}`} onClick={() => lagChange('ge')}>
+        <button disabled={locale === 'ka'} className={`${locale === 'ka' ? 'listStyle-1 active' : 'listStyle-1'}`} onClick={() => lagChange('ka')}>
             <div className='flex gap-1 text-[13px] items-center uppercase'>
                  ge
                 <GeoFlag />

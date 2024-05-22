@@ -1,9 +1,12 @@
 'use client'
 
 import { useEffect, useState } from "react";
+import MenuLink from "../links/menuLink";
+import { useTranslation } from "@/i18n/client";
+import { usePathname } from "next/navigation";
 
 const HumburgerNavigation = () => {
-
+    const pathname = usePathname();
     const [open, setOpen] = useState<boolean>(false);
     
     const handleClick = () => {
@@ -16,8 +19,14 @@ const HumburgerNavigation = () => {
         }else {
             document.body.style.overflowY = "auto";
         }
-    }, [open]);
 
+    }, [open ]);
+
+    useEffect(() => {
+      setOpen(false); 
+  }, [pathname]);
+
+    const {t} =  useTranslation('common');
   return (
     <div className='w-max block lg:hidden'>
 
@@ -27,13 +36,13 @@ const HumburgerNavigation = () => {
         
         <div className={`humburgerMenuWrapper ${open? 'active' : ''}`}>
           {/* {open && */}
-            <div className="mt-[50px] relative flex flex-col text-black">
-              <li>menu</li>
-              <li>menu</li>
-              <li>menu</li>
-              <li>menu</li>
-              <li>menu</li>
-            </div>
+          <ul className=' mt-[60px] flex flex-col leading-none gap-4 text-[15px] capitalize'>
+            <MenuLink link='/' name={t('links.home')}/>
+            <MenuLink link='/shop' name={t('links.shop')}/>
+            <MenuLink link='/about' name={t('links.about')}/>
+            <MenuLink link='/services' name={t('links.services')}/>
+            <MenuLink link='/contact' name={t('links.contact')}/>
+        </ul>
           {/* } */}
         </div>
         

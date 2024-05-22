@@ -22,6 +22,7 @@ const Navbar = () => {
         <div className='w-max flex flex-row gap-[30px]'>
           <Lang />
 
+          <div className='hidden lg:block'>
           {status === "authenticated" && 
             <AccountB />
           }
@@ -29,6 +30,7 @@ const Navbar = () => {
           {status === 'unauthenticated' &&
             <LoginLink />
           }
+          </div>
         </div>
       </div>
     </div>

@@ -16,7 +16,7 @@ const MenuLink = ({link , name}:{link:string, name:string}) => {
     }, [pathname, link]);
 
   return (
-    <li className={`${active ? 'text-color1' : 'hover:text-color1 transition-all'}`}>
+    <li className={`bg-[#ebebeb] px-[10px] py-[10px]  rounded-md flex justify-center w-full lg:bg-transparent lg:p-[0]  lg:rounded-none lg:w-max  ${active ? 'text-color1' : 'hover:text-color1 transition-all'}` }>
 
       <Link href={link}>
           {name}

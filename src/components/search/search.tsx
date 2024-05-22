@@ -45,7 +45,7 @@ const Search = () => {
           <input type='text' placeholder='search' className='w-full outline-none italic h-full px-[10px] bg-transparent text-[14px]  pr-[10px] py-[10px] border-[2px] border-gray-300 rounded-md'/>
 
           
-          <button className='px-[10px] py-[10px] h-[100%] text-white flex-shrink-0 rounded-[10px] bg-[#FBBC05] flex items-center text-[13px] justify-center gap-2'>
+          <button className='bg-color2 px-[10px] py-[12px] hover:bg-[#c19100] rounded-md text-white items-center h-full flex gap-2 text-[12px]'>
             <span>ძიება</span>
             <IoSearch className='text-[white]' />
           </button>

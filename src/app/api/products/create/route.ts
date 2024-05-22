@@ -6,10 +6,10 @@ import { getToken } from "next-auth/jwt";
 import prisma from "@/libs/db";
 
 export async function POST(req: NextRequest) {
-    // const token = await getToken({ req });
-    // if (!token || token.role !== 'ADMIN') { 
-    //     return new NextResponse('Not Authorized', { status: 401 });
-    // }
+    const token = await getToken({ req });
+    if (!token || token.role !== 'ADMIN') { 
+        return new NextResponse('Not Authorized', { status: 401 });
+    }
     try{
 
         const data = await req.formData();
@@ -46,6 +46,7 @@ export async function POST(req: NextRequest) {
             price : parseInt(data.get('price') as string), 
             quantity: parseInt(data.get('quantity')as string),
             categoryId : parseInt(data.get('categoryid')as string),
+            brandId : parseInt(data.get('brandId')as string),
             thumbnail : thumbnailPath
         }
         

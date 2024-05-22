@@ -21,18 +21,12 @@ const handleOpenModal = () => {
 
   return (
     <>
-
-    <div className='listStyle-1 w-max hidden lg:block'>
-      
-        <button onClick={handleOpenModal} className='h-full'>
-          <div className='flex gap-1 text-[13px] items-center  capitalize' >
+        <button onClick={handleOpenModal} className='h-full listStyle-1 '>
+          <div className='flex flex-col lg:flex-row lg:p-0 px-[5px] py-[5px] gap-2 lg:gap-1 text-[13px] items-center  capitalize' >
             <UserIcon />
              {t('loginBtn')}
           </div>
         </button>
-
-    </div>
-
     </>
   )
 }

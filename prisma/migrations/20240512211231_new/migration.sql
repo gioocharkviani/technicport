@@ -53,10 +53,12 @@ CREATE TABLE `Product` (
     `description_en` VARCHAR(191) NULL,
     `description_ru` VARCHAR(191) NULL,
     `description_ge` VARCHAR(191) NOT NULL,
+    `code` VARCHAR(191) NULL,
+    `oem` VARCHAR(191) NULL,
     `price` INTEGER NULL,
     `quantity` INTEGER NOT NULL,
-    `categoryId` INTEGER NOT NULL,
     `thumbnail` VARCHAR(191) NOT NULL,
+    `categoryId` INTEGER NOT NULL,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updatedAt` DATETIME(3) NOT NULL,
 
@@ -66,9 +68,13 @@ CREATE TABLE `Product` (
 -- CreateTable
 CREATE TABLE `Category` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `name` VARCHAR(191) NOT NULL,
+    `title_ge` VARCHAR(191) NOT NULL,
+    `title_en` VARCHAR(191) NULL,
+    `title_ru` VARCHAR(191) NULL,
 
-    UNIQUE INDEX `Category_name_key`(`name`),
+    UNIQUE INDEX `Category_title_ge_key`(`title_ge`),
+    UNIQUE INDEX `Category_title_en_key`(`title_en`),
+    UNIQUE INDEX `Category_title_ru_key`(`title_ru`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -77,6 +83,16 @@ CREATE TABLE `ProductImages` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `imageUrl` VARCHAR(191) NOT NULL,
     `productId` INTEGER NOT NULL,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `About` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `aboutus_ge` VARCHAR(191) NOT NULL,
+    `aboutus_en` VARCHAR(191) NULL,
+    `aboutus_ru` VARCHAR(191) NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
