@@ -33,7 +33,7 @@ const Select = ({ data, option, filterBy, defaultValue }: any) => {
                 setParamsName('brand');
             }
         }
-    }, []);
+    }, [filterBy, option]);
 
     return (
         <div className='w-full flex flex-col relative overflow-hidden'>

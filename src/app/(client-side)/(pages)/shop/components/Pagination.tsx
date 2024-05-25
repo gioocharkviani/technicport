@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { GrFormPrevious, GrFormNext } from "react-icons/gr";
 import { useRouter, useSearchParams } from "next/navigation";
 import { usePathname } from "next/navigation";
+import { useFetch } from "@/hooks/useFetch";
 
 const Pagination = () => {
     const [currentPage , setCurrentPage] = useState<number | null>(null);
@@ -14,22 +15,10 @@ const Pagination = () => {
     const page = searchParams.get('page');
     const searchQuery = searchParams.get('search');
     const brand = searchParams.get('brand');
-    
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const req = await axios.get(`/api/products/pagination?page=${page}&category=${category}&brand=${brand}&search=${searchQuery}`);
-                const data = req.data;
-                setPageLength(data.totalPages);
-            } catch (error) {
-                console.error('Error fetching products:', error);
-            }
-        };
 
-        fetchData();
-        const pageParam = parseInt(searchParams.get('page') || '1');
-        setCurrentPage(pageParam);
-    }, [searchParams]);
+    const {isLoading, apiData, serverError}=useFetch(`/api/products/pagination?page=${page}&category=${category}&brand=${brand}&search=${searchQuery}`)
+    const pageParam = parseInt(searchParams.get('page') || '1');
+    setCurrentPage(pageParam);
 
     const handlePageChange = (pageNum: number) => {
         const params = new URLSearchParams(searchParams.toString());
