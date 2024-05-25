@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react'
 import Link from 'next/link';
 import { useLocale } from '@/hooks/locale-provider';
 import { IoHomeOutline } from 'react-icons/io5';
-import ProductSwiper from '../../_components/produtSwiper/ProductSwiper';
+import ProductSwiper from '../../components/produtSwiper/ProductSwiper';
 
 
   export default function page ({params}:{params: any}) {

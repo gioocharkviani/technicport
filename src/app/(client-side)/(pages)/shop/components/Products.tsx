@@ -1,9 +1,7 @@
 'use client'
-import { useRouter } from 'next/router'
-import React, { useEffect, useState } from 'react'
-import ProductCard from '@/components/cards/productCard'
-import axios from 'axios'
-import { useFetch } from '@/hooks/useFetch'
+import React from 'react';
+import ProductCard from '@/components/cards/productCard';
+import { useFetch } from '@/hooks/useFetch';
 
 
 const Products = (searchParams : any) => {

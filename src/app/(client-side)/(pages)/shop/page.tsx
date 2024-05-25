@@ -1,10 +1,10 @@
 import React from 'react'
-import Products from './_components/Products';
+import Products from './components/Products';
 import MaxWidthWrapper from '@/components/contentwrapper/maxWidthWrapper'
 import Link from 'next/link'
 import { IoHomeOutline } from "react-icons/io5";
-import ProductFilter from './_components/ProductFilter';
-import Pagination from './_components/Pagination';
+import ProductFilter from './components/ProductFilter';
+import Pagination from './components/Pagination';
 
 const ShopPage = ({searchParams}:any) => {
   return (
