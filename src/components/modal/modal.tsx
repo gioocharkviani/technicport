@@ -34,8 +34,8 @@ export const Modal = () => {
   return (
     <>
     {isOpen &&
-    <div ref={modalRef}  className='blackBgRgba overflow-y-auto w-full flex justify-center items-center h-full fixed z-[999] left-0  top-0'>
-        <div className='max-w-[90%] relative min-w-[150px] min-h-[100px] max-h-[90vh] w-max h-max rounded-lg bg-white px-[10px] py-[10px]'>
+    <div ref={modalRef}  className='blackBgRgba w-full flex  justify-center items-center h-full fixed z-[999] left-0  top-0'>
+        <div className='max-w-[90%] relative overflow-y-auto  min-w-[150px] min-h-[100px] max-h-[90vh] w-max h-max rounded-lg bg-white px-[10px] py-[10px]'>
             <div className='w-full h-auto flex justify-between'>
               <div  className='flex items-center text-[13px]'>{modalTitle}</div>
               <button onClick={closeModal} className='w-[20px] h-[20px]'>

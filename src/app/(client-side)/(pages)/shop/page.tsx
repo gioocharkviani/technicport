@@ -24,9 +24,13 @@ const ShopPage = ({searchParams}:any) => {
             <div className='bg-white py-[10px] rounded-xl flex-1 px-[10px]'>
               <ProductFilter />
             </div>
-            <div className='bg-white py-[10px] flex flex-col gap-[32px] rounded-xl pb-[20px]  px-[10px] flex-[3]'> 
-              <Products {...searchParams}/>
-              <Pagination {...searchParams}/>
+            <div className='flex flex-col gap-[32px] flex-[3]'> 
+              <div className='bg-white py-[10px] rounded-xl '>
+                <Products {...searchParams}/>
+              </div>
+     
+                <Pagination {...searchParams}/>
+              
             </div>
           </div>
         </div>

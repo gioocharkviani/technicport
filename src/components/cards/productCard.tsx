@@ -8,11 +8,11 @@ const ProductCard = (data:any) => {
   
   
   return (
-    <div className='px-[10px]  relative  h-[300px]'>
+    <div className='px-[10px]  relative h-[250px] smd:h-[270px]  md:h-[300px]'>
       <div className='whiteBoxShadow  p-2 gap-3 flex h-full flex-col justify-between items-center rounded-md '>
 
         <Link href={`/shop/product/${data.data.id}`}>
-            <div className='smd:min-h-[150px] md:min-h-[200px] min-h-[200px] flex justify-center smd:max-h-[180px]  max-h-[10px]  w-full rounded-md overflow-hidden'>
+            <div className='smd:min-h-[150px] md:min-h-[200px] min-h-[150px] flex justify-center smd:max-h-[180px]  max-h-[10px]  w-full rounded-md overflow-hidden'>
                 <Image className='object-contain w-full'  width={100} height={100} alt='1' src={data.data.thumbnail || null}/> 
             </div>
         </Link>

@@ -2,6 +2,7 @@
 import { useSession } from "next-auth/react"
 import { signOut } from "next-auth/react"
 import { useModal } from "@/context/ModalContext";
+import { useTranslation } from "@/i18n/client";
 
 import Image from "next/image";
 import UserIcon from "../../../public/svg/userIcon";
@@ -19,6 +20,8 @@ import Payments from "./payments/payments";
 import UserParameters from './profile/userParameters'
 
 const AccountB = () => {  
+
+  const {t} =  useTranslation('common');
 
 
     //Modal options//
@@ -86,24 +89,24 @@ const AccountB = () => {
 
           <button className="btn3" onClick={() => handleButtonClick("orders")}>
             <LuShoppingBag />
-            <span>orders</span>
+            <span>{t('user.orders')}</span>
           </button>
           <button className="btn3" onClick={() => handleButtonClick("payments")}>
             <MdOutlinePayments />
-            <span>payments</span>
+            <span>{t('user.payments')}</span>
           </button>
           <button className="btn3" onClick={() => handleButtonClick("address")}>
             <IoLocation />
-            <span>address</span>
+            <span>{t('user.address')}</span>
           </button>
           <button className="btn3" onClick={() => handleButtonClick("parameters")}>
             <IoSettingsOutline />
-            <span>parameters</span >
+            <span>{t('user.parameters')}</span >
           </button>
 
         </div>
 
-        <button className="btn2" onClick={()=>signOut()}>გასვლა</button>
+        <button className="btn2" onClick={()=>signOut()}>{t('user.signout')}</button>
       </div>
       }
 

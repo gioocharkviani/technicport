@@ -20,12 +20,18 @@ export async function GET(req: NextRequest) {
        page = 0;
     }
     const offset = (page -1) * ITEMS_PER_PAGE;
-
+    
 // Construct filters object
 const filters:any = {};
-if (category && category !== 'undefined') filters.categoryId = parseInt(category);
-// if (brand && brand !== 'undefined') filters.brand = brand;
-// if (search && search !== 'undefined') filters.name = { contains: search, mode: 'insensitive' };
+if (brand && brand !== 'undefined'){ filters.brandId = parseInt(brand)}
+if (category && category !== 'undefined'){filters.categoryId = parseInt(category);}
+if (search && search !== 'undefined') {
+    filters.OR = [
+        { title_en: { contains: search} },
+        { title_ge: { contains: search} },
+        { title_ru: { contains: search} }
+    ];
+}
     
     
     try {

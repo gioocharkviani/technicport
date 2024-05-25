@@ -19,21 +19,17 @@ export async function GET(req: NextRequest) {
         const filters: any = {};
 
         if (categoryId && categoryId !== 'null') filters.categoryId = parseInt(categoryId);
-        if (brand && brand !== 'null') filters.brandId = brand;
-        if (search && search !== 'null') {
-            filters.OR = [
-                { title_en: { contains: search, mode: 'insensitive' } },
-                { title_ru: { contains: search, mode: 'insensitive' } },
-                { title_ge: { contains: search, mode: 'insensitive' } },
-                { description_en: { contains: search, mode: 'insensitive' } },
-                { description_ru: { contains: search, mode: 'insensitive' } },
-                { description_ge: { contains: search, mode: 'insensitive' } },
-            ];
+        if (brand && brand !== 'null') filters.brandId = parseInt(brand);
+        if (search && search !== 'null'){ 
+            filters.title_en = { contains: search};
+            filters.title_ge = { contains: search};
+            filters.title_ru = { contains: search};
         }
+
 
         // Fetch total count of products with the same filters
         const totalCount = await prisma.product.count({
-            where: Object.keys(filters).length > 0 ? filters : undefined,
+            where: filters
         });
 
         // Calculate total number of pages

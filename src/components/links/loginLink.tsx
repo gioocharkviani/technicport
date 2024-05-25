@@ -22,7 +22,7 @@ const handleOpenModal = () => {
   return (
     <>
         <button onClick={handleOpenModal} className='h-full listStyle-1 '>
-          <div className='flex flex-col lg:flex-row lg:p-0 px-[5px] py-[5px] gap-2 lg:gap-1 text-[13px] items-center  capitalize' >
+          <div className='flex  h-[32px] flex-row px-[5px]  gap-2 lg:gap-1 text-[13px] items-center  capitalize' >
             <UserIcon />
              {t('loginBtn')}
           </div>

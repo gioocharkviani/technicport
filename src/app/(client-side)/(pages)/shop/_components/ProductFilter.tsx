@@ -1,26 +1,53 @@
 'use client'
-import { useRouter } from 'next/navigation';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaSearch } from "react-icons/fa";
-import SelectFilter from './SelectFilter';
+import Select from '@/components/select/Select';
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
+import ShopSearch from './ShopSearch';
 
 const ProductFilter = () => {
-    const {push} = useRouter();
+  const [catData , setCatData] = useState<any>(null)
+  const [brandData , setBrandData] = useState<any>(null)
+  const router = useRouter();
+
+  useEffect(()=>{
+    const getCategory =async () =>{
+      const req= await axios.get('/api/category/get');
+      if(req.status === 200){
+        setCatData(req.data)
+      }
+    };
+    const getBrand =async () =>{
+      const req= await axios.get('/api/brand/get');
+      if(req.status === 200){
+        setBrandData(req.data)
+      }
+    };
+    getCategory();
+    getBrand();
+  },[])
     
   return (
     <div className='flex p-[12px] flex-col gap-[20px]'>
 
-          <div className='w-full gap-2 items-center h-[40px] flex justify-between'>
-            <input type='text' className='input1 w-full' placeholder='ძებნა...'/>
-            <button className='w-[40px] h-[40px] rounded-md flex justify-center items-center shrink-0 bg-color2 hover:bg-[#f9a94e]'><FaSearch className='text-[white] font-bold' /></button>
+          <div className='w-full'>
+            <ShopSearch />
           </div>
 
           <div className='w-full'>
-            <SelectFilter />
+            <Select data={catData} option='filter' filterBy='category' defaultValue='choose category'/>
           </div>
+
           <div className='w-full'>
-            <SelectFilter />
+            <Select data={brandData} option='filter' filterBy='brand' defaultValue='choose brand'/>
           </div>
+
+          <div className='w-full'>
+            <button className='btn1' onClick={()=> router.push('/shop')}>გასუფთავება</button>
+          </div>
+
+
 
     </div>
   )

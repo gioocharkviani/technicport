@@ -51,5 +51,13 @@
         "signout" : "Sign out",
         "add" : "add",
         "back" : "back"
+    },
+
+    "user" :{
+        "orders" : "orders",
+        "payments": "payments",
+        "parameters": "parameters",
+        "address": "address",
+        "signout": "Sign out"
     }
 }

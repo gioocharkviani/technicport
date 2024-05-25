@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Title1 from '../title/title1';
 import ProductCard from '../cards/productCard';
 import axios from 'axios';
+import { useFetch } from '@/hooks/useFetch';
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -15,27 +16,8 @@ import { FreeMode, Pagination } from 'swiper/modules';
 import { useTranslation } from '@/i18n/client';
 
 const LandingShop = () => {
-  const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const req = await axios.get('/api/products/get?take=8');
-        const data = req.data;
-        setProducts(data.products);
-        setIsLoading(false);
-      } catch (error) {
-        console.error('Error fetching products:', error);
-        setIsLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
-
+  const {isLoading , serverError , apiData } = useFetch('/api/products/get?take=8');
   const { t } = useTranslation('common');
-
 
   return (
     <div className="flex mt-[40px] rounded-lg bg-[#FFF] py-[20px] flex-col">
@@ -44,16 +26,26 @@ const LandingShop = () => {
       </div>
 
       <div className="w-full mt-[20px] px-[10px]">
-        {isLoading ? (
-          <div className="w-full flex gap-4 px-[10px] justify-between min-h-[200px] ">
+
+        {isLoading  &&
+          <div className="w-full flex gap-4 px-[10px] justify-between min-h-[200px]">
             {[...Array(5)].map((_, index) => (
               <div key={index} className="w-full h-[250px] rounded-md skeleton"></div>
             ))}
           </div>
-        ) : products.length > 0 ? (
+        }
+
+        {serverError !== null &&
+        <div className='w-full min-h-[100px] flex justify-center items-center'>
+          <span className='text-[gray] text-[16px]'>500 შეცდომა პროდუქტის ჩატვირთვის დროს</span>
+        </div>
+        }
+
+
+
+        {!isLoading && apiData?.products  &&
           <Swiper
-            breakpoints={{
-              // when window width is >= 768px
+          breakpoints={{
               1300: {
                 slidesPerView: 5,
               },
@@ -75,15 +67,15 @@ const LandingShop = () => {
             modules={[FreeMode, Pagination]}
             className="swiper1"
           >
-            {products.map((product:any) => (
+            {apiData?.products.map((product: any) => (
               <SwiperSlide key={product.id}>
                 <ProductCard data={product} />
               </SwiperSlide>
             ))}
           </Swiper>
-        ) : (
-          <div>There are no products available.</div>
-        )}
+          }
+        
+        
       </div>
     </div>
   );

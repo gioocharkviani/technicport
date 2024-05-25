@@ -17,7 +17,7 @@ const BrandsComp = () => {
   return (
     <div className="flex md:flex-row flex-col items-center overflow-hidden  gap-6 md:gap-3 mt-[40px] bg-[#272a37] rounded-lg py-[40px] px-[20px]  ">
 
-      <div className="text-[18px] w-max shrink-0 text-white pr-[30px]">დასახელება</div>
+      {/* <div className="text-[18px] w-max shrink-0 text-white pr-[30px]">დასახელება</div> */}
 
         <div className="flex gap-5 justify-between overflow-hidden w-full">
 

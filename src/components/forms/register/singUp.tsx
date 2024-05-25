@@ -56,7 +56,7 @@ const SignUp = () => {
     <div className='min-w-[250px] md:min-w-[300px] h-auto mt-[20px]'>
         <form className='flex flex-col w-full gap-3' onSubmit={handleSubmit(userRegister)}>
 
-            <div className='flex gap-4'>
+            <div className='flex flex-col md:flex-row gap-4'>
                 <input {...register('firstName')} name='firstName' placeholder='first name' type='text' className={`input1 ${errors.firstName? 'errorInput' : ''}`} />
                 <input {...register('lastName')} name='lastName' placeholder='last name' type='text' className={`input1 ${errors.lastName? 'errorInput' : ''}`} />
             </div>
