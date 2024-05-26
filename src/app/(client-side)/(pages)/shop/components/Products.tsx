@@ -5,10 +5,13 @@ import { useFetch } from '@/hooks/useFetch';
 
 
 const Products = (searchParams : any) => {
+
+    // params for api
     const category = searchParams.category;
     const page = searchParams.page;
     const searchQuery = searchParams.search;
     const brand = searchParams.brand;
+    // params for api
 
     const {isLoading , apiData , serverError} = useFetch(`/api/products/get?page=${page}&category=${category}&brand=${brand}&search=${searchQuery}`)
 
@@ -22,13 +25,13 @@ const Products = (searchParams : any) => {
             }
 
             {!isLoading && apiData?.products.length === 0 && (
-                <div className="col-span-full text-center text-gray-500">
+                <div className="col-span-full text-center text-gray-500 py-[20px]">
                     No products found.
                 </div>
             )}
 
             {!isLoading && serverError && (
-                <div className="col-span-full text-center text-gray-500">
+                <div className="col-span-full text-center text-gray-500 py-[20px]">
                     შეცდომა პროდუქტების ჩატვირთვის დროს
                 </div>
             )}

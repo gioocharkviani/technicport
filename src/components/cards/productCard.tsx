@@ -12,7 +12,7 @@ const ProductCard = (data:any) => {
       <div className='whiteBoxShadow  p-2 gap-3 flex h-full flex-col justify-between items-center rounded-md '>
 
         <Link href={`/shop/product/${data.data.id}`}>
-            <div className='smd:min-h-[150px] md:min-h-[200px] min-h-[150px] flex justify-center smd:max-h-[180px]  max-h-[10px]  w-full rounded-md overflow-hidden'>
+            <div className='smd:h-[150px] md:h-[200px] h-[150px] flex justify-center w-full rounded-md overflow-hidden'>
                 <Image className='object-contain w-full'  width={100} height={100} alt='1' src={data.data.thumbnail || null}/> 
             </div>
         </Link>

@@ -1,8 +1,7 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Title1 from '../title/title1';
 import ProductCard from '../cards/productCard';
-import axios from 'axios';
 import { useFetch } from '@/hooks/useFetch';
 
 // Import Swiper React components
@@ -35,18 +34,17 @@ const LandingShop = () => {
           </div>
         }
 
-        {serverError !== null &&
-        <div className='w-full min-h-[100px] flex justify-center items-center'>
-          <span className='text-[gray] text-[16px]'>500 შეცდომა პროდუქტის ჩატვირთვის დროს</span>
-        </div>
+        {!isLoading && serverError && 
+          <div className="col-span-full text-center text-gray-500">
+            შეცდომა პროდუქტების ჩატვირთვის დროს
+          </div>
         }
 
 
-
-        {!isLoading && apiData?.products  &&
+        {!isLoading && apiData?.products  && (
           <Swiper
           breakpoints={{
-              1300: {
+            1300: {
                 slidesPerView: 5,
               },
               1000: {
@@ -66,13 +64,14 @@ const LandingShop = () => {
             }}
             modules={[FreeMode, Pagination]}
             className="swiper1"
-          >
+            >
             {apiData?.products.map((product: any) => (
               <SwiperSlide key={product.id}>
                 <ProductCard data={product} />
               </SwiperSlide>
             ))}
           </Swiper>
+          )
           }
         
         

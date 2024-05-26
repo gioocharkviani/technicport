@@ -1,14 +1,12 @@
-'use client'
+'use client';
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { GrFormPrevious, GrFormNext } from "react-icons/gr";
 import { useRouter, useSearchParams } from "next/navigation";
-import { usePathname } from "next/navigation";
-import { useFetch } from "@/hooks/useFetch";
 
 const Pagination = () => {
-    const [currentPage , setCurrentPage] = useState<number | null>(null);
-    const [pageLength , setPageLength] = useState<number>(0);
+    const [currentPage, setCurrentPage] = useState<number | null>(null);
+    const [pageLength, setPageLength] = useState<number>(0);
     const router = useRouter();
     const searchParams = useSearchParams();
     const category = searchParams.get('category');
@@ -16,9 +14,21 @@ const Pagination = () => {
     const searchQuery = searchParams.get('search');
     const brand = searchParams.get('brand');
 
-    const {isLoading, apiData, serverError}=useFetch(`/api/products/pagination?page=${page}&category=${category}&brand=${brand}&search=${searchQuery}`)
-    const pageParam = parseInt(searchParams.get('page') || '1');
-    setCurrentPage(pageParam);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const req = await axios.get(`/api/products/pagination?page=${page}&category=${category}&brand=${brand}&search=${searchQuery}`);
+                const data = req.data;
+                setPageLength(data.totalPages);
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            }
+        };
+
+        fetchData();
+        const pageParam = parseInt(page || '1');
+        setCurrentPage(pageParam);
+    }, [page, category, brand, searchQuery]); // Added page, category, brand, and searchQuery to the dependency array
 
     const handlePageChange = (pageNum: number) => {
         const params = new URLSearchParams(searchParams.toString());
@@ -26,7 +36,7 @@ const Pagination = () => {
         router.push(`/shop?${params.toString()}`);
     };
 
-    if (!currentPage || currentPage === 0 || pageLength === 1 || pageLength ===0) {
+    if (!currentPage || currentPage === 0 || pageLength === 1 || pageLength === 0) {
         return null; // Don't render pagination if current page is null or 1
     }
 

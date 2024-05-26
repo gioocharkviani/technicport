@@ -35,11 +35,9 @@ const ProductFilter = () => {
             <ShopSearch />
           </div>
 
-          <div className='w-full'>
+        
+          <div className='w-full flex flex-col gap-4 smd:flex-row lg:flex-col'>
             <Select data={catData} option='filter' filterBy='category' defaultValue='choose category'/>
-          </div>
-
-          <div className='w-full'>
             <Select data={brandData} option='filter' filterBy='brand' defaultValue='choose brand'/>
           </div>
 

@@ -35,6 +35,6 @@ export async function GET(req: NextRequest) {
         console.error('Error fetching About information:', error);
         
         // Return an error response
-        return NextResponse.json({ success: false, error: 'Internal Server Error' });
+        return NextResponse.json({ success: false, error: 'Internal Server Error' } , {status: 500});
     }
 }
