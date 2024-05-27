@@ -486,3 +486,13 @@ li {
     opacity: 1;
   }
 }
+
+.service-card {
+  background-color: white;
+  transition: all 1s ease-in-out;
+}
+
+.service-card:hover {
+  background: rgb(255,255,255);
+  background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(39,191,155,0.2) 100%);
+}
