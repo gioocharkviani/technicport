@@ -35,7 +35,7 @@ const SwiperService = () => {
   >
     <SwiperSlide>
       <div className='w-full h-full flex justify-center gap-3 items-center'>
-        <div className='w-[80%] h-full flex gap-5 justify-center items-center'>
+        <div className='max-w-[80%] w-max h-full flex gap-5 justify-center items-center'>
 
           <div className='w-[100px] h-[100px] flex justify-center  shrink-0 items-center'>
             <Image src={engineRepair} alt='engine repair' width={100} height={100} />
@@ -56,7 +56,7 @@ const SwiperService = () => {
 
     <SwiperSlide>
       <div className='w-full h-full flex justify-center gap-3 items-center'>
-        <div className='w-[80%] h-full flex gap-5 justify-center items-center'>
+        <div className='max-w-[80%] w-max  h-full flex gap-5 justify-center items-center'>
 
           <div className='w-[100px] h-[100px] flex justify-center  shrink-0 items-center'>
             <Image src={propeler} alt='propeler' width={100} height={100} />
@@ -77,7 +77,7 @@ const SwiperService = () => {
 
     <SwiperSlide>
       <div className='w-full h-full flex justify-center gap-3 items-center'>
-        <div className='w-[80%] h-full flex gap-5 justify-center items-center'>
+        <div className='max-w-[80%] w-max  h-full flex gap-5 justify-center items-center'>
 
           <div className='w-[100px] h-[100px] flex justify-center  shrink-0 items-center'>
             <Image src={key} alt='key' width={100} height={100} />
@@ -98,7 +98,7 @@ const SwiperService = () => {
 
     <SwiperSlide>
       <div className='w-full h-full flex justify-center gap-3 items-center'>
-        <div className='w-[80%] h-full flex gap-5 justify-center items-center'>
+        <div className='max-w-[80%] w-max  h-full flex gap-5 justify-center items-center'>
 
           <div className='w-[100px] h-[100px] flex justify-center  shrink-0 items-center'>
             <Image src={supercharger} alt='supercharger' width={100} height={100} />
