@@ -1,39 +1,36 @@
 'use client'
-import { useSession } from "next-auth/react"
-import { signOut } from "next-auth/react"
-import { useModal } from "@/context/ModalContext";
+import { useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
 import { useTranslation } from "@/i18n/client";
 
 import Image from "next/image";
 import UserIcon from "../../../public/svg/userIcon";
+import { useState, useRef, useEffect } from "react";
 
-import { IoSettingsOutline } from "react-icons/io5";
-import { IoLocation } from "react-icons/io5";
-import { MdOutlinePayments } from "react-icons/md";
-import { LuShoppingBag } from "react-icons/lu";
+import order from '../../../public/png/account/order.png';
+import payments from '../../../public/png/account/payments.png';
+import parameters from '../../../public/png/account/parameters.png';
+import address from '../../../public/png/account/address.png';
+import user from '../../../public/png/account/user.png';
 
-import { useState , useRef, useEffect } from "react";
+import MenuLink2 from "../links/MenuLink2";
 
-import ShippingAddress from "./address/shippingAddress";
-import Orders from "./orders/orders";
-import Payments from "./payments/payments";
-import UserParameters from './profile/userParameters'
+const AccountB = () => {
+  const { t } = useTranslation('common');
 
-const AccountB = () => {  
-
-  const {t} =  useTranslation('common');
-
-
-    //Modal options//
-    const {openModal} = useModal();
-    //Modal options//
-
-  //Open and close Prifle menu
-  const [open , setOpen] = useState(false)
+  // Open and close Profile menu
+  const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
   useEffect(() => {
-    function closeMenu(event:any) {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
+    function closeMenu(event: MouseEvent) {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(event.target as Node) &&
+        buttonRef.current &&
+        !buttonRef.current.contains(event.target as Node)
+      ) {
         setOpen(false);
       }
     }
@@ -41,78 +38,53 @@ const AccountB = () => {
     return () => {
       document.removeEventListener("mousedown", closeMenu);
     };
-  }, [open]);
-  
-  const toggleOpen = () => {
-    setOpen(!open);
+  }, []);
+
+  const { data: session } = useSession();
+
+  const handleToggle = (event: React.MouseEvent) => {
+    event.stopPropagation(); // Stop the event from propagating to the document
+    setOpen(prev => !prev);
   };
-  //Open and close Prifle menu
 
-
-  const {data : session} = useSession();
-  
-  const handleButtonClick = (content: string) => {
-    let contentForModal = null;
-    if (content === 'orders') {
-        contentForModal = <Orders />;
-    } else if (content === 'payments') {
-        contentForModal = <Payments />;
-    } else if (content === 'parameters') {
-        contentForModal = <UserParameters />;
-    } else if (content === 'address') {
-        contentForModal = <ShippingAddress />;
-    }
-    openModal(content, contentForModal);
-};
-
+  const handleSignOut = () => {
+    setOpen(false);
+    signOut();
+  };
 
   return (
-  <>
-    
-    <div className="md:flex relative hidden flex-col justify-center items-center">
-
-        <button onClick={toggleOpen}  className="w-max rounded-md flex gap-2 items-center whiteBoxShadow px-[10px] py-[4px]">
+    <div className="flex relative flex-col justify-center items-center">
+      <button
+        ref={buttonRef}
+        onClick={handleToggle}
+        className="w-max rounded-md flex gap-2 items-center whiteBoxShadow px-[10px] py-[4px]"
+      >
         <div className="w-[22px] flex items-center justify-center shrink-0 h-[22px] rounded-[50%] bg-[#dadada]">
-          {session?.user?.photo? 
-          <Image alt='profilePhoto' width={50} height={50} src={session?.user?.photo} />
-          :
-          <UserIcon />
-        }
+          {session?.user?.photo ? (
+            <Image alt="profilePhoto" width={50} height={50} src={session?.user?.photo} />
+          ) : (
+            <UserIcon />
+          )}
         </div>
         <div className="text-[14px] uppercase">{session?.user?.firstName}</div>
-        </button>
-      
-      {open &&
+      </button>
+
+      {open && (
         <div ref={menuRef} className="absolute rounded-md top-[50px] flex flex-col gap-3 min-w-full right-0 whiteBoxShadow p-[10px]">
-
-        <div className="flex flex-col gap-1">
-
-          <button className="btn3" onClick={() => handleButtonClick("orders")}>
-            <LuShoppingBag />
-            <span>{t('user.orders')}</span>
+          <div className="flex flex-col gap-1">
+            <MenuLink2 link="/account" title={t('user.profile')} icon={user} />
+            <MenuLink2 link="/account/orders" title={t('user.orders')} icon={order} />
+            <MenuLink2 link="/account/payments" title={t('user.payments')} icon={payments} />
+            <MenuLink2 link="/account/address" title={t('user.address')} icon={address} />
+            <MenuLink2 link="/account/parameters" title={t('user.parameters')} icon={parameters} />
+          </div>
+          <button className="btn2" onClick={handleSignOut}>
+            {t('user.signout')}
           </button>
-          <button className="btn3" onClick={() => handleButtonClick("payments")}>
-            <MdOutlinePayments />
-            <span>{t('user.payments')}</span>
-          </button>
-          <button className="btn3" onClick={() => handleButtonClick("address")}>
-            <IoLocation />
-            <span>{t('user.address')}</span>
-          </button>
-          <button className="btn3" onClick={() => handleButtonClick("parameters")}>
-            <IoSettingsOutline />
-            <span>{t('user.parameters')}</span >
-          </button>
-
         </div>
-
-        <button className="btn2" onClick={()=>signOut()}>{t('user.signout')}</button>
-      </div>
-      }
-
+      )}
     </div>
-  </>
-  )
-}
+  );
+};
 
-export default AccountB
+export default AccountB;

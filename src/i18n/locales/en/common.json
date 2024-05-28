@@ -58,6 +58,7 @@
         "payments": "payments",
         "parameters": "parameters",
         "address": "address",
+        "profile": "profile",
         "signout": "Sign out"
     }
 }

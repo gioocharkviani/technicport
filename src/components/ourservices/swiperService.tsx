@@ -41,11 +41,11 @@ const SwiperService = () => {
             <Image src={engineRepair} alt='engine repair' width={100} height={100} />
           </div>
 
-          <div className='w-full flex gap-2 h-[100px] flex-col '>
+          <div className='w-full flex gap-2 h-[100px] flex-col justify-center'>
             <h2 className='text-gray text-[18px] font-bold'>
               ძრავის შეკეთება
             </h2>
-            <span className='text-gray text-[16px]'>
+            <span className='text-gray text-[16px] hidden smd:block'>
               ძრავის შემოწმება და ნებისმიერი დაზიანების აღმოფხვრა.
             </span>
           </div>
@@ -62,11 +62,11 @@ const SwiperService = () => {
             <Image src={propeler} alt='propeler' width={100} height={100} />
           </div>
 
-          <div className='w-full flex gap-2 h-[100px] flex-col '>
+          <div className='w-full flex gap-2 h-[100px] flex-col justify-center'>
             <h2 className='text-gray text-[18px] font-bold'>
               წევის ხრახნის შეცვლა
             </h2>
-            <span className='text-gray text-[16px]'>
+            <span className='text-gray text-[16px] hidden smd:block'>
               დაზიანებული წევის ხრახნის შეცვლა ახლით ან არესებულის შეკეთება.
             </span>
           </div>
@@ -83,11 +83,11 @@ const SwiperService = () => {
             <Image src={key} alt='key' width={100} height={100} />
           </div>
 
-          <div className='w-full flex gap-2 h-[100px] flex-col '>
+          <div className='w-full flex gap-2 h-[100px] flex-col justify-center'>
             <h2 className='text-gray text-[18px] font-bold'>
               გასაღების პროგრამირება
             </h2>
-            <span className='text-gray text-[16px]'>
+            <span className='text-gray text-[16px] hidden smd:block'>
               გასაღების პროგრამირება BRP , Yamaha და სხვა წამყვანი ბრენდის ტექნიკისთვის.
             </span>
           </div>
@@ -104,11 +104,11 @@ const SwiperService = () => {
             <Image src={supercharger} alt='supercharger' width={100} height={100} />
           </div>
 
-          <div className='w-full flex gap-2 h-[100px] flex-col '>
+          <div className='w-full flex gap-2 h-[100px] flex-col justify-center'>
             <h2 className='text-gray text-[18px] font-bold'>
               სუპერდამტენის შეკეთება
             </h2>
-            <span className='text-gray text-[16px]'>
+            <span className='text-gray text-[16px] hidden smd:block'>
               სუპერდამენის ან ტურბინის შეკეთება შეცვლა .
             </span>
           </div>

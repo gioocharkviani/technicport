@@ -198,9 +198,9 @@ li {
   flex-direction: column;
   min-width: 0px;
   align-items: center;
-  border-left: 2px solid rgb(193, 193, 193);
+  border-right: 2px solid rgb(193, 193, 193);
   top: 0;
-  right: -100%;
+  left: -100%;
   width: max-content;
   min-height: 100vh;
   background-color: #ffffff;
@@ -213,7 +213,7 @@ li {
   display: flex;
   flex-direction: column;
   padding: 10px;
-  right: 0;
+  left: 0;
   min-width: 250px;
   align-items: center;
   width: max-content;
@@ -471,8 +471,6 @@ li {
 }
 
 
-
-
 .oacityAnim {
   opacity: 1;
   animation: opacityAnim .3s ease-in-out ;
@@ -495,4 +493,74 @@ li {
 .service-card:hover {
   background: rgb(255,255,255);
   background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(39,191,155,0.2) 100%);
+}
+
+.active-acLink {
+  padding-left: 8px;
+  border-left: 2px solid rgba(251, 188, 5, 1) ;
+  background: rgba(251, 188, 5, 0.1)
+}
+
+
+.form-control {
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 1em auto;
+  gap: 0.5em;
+}
+
+.form-control + .form-control {
+  margin-top: 1em;
+}
+
+.form-control--disabled {
+  color: var(--form-control-disabled);
+  cursor: not-allowed;
+}
+
+input[type="checkbox"] {
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: var(--form-background);
+  margin: 0;
+  border-radius: 4px;
+  font: inherit;
+  color: gray;
+  width: 20px;
+  height: 20px;
+  border: 2px solid gray;
+  display: grid;
+  place-content: center;
+}
+
+input[type="checkbox"]:checked {
+  border: 0.15em solid rgb(29, 103, 34);
+}
+input[type="checkbox"]::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  transform: scale(0);
+  transform-origin: bottom left;
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--form-control-color);
+  /* Windows High Contrast Mode */
+  background-color: gray;
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+  background-color: rgb(29, 103, 34);
+}
+
+
+input[type="checkbox"]:disabled {
+  --form-control-color: var(--form-control-disabled);
+
+  color: var(--form-control-disabled);
+  cursor: not-allowed;
 }

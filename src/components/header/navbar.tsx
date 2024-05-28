@@ -19,15 +19,20 @@ const Navbar = () => {
     <div className='border-b-[2px] border-[#D4D4D4] h-[56px] w-full flex justify-center items-center'>
       <div className='max-w-[1500px] items-center w-full px-[10px] md:px-[30px] flex lg:flex-row flex-row-reverse justify-between'>
         <NavMenu />
-        <HumburgerNavigation />
+
         <div className='w-max flex flex-row gap-[30px]'>
-          <Lang />
+
+
+
+          <div className='hidden lg:block'>
+            <Lang />
+          </div>
 
           <div className='hidden lg:block'>
             <CartLink />
           </div>
 
-          <div className='hidden lg:block'>
+          <div className='block'>
           {status === "authenticated" && 
             <AccountB />
           }
@@ -37,6 +42,7 @@ const Navbar = () => {
           }
           </div>
         </div>
+          <HumburgerNavigation />    
       </div>
     </div>
   );

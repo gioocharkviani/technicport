@@ -1,31 +1,29 @@
-import { NextResponse , NextRequest } from "next/server";
-import { getToken } from "next-auth/jwt";
+import { NextResponse, NextRequest } from "next/server";
 import prisma from "@/libs/db";
-
+import { getToken } from "next-auth/jwt";
 
 export async function DELETE(req: NextRequest) {
-    const token = await getToken({req});
-    if (!token || typeof token.id !== 'string') { 
+    const data = await req.json(); // Parse the JSON body to get the id
+    const token = await getToken({ req });
+
+    if (!token || typeof token.id !== 'string') {
         return new NextResponse('Not Authorized', { status: 401 });
     }
+
+    if (!data.id) {
+        return new NextResponse('Bad Request: Missing ID', { status: 400 });
+    }
+
     try {
-        const { phone ,address, zip, city, userId } = await req.json() ;
-        const createdAddress = await prisma.address.create({
-            data: {
-                phone: phone,
-                address: address,
-                zip: zip,
-                city: city,
-                userId: token.id
-            }
+        await prisma.address.delete({
+            where: {
+                id: data.id,
+            },
         });
-        if(createdAddress){
-            return  NextResponse.json(createdAddress);
-        }
-        // Handling the case where createdAddress is null or undefined
-        return new NextResponse('Failed to create address', { status: 500 });
+
+        return new NextResponse('Address deleted successfully', { status: 200 });
     } catch (error) {
-        // Handle error appropriately, like returning an error response
+        console.error('Error deleting address:', error);
         return new NextResponse('Internal Server Error', { status: 500 });
     }
 }

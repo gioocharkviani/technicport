@@ -8,7 +8,7 @@ import { useFetch } from '@/hooks/useFetch';
 
 
 const CurrectProductPage = ({params}:{params: any}) => {
-  const {isLoading , apiData } = useFetch(`/api/products/getcurrent?id=${params.id}`);
+  const {isLoading , apiData } = useFetch({url:`/api/products/getcurrent?id=${params.id}`});
   return (
     <MaxWidthWrapper> 
         <div className='w-full flex flex-col gap-5'>

@@ -41,6 +41,9 @@ model Address {
   address String
   phone   String
   zip     String?
+  default Boolean @default(false)
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
 }
 
 model Payment {
@@ -65,8 +68,8 @@ model Product {
   productImages  ProductImages[]
   categoryId     Int
   category       Category   @relation(fields: [categoryId], references: [id])
-  brandId        Int
-  brand          Brand   @relation(fields: [brandId], references: [id])
+  brandId        Int?
+  brand          Brand?   @relation(fields: [brandId], references: [id])
   createdAt      DateTime   @default(now())
   updatedAt      DateTime   @updatedAt
 }

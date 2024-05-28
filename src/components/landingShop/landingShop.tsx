@@ -15,7 +15,7 @@ import { FreeMode, Pagination } from 'swiper/modules';
 import { useTranslation } from '@/i18n/client';
 
 const LandingShop = () => {
-  const {isLoading , serverError , apiData } = useFetch('/api/products/get?take=8');
+  const {isLoading , serverError , apiData } = useFetch({url:'/api/products/get?take=8'});
   const { t } = useTranslation('common');
 
   return (

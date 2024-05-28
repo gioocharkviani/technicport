@@ -6,7 +6,7 @@ import { useLocale } from '@/hooks/locale-provider';
 import { useFetch } from '@/hooks/useFetch';
 
 const Info = () => {
-  const {isLoading , serverError , apiData } = useFetch('/api/about');
+  const {isLoading , serverError , apiData } = useFetch({url:'/api/about'});
 
   const { t } = useTranslation('common');
 

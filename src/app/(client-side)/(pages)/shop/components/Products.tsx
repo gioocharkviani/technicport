@@ -13,7 +13,7 @@ const Products = (searchParams : any) => {
     const brand = searchParams.brand;
     // params for api
 
-    const {isLoading , apiData , serverError} = useFetch(`/api/products/get?page=${page}&category=${category}&brand=${brand}&search=${searchQuery}`)
+    const {isLoading , apiData , serverError} = useFetch({url: `/api/products/get?page=${page}&category=${category}&brand=${brand}&search=${searchQuery}`})
 
     return (
         <div className='grid grid-cols-1 smd:grid-cols-2 md:grid-cols-3 gap-5 w-full h-max'>

@@ -8,7 +8,7 @@ import Image from 'next/image';
 import { useFetch } from '@/hooks/useFetch';
 
 const AboutPage = () => {
-  const {isLoading , apiData , serverError} = useFetch('/api/about')
+  const {isLoading , apiData , serverError} = useFetch({url:'/api/about'})
 
   const { t } = useTranslation('common');
   return (

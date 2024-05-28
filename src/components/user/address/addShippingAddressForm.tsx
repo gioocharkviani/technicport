@@ -9,11 +9,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 
 const AddShippingAddressForm = () => {
-    const {updateModalContent , updateModalTitle} = useModal();
-    const back =() => {
-        updateModalTitle('Shipping address')
-        updateModalContent(<ShippingAddress />);
-    }
+
 
     type inputType = z.infer<typeof addressValidator>
     const  { register, handleSubmit ,reset , formState: {errors} } = useForm<inputType>({
@@ -26,7 +22,6 @@ const AddShippingAddressForm = () => {
             if(req.status === 200){
                 toast.success('მისამართი დაემატა წარმატებით')
                 reset();
-                updateModalContent(<ShippingAddress />)
             }
         } catch (error) {
             toast.error('შეცდომა დამატების დროს')
@@ -55,7 +50,6 @@ const AddShippingAddressForm = () => {
                 </div>
             </div>
             <div className='flex gap-[10px] justify-between mt-[20px]'>
-                <button onClick={back} className='btn5'>უკან</button>
                 <button className='btn1'>დამატება</button>
             </div>
         </form>
