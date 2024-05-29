@@ -4,8 +4,10 @@ import Select from '@/components/select/Select';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import ShopSearch from './ShopSearch';
+import { useLocale } from '@/hooks/locale-provider';
 
 const ProductFilter = () => {
+  const locale = useLocale();
   const [catData , setCatData] = useState<any>(null)
   const [brandData , setBrandData] = useState<any>(null)
   const router = useRouter();
@@ -25,7 +27,7 @@ const ProductFilter = () => {
     };
     getCategory();
     getBrand();
-  },[])
+  },[locale])
     
   return (
     <div className='flex p-[12px] flex-col gap-[20px]'>
@@ -36,8 +38,8 @@ const ProductFilter = () => {
 
         
           <div className='w-full flex flex-col gap-4 smd:flex-row lg:flex-col'>
-            <Select data={catData} option='filter' filterBy='category' defaultValue='choose category'/>
-            <Select data={brandData} option='filter' filterBy='brand' defaultValue='choose brand'/>
+            <Select data={catData} option='filter' filterBy='category' defaultPlaceholder='choose category'/>
+            <Select data={brandData} option='filter' filterBy='brand' defaultPlaceholder='choose brand'/>
           </div>
 
           <div className='w-full'>
