@@ -143,7 +143,7 @@ const ChangeUserInfo = () => {
                 </div>
                 <div className="w-full">
                     <button className="btn1" type="submit" disabled={buttonDisabled}>
-                        Update
+                        განახლება
                     </button>
                 </div>
             </form>
