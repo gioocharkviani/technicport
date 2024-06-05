@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
-import accet2 from '../../../public/accet2.png'
+import accet2 from '../../../public/commingsoon.jpg'
 
 const ProjectCard = () => {
   return (

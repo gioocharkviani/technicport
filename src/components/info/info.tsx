@@ -28,12 +28,16 @@ const Info = () => {
         </div>
       }
 
-      {!isLoading && apiData !==null && 
-        
+      {!isLoading && apiData !==null &&    
         <ul className='infoUl h-[200px] relative overflow-y-auto flex flex-col gap-3 mt-[20px] text-[13px]'>
             <li>{apiData}</li>
-        </ul>
-        
+        </ul>  
+      }
+
+      {!isLoading && !apiData &&    
+        <ul className='h-[200px]  flex items-center justify-center gap-3 mt-[20px] text-[14px]'>
+            <li>ჩვენ შესახებ ინფორმაციის ჩანაწერი ვერ მოიძებნა</li>
+        </ul>  
       }
 
     </div>

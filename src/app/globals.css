@@ -1,0 +1,575 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+/* Define the custom scrollbar styles */
+::-webkit-scrollbar {
+    width: 8px; /* Set the width of the scrollbar */
+  }
+  
+  /* Define the track (the area the thumb moves on) */
+  ::-webkit-scrollbar-track {
+    background-color: #e8e8e8; /* Set the color of the track */
+  }
+  
+  /* Define the thumb (the draggable handle) */
+  ::-webkit-scrollbar-thumb {
+    background-color: #a8a8a8; /* Set the color of the thumb */
+    border-radius: 3px; /* Optional: Add rounded corners to the thumb */
+  }
+  
+  /* Define the hover effect for the thumb */
+  ::-webkit-scrollbar-thumb:hover {
+    cursor: pointer;
+    background-color: #717171; /* Change the color on hover if desired */
+  }
+
+  
+li {
+    list-style: none;
+}
+
+.listStyle-1 {
+    height: 32px;
+    padding: 0 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    background-color: white;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0 , 0.5);
+    transition: all .2s ease-in-out;
+    line-height: 0;
+}
+
+.listStyle-1:hover {
+    box-shadow: 0px 0px 5px rgb(6, 195, 167);
+}
+
+.listStyle-1.active {
+  box-shadow: 0px 0px 5px rgb(6, 195, 167);
+}
+
+.infoUl li {
+    list-style: none;
+}
+
+.whiteBoxShadow {
+  background-color: white ;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0 , 0.5);
+}
+.hoverWhiteBoxShadow {
+  background-color: white ;
+  box-shadow: 0px 0px 10px rgba(0, 255, 162, 0.5);
+}
+
+
+.whiteBoxShadow1 {
+  background-color: white ;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0 , 0.5);
+  transition: all 0.3s ease-in-out;
+}
+.whiteBoxShadow1:hover {
+  background-color: white ;
+  box-shadow: 0px 0px 5px rgba(2, 255, 192, 0.71);
+}
+
+.notFound {
+  width: full;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.ProjectgridArea {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 20px;
+}
+
+.ProjectgridArea:hover > :not(:hover){
+  opacity: 0.5;
+}
+
+@media only screen and (max-width: 764px) {
+  .ProjectgridArea {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .gridprjItem:last-child{
+    display: none;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .ProjectgridArea {
+    grid-template-columns: 2fr;
+  }
+}
+
+/* Chrome, Safari, Edge, Opera */
+
+
+  @media only screen and (min-width: 764px) {
+    .gridprjItem:nth-child(1){
+      grid-column-start: 1;
+      grid-column-end: 2;
+      grid-row-start: 1;
+      grid-row-end: 3;
+    }
+
+  }
+
+.gridprjItem {
+  border-radius: 10px;
+  transition: all .3s ease-in-out;
+}
+
+
+.Contact-Card {
+  background-color: white ;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0 , 0.5);
+  border-radius: 4px;
+  padding: 8px 10px;
+}
+
+
+/* HumBurger Button */
+.humburger-btn {
+  width: 25px;
+  height: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 99;
+  cursor: pointer;
+  
+}
+
+.bar-line {
+  width: 100%;
+  height: 3px;
+  background-color: rgb(51 65 85);
+  box-shadow: small;
+  border-radius: 2px;
+  transition: all .5s ease-in-out;
+}
+
+.bar-line::before ,
+.bar-line::after
+ {
+  content: '';
+  display: block;
+  width: 100%;
+  border-radius: 2px;
+  position: absolute;
+  height: 3px;
+  background-color: rgb(51 65 85);
+  transition: all .5s ease-in-out;
+}
+
+.bar-line::before {
+  transform: translateY(-10px);
+  transition: all .5s ease-in-out;
+}
+.bar-line::after {
+  transform: translateY(10px);
+}
+
+.humburger-active .bar-line {
+   transform: translateX(-100%);
+   background: transparent;
+}
+.humburger-active .bar-line::before {
+  background-color: rgb(51 65 85);
+  transform: rotate(45deg) translate(18px , -18px)
+}
+.humburger-active .bar-line::after {
+  background-color: rgb(51 65 85);
+  transform: rotate(-45deg) translate(18px , 18px)
+}
+/* HumBurger Button */
+.humburgerMenuWrapper {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  min-width: 0px;
+  align-items: center;
+  border-right: 2px solid rgb(193, 193, 193);
+  top: 0;
+  left: -100%;
+  width: max-content;
+  min-height: 100vh;
+  background-color: #ffffff;
+  transition: all 0.3s ease-in-out;
+  z-index: 10;
+}
+
+.humburgerMenuWrapper.active {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  left: 0;
+  min-width: 250px;
+  align-items: center;
+  width: max-content;
+  transition: all 0.3s ease-in-out;
+}
+
+
+.ServiceTitleBg {
+  background-color: rgba(0, 0, 0 , 0.5);
+}
+
+.swiper1  {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  padding:10px 0px;  
+  width: max-content;
+  height: max-content;
+}
+.swiper-pagination {
+  position: relative !important;
+  margin-top: 50px;
+}
+.swiper-pagination-bullet {
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 2px !important;
+}
+.swiper-pagination-bullet-active {
+  background-color: #27BF9B !important;
+}
+.swiper-button-prev , .swiper-button-next {
+  color: #27BF9B !important;
+  width: 30px !important;
+}
+
+
+
+.blackBgRgba {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.input1 {
+  border: 2px solid rgb(233, 233, 233);
+  outline: none;
+  padding: 12px 12px;
+  border-radius: 5px;
+  font-size: 13px;
+  transition: all .2s ease-in-out;
+}
+.input1::placeholder {
+  text-transform: capitalize;
+}
+
+.input1:focus {
+  border: 2px solid #27BF9B;
+}
+
+.errorInput {
+  border: 2px solid #da2837;
+}
+
+.errorInput:focus {
+  border: 2px solid #da2837;
+}
+
+.btn1 {
+  color: white;
+  line-height: 2;
+  font-size: 14px;
+  border-radius: 4px;
+  padding: 8px 10px;
+  width: 100%;
+  background-color: #27BF9B;
+}
+.btn1:hover {
+  background-color: #448e7d;
+}
+
+.btn6 {
+  color: white;
+  line-height: 2;
+  font-size: 14px;
+  border-radius: 4px;
+  padding: 8px 10px;
+  width: 100%;
+  background-color: #FBBC05;
+}
+.btn6:hover {
+  background-color: #c19100;
+}
+
+.btn5 {
+  color: white;
+  line-height: 2;
+  font-size: 14px;
+  border-radius: 4px;
+  padding: 8px 10px;
+  width: 100%;
+  background-color: #535353;
+}
+.btn5:hover {
+  background-color: #707070;
+}
+
+.btn2 {
+  color: white;
+  font-size: 14px;
+  border-radius: 4px;
+  padding: 8px 0px;
+  width: 100%;
+  background-color: #bf2727;
+}
+.btn2:hover {
+  background-color: #862424;;
+}
+.btn3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgb(36, 36, 36);
+  font-size: 14px;
+  border-radius: 4px;
+  height: 40px;
+  padding: 8px 8px;
+  width: 100%;
+  min-width: max-content;
+  background-color: #ebebeb;
+}
+.btn3:hover {
+  background-color: #dadada;;
+}
+
+.btn4 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: rgb(36, 36, 36);
+  font-size: 14px;
+  border-radius: 4px;
+  height: 40px;
+  padding: 8px 8px;
+  width: 100%;
+  min-width: max-content;
+  background-color: #ebebeb;
+}
+.btn4:hover {
+  background-color: #dadada;;
+}
+
+.toastContainer {
+  z-index: 99999999999;
+}
+
+.chooseImageBtnWrapper {
+  width: 32px;
+  height: 32px;
+  overflow: hidden;
+  border-radius: 50%;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  background: #FBBC05;
+  transition: all 0.3s ease-in-out;
+}
+.chooseImageBtnWrapper:hover {
+  transition: all 0.3s ease-in-out;
+  background: #000;
+}
+
+.chooseImageBtnWrapper button {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.chooseImageBtnWrapper button input[type="file"] {
+  cursor: pointer;
+  position: absolute;
+  transform: scale(3);
+  opacity: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.errorSpan {
+  font-size: 12px;
+  color:#da2837;
+}
+
+.AddBtn {
+  border:1px solid rgb(66, 66, 66);
+  border-radius: 8px;
+  padding: 5px 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(66, 66, 66);
+  font-size: 14px;
+  gap: 12px;
+}
+
+.skeleton {
+  opacity: .7;
+  animation:skeleton-loading 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading {
+  0%{
+    background-color: hsl(200, 20% , 70%);
+  }
+  100%{
+    background-color: hsl(200, 20% , 95%);
+  }
+}
+
+
+.cart-link {
+  position: relative;
+  height: 32px;
+  padding: 0 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  background-color: white;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0 , 0.5);
+  transition: all .2s ease-in-out;
+  line-height: 0;
+}
+.cart-link span {
+  right: -8px;
+  top: -8px;
+  font-size: 12px;
+  color:white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #27BF9B;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  position: absolute;
+}
+
+
+.oacityAnim {
+  opacity: 1;
+  animation: opacityAnim .3s ease-in-out ;
+}
+
+@keyframes opacityAnim {
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+
+.service-card {
+  background-color: white;
+  transition: all 1s ease-in-out;
+}
+
+.service-card:hover {
+  background: rgb(255,255,255);
+  background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(39,191,155,0.2) 100%);
+}
+
+.active-acLink {
+  padding-left: 8px;
+  border-left: 2px solid rgba(251, 188, 5, 1) ;
+  background: rgba(251, 188, 5, 0.1)
+}
+
+
+.form-control {
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 1em auto;
+  gap: 0.5em;
+}
+
+.form-control + .form-control {
+  margin-top: 1em;
+}
+
+.form-control--disabled {
+  color: var(--form-control-disabled);
+  cursor: not-allowed;
+}
+
+input[type="checkbox"] {
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: var(--form-background);
+  margin: 0;
+  border-radius: 4px;
+  font: inherit;
+  color: gray;
+  width: 20px;
+  height: 20px;
+  border: 2px solid gray;
+  display: grid;
+  place-content: center;
+}
+
+input[type="checkbox"]:checked {
+  border: 0.15em solid rgb(29, 103, 34);
+}
+input[type="checkbox"]::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  transform: scale(0);
+  transform-origin: bottom left;
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--form-control-color);
+  /* Windows High Contrast Mode */
+  background-color: gray;
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+  background-color: rgb(29, 103, 34);
+}
+
+
+input[type="checkbox"]:disabled {
+  --form-control-color: var(--form-control-disabled);
+
+  color: var(--form-control-disabled);
+  cursor: not-allowed;
+}
+
+
+.container404 {
+  background-image: url(../../public/bg1.png);
+  background-size: cover;
+  background-position:top left;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+} 

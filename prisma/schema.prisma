@@ -10,7 +10,6 @@ datasource db {
   url      = env("DATABASE_URL_LOCAL")
 }
 
-
 model User {
   id          String      @id @default(uuid())
   email       String      @unique
@@ -25,35 +24,67 @@ model User {
   orders      Order[]
   addresses   Address[]
   payments    Payment[]
+  cartItems   CartItem[]
 }
 
 model Order {
-  id      Int      @id @default(autoincrement())
-  userId  String
-  user    User     @relation(fields: [userId], references: [id])
+  id          Int         @id @default(autoincrement())
+  userId      String
+  user        User        @relation(fields: [userId], references: [id])
+  orderItems  OrderItem[]
+  status      OrderStatus @default(PENDING)
+  totalAmount Float
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  payments    Payment[]
+}
+
+model OrderItem {
+  id        Int     @id @default(autoincrement())
+  orderId   Int
+  order     Order   @relation(fields: [orderId], references: [id])
+  productId Int
+  product   Product @relation(fields: [productId], references: [id])
+  quantity  Int
+  price     Float
+}
+
+model CartItem {
+  id        Int     @id @default(autoincrement())
+  userId    String
+  user      User    @relation(fields: [userId], references: [id])
+  productId Int
+  product   Product @relation(fields: [productId], references: [id])
+  quantity  Int     @default(1)
 }
 
 model Address {
-  id      Int      @id @default(autoincrement())
-  userId  String
-  user    User     @relation(fields: [userId], references: [id])
-  city    String
-  address String
-  phone   String
-  zip     String?
-  default Boolean @default(false)
-  createdAt      DateTime   @default(now())
-  updatedAt      DateTime   @updatedAt
+  id         Int      @id @default(autoincrement())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id])
+  city       String
+  address    String
+  phone      String
+  zip        String?
+  default    Boolean   @default(false)
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
 }
 
 model Payment {
-  id      Int      @id @default(autoincrement())
-  userId  String
-  user    User     @relation(fields: [userId], references: [id])
+  id         Int      @id @default(autoincrement())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id])
+  orderId    Int
+  order      Order    @relation(fields: [orderId], references: [id])
+  amount     Float
+  status     PaymentStatus @default(PENDING)
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
 }
 
 model Product {
-  id             Int        @id @default(autoincrement())
+  id             Int            @id @default(autoincrement())
   title_en       String?
   title_ru       String?
   title_ge       String
@@ -62,46 +93,48 @@ model Product {
   description_ge String
   code           String?
   oem            String?
-  price          Int?
+  price          Float?
   quantity       Int
   thumbnail      String
   productImages  ProductImages[]
   categoryId     Int
-  category       Category   @relation(fields: [categoryId], references: [id])
+  category       Category       @relation(fields: [categoryId], references: [id])
   brandId        Int?
-  brand          Brand?   @relation(fields: [brandId], references: [id])
-  createdAt      DateTime   @default(now())
-  updatedAt      DateTime   @updatedAt
+  brand          Brand?         @relation(fields: [brandId], references: [id])
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  cartItems      CartItem[]
+  orderItems     OrderItem[]
 }
 
 model Category {
-  id         Int        @id @default(autoincrement())
-  title_ge       String     @unique
-  title_en       String?     @unique
-  title_ru       String?     @unique
-  products   Product[]
+  id             Int            @id @default(autoincrement())
+  title_ge       String         @unique
+  title_en       String?        @unique
+  title_ru       String?        @unique
+  products       Product[]
 }
 
 model Brand {
-  id         Int        @id @default(autoincrement())
-  brand_ge       String     @unique
-  brand_en       String?     @unique
-  brand_ru       String?     @unique
-  products   Product[]
+  id             Int            @id @default(autoincrement())
+  brand_ge       String         @unique
+  brand_en       String?        @unique
+  brand_ru       String?        @unique
+  products       Product[]
 }
 
 model ProductImages {
-  id         Int        @id @default(autoincrement())
-  imageUrl   String    
-  product    Product    @relation(fields: [productId], references: [id])
-  productId  Int
+  id             Int            @id @default(autoincrement())
+  imageUrl       String    
+  product        Product        @relation(fields: [productId], references: [id])
+  productId      Int
 }
 
 model About {
-  id         Int        @id @default(autoincrement())
-  aboutus_ge String
-  aboutus_en String?
-  aboutus_ru String?
+  id             Int            @id @default(autoincrement())
+  aboutus_ge     String
+  aboutus_en     String?
+  aboutus_ru     String?
 }
 
 enum UserStatus {
@@ -116,3 +149,14 @@ enum Role {
   EDITOR
 }
 
+enum OrderStatus {
+  PENDING
+  COMPLETED
+  CANCELED
+}
+
+enum PaymentStatus {
+  PENDING
+  COMPLETED
+  FAILED
+}

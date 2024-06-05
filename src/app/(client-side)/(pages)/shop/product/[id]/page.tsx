@@ -13,27 +13,37 @@ const CurrectProductPage = ({params}:{params: any}) => {
     <MaxWidthWrapper> 
         <div className='w-full flex flex-col gap-5'>
 
-        <div className='bg-white flex justify-between items-center mt-[25px] px-[10px] py-[5px] rounded-xl'>
+        {/* PAGE MAP */}
+      <div className='bg-white flex justify-between items-center mt-[25px] px-[10px] py-[5px] rounded-xl'>
             <div className='flex text-[14px] gap-2'>
-            <Link href='/' className='hover:opacity-50 color-[gray] font-light flex items-center gap-1'>
+              <Link href='/' className='hover:opacity-50 color-[gray] font-light flex items-center gap-1'>
                   <IoHomeOutline className='color-[gray]'/>
                   home
-                </Link>
-                <span className=' color-[gray] font-light'>/</span>
-                <Link href='/shop' className=' hover:opacity-50 color-[gray] font-light'>shop</Link>
+              </Link>
+              <span className=' color-[gray] font-light'>/</span>
+              <Link href='/shop' className=' hover:opacity-50 color-[gray] font-light'>shop</Link>
             </div>
         <div>
-                {isLoading && <div className='w-[200px] py-[5px] rounded-lg skeleton'></div>}
-                {apiData &&
-                <div className='flex text-[14px] justify-between items-center gap-2 w-full'>
-                    <span className=' color-[gray] font-light'>category:</span>
-                    <span className='font-bold'>{apiData.category}</span>
-                </div>
-                }
+
+        {isLoading && <div className='w-[200px] py-[5px] rounded-lg skeleton'></div>}
+
+        {apiData &&
+            <div className='flex text-[14px] justify-between items-center gap-2 w-full'>
+              <span className=' color-[gray] font-light'>category:</span>
+              <span className='font-bold'>{apiData.category}</span>
+            </div>
+        }
             </div>
         </div>
+        {/* PAGE MAP */}
 
+        <div className='flex justify-between gap-4'>
+
+
+        {/* PRODUCT MAIN INFO */}
         <div className='w-full h-full  bg-white p-[20px] rounded-xl'>
+
+  
         <div className='flex w-full md:flex-row flex-col gap-7 md:gap-5 justify-between'>
           {isLoading && <div className='flex-[1] h-[300px] skeleton'></div>}
           {apiData &&
@@ -45,7 +55,7 @@ const CurrectProductPage = ({params}:{params: any}) => {
                 {isLoading &&<div className='w-[70%] py-[10px] rounded-lg skeleton'></div>}
                 {apiData &&
                     <h2 className='text-[28px] capitalize color-[gray] font-semibold'>{apiData.title}</h2>
-                }
+                  }
                   {isLoading &&<div className='w-[40%] py-[10px] rounded-lg skeleton'></div>}
                   {apiData &&
                   <div className='flex justify-between gap-2 items-center w-max'>
@@ -63,34 +73,40 @@ const CurrectProductPage = ({params}:{params: any}) => {
                     {apiData.descr}
                 </span>
                 }
-
-                <div className='flex mt-[50px] w-full justify-between items-center gap-5'>
-
-                    <div className='flex lg:flex-row flex-col gap-2  w-full '>
-                        <input type='number' min={1} defaultValue={1}  max={isLoading? 0 : apiData?.quantity} className='input1 appearance-auto w-full max-w-[200px]'/>
-                        <button disabled={isLoading} className='btn1 max-w-[200px]'>add cart</button> 
-                        <button disabled={isLoading} className='btn6 max-w-[200px]'>buy it now</button> 
-                    </div>
-
-                    <div className='flex w-max justify-end'>
-                    {isLoading &&<div className='w-[60%] py-[10px] rounded-lg skeleton'></div>}
-                    {apiData &&
-                    <div className='flex gap-2 items-center'>
-                    <span className='md:text-[15px] flex gap-3 uppercase color-[gray] font-mdeium'>price:</span>
-                    <span className='font-bold text-[20px]'>{apiData.price}</span>
-                    </div>
-                    }
-                    </div>
-
-                </div>
+    
             </div>
         </div>
         </div>
+        
+        {/* PRODUCT MAIN INFO */}
+
+        <div className='flex min-w-[250px] p-[20px] bg-white rounded-lg flex-col h-max justify-between items-center gap-5'>
+
+          <div className='flex w-max'>
+            {isLoading &&<div className='w-[60%] py-[10px] rounded-lg skeleton'></div>}
+            {!isLoading && apiData && (
+              <div className='flex gap-2 items-center justify-between'>
+                <span className='font-bold text-[36px]'>{apiData.price} ₾</span>
+              </div>
+              )
+            }
+          </div>
+
+          <div className='flex flex-col gap-2  w-full '>
+             <button disabled={isLoading} className='btn1 max-w-[200px]'>add cart</button> 
+             <button disabled={isLoading} className='btn6 max-w-[200px]'>buy it now</button> 
+          </div>
+
+
+        </div>
+
+      </div>
 
     </div>
-
     </MaxWidthWrapper>
   )
 };
 
 export default CurrectProductPage;
+
+
