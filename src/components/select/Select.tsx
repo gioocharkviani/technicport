@@ -66,7 +66,7 @@ const Select = ({ data, option, filterBy, defaultPlaceholder }: any) => {
                             <button 
                                 key={item.id} 
                                 onClick={() => setParams(item.id, item.title)}
-                                className={`px-3 py-2 hover:bg-gray-200 rounded-md ${selectedId === item.id.toString() ? 'bg-color1 text-white hover:bg-color1' : 'bg-white'}`}
+                                className={`px-3 py-2 ${selectedId !== item.id.toString ? '' : '' } rounded-md ${selectedId === item.id.toString() ? 'bg-white shadow-md shadow-color1' : 'bg-white'}`}
                             >
                                 {item.title}
                             </button>

@@ -8,7 +8,7 @@ import { FcAddImage } from "react-icons/fc";
 
 const AddProduct = () => {
     const [images, setImages] = useState<any>([]);
-    const [thumbnailIndex, setThumbnailIndex] = useState<any | null >(0); 
+    const [thumbnailIndex, setThumbnailIndex] = useState<any | null>(0); 
     const [categoryData, setCategoryData] = useState([]);
     const [brandData, setBrandData] = useState([]);
     const [formData, setFormData] = useState<any>({
@@ -27,8 +27,8 @@ const AddProduct = () => {
         thumbnailindex: 0
     });
 
-    const handleSetThumbnail =(index:number)=>{
-        setFormData({...formData , thumbnailindex:index})
+    const handleSetThumbnail = (index: number) => {
+        setFormData({ ...formData, thumbnailindex: index });
     }
 
     useEffect(() => {
@@ -56,12 +56,12 @@ const AddProduct = () => {
         getBrand();
     }, []);
 
-    const imagesHandler = (e:any) => {
+    const imagesHandler = (e: any) => {
         setImages([...images, ...e.target.files]);
     };
 
     const handleRemoveImage = (index: number) => {
-        const filteredImages = images.filter((i: number) => i !== index);
+        const filteredImages = images.filter((_: any, i: number) => i !== index);
         setImages(filteredImages);
     };
 
@@ -73,12 +73,12 @@ const AddProduct = () => {
 
         const data = new FormData();
         
-            // Append formData to FormData
-        Object.entries(formData).forEach(([key, value]:any) => {
+        // Append formData to FormData
+        Object.entries(formData).forEach(([key, value]: any) => {
             data.append(key, value);
         });
 
-        images.forEach((image:any) => {
+        images.forEach((image: any) => {
             data.append('image', image);
         });
         try {
@@ -93,20 +93,20 @@ const AddProduct = () => {
         }
     };
 
-    const handleCategoryChange = (e:any) => {
+    const handleCategoryChange = (e: any) => {
         const catId = parseInt(e.target.value);
-        setFormData({ ...formData, categoryid: catId  });
+        setFormData({ ...formData, categoryid: catId });
     };
 
-    const handleBrandChange = (e:any) => {
+    const handleBrandChange = (e: any) => {
         const brandId = parseInt(e.target.value);
-        setFormData({ ...formData, brandId: brandId  });
+        setFormData({ ...formData, brandId: brandId });
     };
 
-    const handleInputChange = (e:any) => {
+    const handleInputChange = (e: any) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
-  
+
     return (
         <div className='w-full p-[10px] bg-white rounded-xl'>
 
@@ -115,50 +115,50 @@ const AddProduct = () => {
                 <div className="w-full flex justify-between gap-3">
                     <div className="w-full gap-1 flex flex-col flex-1">
                       <label className="text-[13px]">TITLE GE*</label>
-                      <input name='titleGe' onChange={(e)=>handleInputChange(e)} type="text" className="input1" />
+                      <input name='titleGe' onChange={(e) => handleInputChange(e)} type="text" className="input1" />
                     </div>
                     <div className="w-full gap-1 flex flex-col flex-1">
                       <label className="text-[13px]">TITLE EN</label>
-                      <input name='titleEn' onChange={(e)=>handleInputChange(e)} type="text" className="input1" />
+                      <input name='titleEn' onChange={(e) => handleInputChange(e)} type="text" className="input1" />
                     </div>
                     <div className="w-full gap-1 flex flex-col flex-1">
                       <label className="text-[13px]">TITLE RU</label>
-                      <input name='titleRu' onChange={(e)=>handleInputChange(e)} type="text" className="input1" />
+                      <input name='titleRu' onChange={(e) => handleInputChange(e)} type="text" className="input1" />
                     </div>
                 </div>
 
                 <div className="w-full flex justify-between gap-3">
                     <div className="w-full gap-1 flex flex-col flex-1">
                       <label className="text-[13px]">TECHNICPORT CODE*</label>
-                      <input name='techCode' onChange={(e)=>handleInputChange(e)} type="text" className="input1" />
+                      <input name='techCode' onChange={(e) => handleInputChange(e)} type="text" className="input1" />
                     </div>
                     <div className="w-full gap-1 flex flex-col flex-1">
                       <label className="text-[13px]">OEM CODE</label>
-                      <input name='oem' onChange={(e)=>handleInputChange(e)} type="text" className="input1" />
+                      <input name='oem' onChange={(e) => handleInputChange(e)} type="text" className="input1" />
                     </div>
                 </div>
 
                 <div className="w-full flex justify-between gap-3">
-    
+
 
                     <div className="w-full gap-1 flex flex-col flex-1">
-                    <label className="text-[13px]">CATEGORY</label>
-                    <select onChange={handleCategoryChange} className="input1">
-                        <option value="">Select Category</option>
-                        {categoryData && categoryData.map((item: any, index: number) => (
-                            <option key={index} value={item.id}>{item.title_ge}</option> // Assuming category ID is 'id' in your data
-                        ))}
-                    </select>
+                        <label className="text-[13px]">CATEGORY</label>
+                        <select onChange={handleCategoryChange} className="input1">
+                            <option value="">Select Category</option>
+                            {categoryData && categoryData.map((item: any, index: number) => (
+                                <option key={index} value={item.id}>{item.title}</option> // Assuming category ID is 'id' in your data
+                            ))}
+                        </select>
                     </div>
 
                     <div className="w-full gap-1 flex flex-col flex-1">
-                    <label className="text-[13px]">BRAND</label>
-                    <select onChange={handleBrandChange} className="input1">
-                        <option value="">Select Brand</option>
-                        {brandData && brandData.map((item: any) => (
-                            <option key={item.id} value={item.id}>{item.brand_ge}</option> 
-                        ))}
-                    </select>
+                        <label className="text-[13px]">BRAND</label>
+                        <select onChange={handleBrandChange} className="input1">
+                            <option value="">Select Brand</option>
+                            {brandData && brandData.map((item: any) => (
+                                <option key={item.id} value={item.id}>{item.title}</option>
+                            ))}
+                        </select>
                     </div>
 
                 </div>
@@ -166,11 +166,11 @@ const AddProduct = () => {
                 <div className="w-full flex justify-between gap-3">
                     <div className="w-full gap-1 flex flex-col flex-1">
                       <label className="text-[13px]">PRICE</label>
-                      <input name="price" onChange={(e)=>handleInputChange(e)} type="number" className="input1" />
+                      <input name="price" onChange={(e) => handleInputChange(e)} type="number" className="input1" />
                     </div>
                     <div className="w-full gap-1 flex flex-col flex-1">
                       <label className="text-[13px]">QUANTITY</label>
-                      <input name="quantity" onChange={(e)=>handleInputChange(e)} type="number" className="input1" />
+                      <input name="quantity" onChange={(e) => handleInputChange(e)} type="number" className="input1" />
                     </div>
 
                 </div>
@@ -178,23 +178,23 @@ const AddProduct = () => {
                 <div className="w-full flex justify-between gap-3">
                     <div className="w-full gap-1 flex flex-col flex-1">
                       <label className="text-[13px]">DESCRIPTION GE*</label>
-                      <textarea name="descrGE" onChange={(e)=>handleInputChange(e)} className='w-full input1 min-h-[160px]'/>
+                      <textarea name="descrGE" onChange={(e) => handleInputChange(e)} className='w-full input1 min-h-[160px]'/>
                     </div>
                     <div className="w-full gap-1 flex flex-col flex-1">
                       <label className="text-[13px]">DESCRIPTION EN</label>
-                      <textarea name="descrEN"  onChange={(e)=>handleInputChange(e)} className='w-full input1 min-h-[160px]'/>
+                      <textarea name="descrEN" onChange={(e) => handleInputChange(e)} className='w-full input1 min-h-[160px]'/>
                     </div>
                     <div className="w-full gap-1 flex flex-col flex-1">
                       <label className="text-[13px]">DESCRIPTION RU</label>
-                      <textarea name="descrRU"  onChange={(e)=>handleInputChange(e)} className='w-full input1 min-h-[160px]'/>
+                      <textarea name="descrRU" onChange={(e) => handleInputChange(e)} className='w-full input1 min-h-[160px]'/>
                     </div>
                 </div>
 
             </form>
 
-              <div className="flex gap-3 my-[20px] ">
+            <div className="flex gap-3 my-[20px] ">
 
-                {images && Array.from(images).map((file, index ) => (
+                {images && Array.from(images).map((file, index) => (
                     <div key={index} className="relative overflow-hidden rounded-lg w-[100px] bg-white h-[100px]">
                         <Image src={URL.createObjectURL(file as Blob)} className="w-[full] h-full object-contain" alt={`Image ${index}`} width={200} height={200} onClick={() => handleSetThumbnail(index)} />
                         <button onClick={() => handleRemoveImage(index)} className="absolute flex items-center justify-center top-[0px] right-[0px] bg-red-500 text-white w-[20px] h-[20px] rounded">
@@ -208,7 +208,7 @@ const AddProduct = () => {
                   <label htmlFor="fileUpload" className="relative flex justify-center items-center w-full h-full bg-gray-300 rounded-xl cursor-pointer">
                     <span className="flex gap-2 text-[13px] flex-col justify-center items-center text-[#2f2f2f]">
                       Add Image
-                      <FcAddImage  className="w-[50px] h-[50px]"/>
+                      <FcAddImage className="w-[50px] h-[50px]" />
                     </span>
                     <input
                       id="fileUpload"
@@ -222,7 +222,7 @@ const AddProduct = () => {
                 </div>
             </div>
 
-                <button onClick={submitFormHandler} className='btn1'>ADD NEW PRODUCT</button>
+            <button onClick={submitFormHandler} className='btn1'>ADD NEW PRODUCT</button>
         </div>
     );
 };

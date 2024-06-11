@@ -564,3 +564,35 @@ input[type="checkbox"]:disabled {
   color: var(--form-control-disabled);
   cursor: not-allowed;
 }
+
+
+.prpo {
+  margin-top: 10px;
+}
+
+.prpo p {
+  margin-bottom: 4px;
+}
+
+.prpo h2,
+.prpo h3,
+.prpo h4 {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.prpo ul {
+  margin-bottom: 1rem;
+}
+
+.prpo ul li {
+  margin-bottom: 0.5rem;
+}
+
+.prpo a {
+  color: #3182ce; /* Blue color */
+}
+
+.prpo a:hover {
+  text-decoration: underline;
+}

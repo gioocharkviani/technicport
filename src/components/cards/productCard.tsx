@@ -3,13 +3,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
 import { BsCartPlus } from "react-icons/bs";
-import { useDispatch } from 'react-redux'
-import { addToCart } from '@/features/cart/cartSlice';
 
 const ProductCard = (data:any) => {
-  
-  const dispatch = useDispatch();
-
+ 
   const handleAddToCart = () => {
     const product = {
       id: data.data.id,
@@ -18,7 +14,7 @@ const ProductCard = (data:any) => {
       quantity: 1,
       image: data.data.thumbnail 
     }
-    dispatch(addToCart(product));
+    console.log(product)
   }
 
   return (

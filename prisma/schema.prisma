@@ -43,7 +43,7 @@ model OrderItem {
   id        Int     @id @default(autoincrement())
   orderId   Int
   order     Order   @relation(fields: [orderId], references: [id])
-  productId Int
+  productId String
   product   Product @relation(fields: [productId], references: [id])
   quantity  Int
   price     Float
@@ -53,9 +53,9 @@ model CartItem {
   id        Int     @id @default(autoincrement())
   userId    String
   user      User    @relation(fields: [userId], references: [id])
-  productId Int
+  productId String
   product   Product @relation(fields: [productId], references: [id])
-  quantity  Int     @default(1)
+  quantity  Int     @default(0)
 }
 
 model Address {
@@ -84,7 +84,7 @@ model Payment {
 }
 
 model Product {
-  id             Int            @id @default(autoincrement())
+  id             String      @id @default(uuid())
   title_en       String?
   title_ru       String?
   title_ge       String
@@ -126,8 +126,8 @@ model Brand {
 model ProductImages {
   id             Int            @id @default(autoincrement())
   imageUrl       String    
+  productId      String
   product        Product        @relation(fields: [productId], references: [id])
-  productId      Int
 }
 
 model About {

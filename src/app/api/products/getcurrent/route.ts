@@ -7,7 +7,7 @@ export async function GET(req: NextRequest) {
         const locale = getLocale.value;
         const url = new URL(req.url);
         const searchParams = new URLSearchParams(url.searchParams);
-        const productId = searchParams.get('id');
+        const productId  = searchParams.get('id');
 
         if (!productId) {
             return new NextResponse('Product ID is missing', { status: 400 });
@@ -15,7 +15,7 @@ export async function GET(req: NextRequest) {
 
         const res = await prisma.product.findFirst({
             where: {
-                id: parseInt(productId)
+                id: productId
             },
             select: {
                 oem:false,

@@ -31,6 +31,7 @@ const handler = NextAuth({
 
         })
     ],
+    
     callbacks: {
         async jwt({ token, user ,trigger,session}) {
           if(trigger === 'update'){
@@ -45,12 +46,16 @@ const handler = NextAuth({
         },
         
       },  
-    secret: process.env.NEXTAUTH_SECRET,
-    session: {
+      secret: process.env.NEXTAUTH_SECRET,
+      session: {
         strategy: 'jwt',
         maxAge: 1 * 24 * 60 * 60,
-    },
-    
-})
+      },
+      
+      pages: {
+        signIn: '/signin',
+      },
+      
+    })
 
 export { handler as GET, handler as POST };

@@ -3,20 +3,15 @@ import Title1 from '@/components/title/title1'
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { FaRegTrashAlt } from "react-icons/fa";
-import { incrementQuantity, decrementQuantity, removeFromCart } from '@/features/cart/cartSlice'
 import Image from 'next/image';
 
 const ShoppingCart = () => {
-  const dispatch = useDispatch()
-  const products = useSelector((state: any) => state.cart.products)
-  const totalQuantity = useSelector((state: any) => state.cart.totalQuantity)
-  const totalPrice = useSelector((state: any) => state.cart.totalPrice)
 
   return (
     <div className="container mx-auto p-4">
 
       <Title1 title='Shopping cart' />
-
+{/* 
       <div className="flex flex-col lg:flex-row gap-4 mt-[30px]">
         <div className="flex-1 bg-white shadow-md rounded-lg p-4">
           {products.length > 0 ? (
@@ -79,7 +74,7 @@ const ShoppingCart = () => {
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }
