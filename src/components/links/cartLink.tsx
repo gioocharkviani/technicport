@@ -1,16 +1,23 @@
-"use client"
+'use client'
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import React from 'react';
 import { IoCartOutline } from 'react-icons/io5';
+import { useSelector } from 'react-redux';
+
 const CartLink = () => {
-  const count =  0;
+  const count = useSelector((state:any) => state.cart.itemsQty);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   return (
     <Link href='/cart' className='cart-link'>
-      <span>
-        {count}
-      </span>
-      <IoCartOutline />
+        <span>
+          {isClient ? count || 0 : '0'}
+        </span>
+        <IoCartOutline />
     </Link>
   );
 };

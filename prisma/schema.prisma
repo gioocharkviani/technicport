@@ -7,7 +7,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = env("DATABASE_URL_LOCAL")
+  url      = env("DATABASE_URL")
 }
 
 model User {
@@ -103,6 +103,7 @@ model Product {
   brand          Brand?         @relation(fields: [brandId], references: [id])
   createdAt      DateTime       @default(now())
   updatedAt      DateTime       @updatedAt
+  published      Boolean @default(true)
   cartItems      CartItem[]
   orderItems     OrderItem[]
 }
