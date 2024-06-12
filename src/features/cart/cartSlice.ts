@@ -1,6 +1,5 @@
 'use client'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { useSession } from 'next-auth/react';
 
 export interface Product {
   id: string;
@@ -16,8 +15,6 @@ interface CartState {
 
 // Save cart state to DB or LOCAL STORAGE
 const saveStateToLocalStorage = async (state: CartState) => {
-  const {data} = useSession();
-  console.log(data)
   try {
     const serializedState = JSON.stringify(state);
     localStorage.setItem('Cart', serializedState);

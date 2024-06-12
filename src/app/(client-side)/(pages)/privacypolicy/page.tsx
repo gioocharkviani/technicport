@@ -7,7 +7,7 @@ const page = () => {
     <MaxWidthWrapper>
       <div className='my-[10px]'>
         <Title1 title='privacy policy' />
-      </div>
+      {/* </div>
         <div className='prpo bg-white p-4 rounded-lg text-gray-800 '>
 <p>Last updated: June 10, 2024</p>
 <p>This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.</p>
@@ -180,7 +180,7 @@ const page = () => {
 <p>If you have any questions about this Privacy Policy, You can contact us:</p>
 <ul>
 <li>By email: info@technicport.com</li>
-</ul>
+</ul> */}
         </div>
     </MaxWidthWrapper>
   )
