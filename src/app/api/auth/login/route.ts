@@ -9,6 +9,26 @@ export async function POST(req: NextRequest) {
     const user = await prisma.user.findFirst({
         where: {
             email
+        },
+        include: {
+          cartItems:{
+            orderBy:{
+              createdAt:'desc',
+            },
+            select: {
+              product:{
+                select: {
+                  id:true,
+                  title_en:true,
+                  title_ge:true,
+                  title_ru:true,
+                  thumbnail:true,
+                  price:true,
+                  quantity:true,
+                }
+              }
+            }
+          }
         }
     });
 

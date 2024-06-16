@@ -55,7 +55,9 @@ model CartItem {
   user      User    @relation(fields: [userId], references: [id])
   productId String
   product   Product @relation(fields: [productId], references: [id])
-  quantity  Int     @default(0)
+  quantity   Int @default(1)
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
 }
 
 model Address {

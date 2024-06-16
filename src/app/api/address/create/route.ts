@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
             }
         });
         if(createdAddress){
-            return  NextResponse.json(createdAddress);
+            return  NextResponse.json({sucsess:true }, {status:200});
         }
         // Handling the case where createdAddress is null or undefined
         return new NextResponse('Failed to create address', { status: 500 });

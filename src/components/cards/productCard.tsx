@@ -9,15 +9,6 @@ import { addToCart } from '@/features/cart/cartSlice';
 const ProductCard = ({ data }: { data: any }) => {
   const dispatch = useDispatch();
 
-  const cartProducts = useSelector((state: any) => state.cart.products);
-  const TotalPrice = useSelector((state: any) => state.cart.totalPrice);
-
-  console.log({
-    product:cartProducts,
-    price:TotalPrice
-  })
-
-
   const handleAddToCart = () => {
     dispatch(addToCart(data));
   };
