@@ -51,6 +51,7 @@ model OrderItem {
 
 model CartItem {
   id        Int     @id @default(autoincrement())
+  checked   Boolean @default(true)
   userId    String
   user      User    @relation(fields: [userId], references: [id])
   productId String
@@ -135,9 +136,9 @@ model ProductImages {
 
 model About {
   id             Int            @id @default(autoincrement())
-  aboutus_ge     String
-  aboutus_en     String?
-  aboutus_ru     String?
+  aboutus_ge     String @db.Text
+  aboutus_en     String? @db.Text
+  aboutus_ru     String? @db.Text
 }
 
 enum UserStatus {

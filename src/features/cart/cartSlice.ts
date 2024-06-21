@@ -5,16 +5,21 @@ export interface Product {
   id: string;
   quantity: number;
   price?: number;
+  title_ge:string,
+  title_ru:string,
+  title_en:string,
+  checked:boolean,
+  thumbnail: string,
 }
 
 interface dbCartItems {
-  productID: string;
-  userId: string;
+  productID: string ;
+  userId?: string;
   quantity:number
 }
 
 interface CartState {
-  products: Product[];
+  products: any[];
   itemsQty: number;
   totalPrice: number;
   user?: any;
@@ -33,10 +38,9 @@ const saveStateToLocalStorage = (state: CartState) => {
 };
 
 // Save cart state to DB
-const saveStateToDb = async ({ productID, userId, quantity }: dbCartItems) => {
+const saveStateToDb = async ({ productID, quantity }: dbCartItems) => {
   try {
     await axios.post('/api/cart/save', {
-      userId: userId,
       productId: productID,
       quantity: quantity
     });
@@ -76,42 +80,47 @@ export const cartSlice = createSlice({
 
     detectUser: (state, action: PayloadAction<any>) => {
       state.user = action.payload;
-      if(!action.payload || state.user === null){
+      if(!action.payload){
         const data = loadState();
         state.itemsQty = data.itemsQty;
         state.products = data.products;
         state.totalPrice = data.totalPrice;
       }
-      if(action.payload !== undefined){
+      if(action.payload){
         state.user = action.payload.user;
-        console.log(action.payload)
-        let products:any = [];
-        let qty:number = 0;
+        const cartItems = action.payload.cartItems;
         let price = 0;
-        action.payload.cartItems.forEach((e:any) => {
-          products.push(e)
-          qty += e.quantity
-          price += e.product.price * e.quantity;
+        let qty = 0;
+        let product:any = [];
+        cartItems.forEach((i:any) => {
+          price = i.product.price  * i.quantity;
+          qty += i.quantity;
+          product.push({...i.product, cartQty:i.quantity , checked: i.checked})
         });
-        state.products = products;
-        state.itemsQty = qty;
         state.totalPrice = price;
+        state.itemsQty = qty;
+        state.products = product;
       };
     },
 
     addToCart: (state, action: PayloadAction<Product>) => {
       const productId = action.payload.id;
       const productPrice = action.payload.price || 0;
+      const title_ge = action.payload.title_ge;
+      const thumbnail = action.payload.thumbnail;
+      const title_en = action.payload.title_en;
+      const title_ru = action.payload.title_ru;
+      const quantity = action.payload.quantity;
       const existingProduct = state.products.find(product => product.id === productId);
       if (existingProduct) {
-        existingProduct.quantity += 1;
+        existingProduct.cartQty += 1;
       } else {
-        state.products.push({ id: productId, quantity: 1, price: productPrice });
+        state.products.push({ id: productId, checked:true,  quantity: quantity , cartQty: 1, price: productPrice , thumbnail, title_en, title_ru , title_ge  });
       }
       state.totalPrice += productPrice;
       state.itemsQty += 1;
       if (state.user) {
-        saveStateToDb({ productID: action.payload.id, userId: state.user.id , quantity:1});
+        saveStateToDb({ productID: action.payload.id, quantity:1});
       } else {
         saveStateToLocalStorage(state);
       }
@@ -119,10 +128,38 @@ export const cartSlice = createSlice({
 
     changeQty: (state, action: PayloadAction<{id: string, quantity: number}>) => {
       const { id, quantity } = action.payload;
-      if (state.user) {
-        saveStateToDb({ productID: id, userId: state.user.id, quantity });
-      } else {
-        saveStateToLocalStorage(state);
+      const existingProduct = state.products.find(product => product.id === id)
+      if(existingProduct){
+        existingProduct.cartQty +=quantity;
+        state.itemsQty +=quantity;
+        if(quantity === 0){
+          const filteredArray = state.products.filter(product => product.id !== id)
+          state.products = filteredArray;
+        }
+        if(existingProduct.cartQty === 0 && quantity === -1){
+          const filteredArray = state.products.filter(product => product.id !== id)
+          state.products = filteredArray;
+        }
+        if(state.user){
+          saveStateToDb({ productID: id, quantity });
+        }
+        if(!state.user){
+          saveStateToLocalStorage(state)
+        }
+      }
+    },
+
+    checked:(state, action:PayloadAction<any>)=>{
+      const { id, checked } = action.payload;
+      const product = state.products.find(product => product.id === id);
+      if(product){
+        product.checked = checked;
+      }
+      if(state.user){
+        console.log(123)
+      }
+      if(!state.user){
+        saveStateToLocalStorage(state)
       }
     },
 
@@ -130,6 +167,6 @@ export const cartSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { addToCart, detectUser, changeQty } = cartSlice.actions;
+export const { addToCart, detectUser, changeQty ,checked } = cartSlice.actions;
 
 export default cartSlice.reducer;

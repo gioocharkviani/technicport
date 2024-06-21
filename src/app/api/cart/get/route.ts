@@ -17,6 +17,7 @@ export  async function GET(req:NextRequest){
             select : {
                 productId:false,
                 quantity:true,
+                checked:true,
                 product:{
                     select: {
                         id:true,
