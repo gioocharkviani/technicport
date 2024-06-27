@@ -31,6 +31,23 @@ export async function POST(req: NextRequest) {
       },
     });
 
+    if (quantity === -10) {
+      if (existingCartItem) {
+        // Toggle the checked status of the existing cart item
+        const updatedCartItem = await prisma.cartItem.update({
+          where: {
+            id: existingCartItem.id,
+          },
+          data: {
+            checked: !existingCartItem.checked,
+          },
+        });
+        return NextResponse.json({ success: true, item: updatedCartItem }, { status: 200 });
+      } else {
+        return NextResponse.json({ success: false, message: 'Product not found in cart' }, { status: 404 });
+      }
+    }
+
     if (existingCartItem) {
       // Calculate the new quantity
       const newQuantity = existingCartItem.quantity + quantity;

@@ -21,6 +21,7 @@ interface dbCartItems {
 interface CartState {
   products: any[];
   itemsQty: number;
+  checkedItems?:number,
   totalPrice: number;
   user?: any;
 }
@@ -55,20 +56,31 @@ const loadState = (): CartState => {
     if (typeof window !== 'undefined') {
       const serializedState = localStorage.getItem('Cart');
       if (serializedState === null) {
-        return { products: [], itemsQty: 0, totalPrice: 0 };
+        return { products: [], checkedItems:0, itemsQty: 0, totalPrice: 0 };
       }
       return JSON.parse(serializedState);
     }
   } catch (err) {
     console.error('Could not load state from local storage', err);
   }
-  return { products: [], itemsQty: 0, totalPrice: 0 };
+  return { products: [], checkedItems:0, itemsQty: 0, totalPrice: 0 };
+};
+
+// Calculate total price of checked items
+const calculateTotalPrice = (products: Product[]) => {
+  return products.filter(p => p.checked).reduce((total, p:any) => total + (p.cartQty * p.price!), 0);
+};
+
+// Calculate checked total items
+const calculateCheckedTotal = (products: Product[]) => {
+  return products.filter(p => p.checked).reduce((total, p:any) => total + p.cartQty, 0);
 };
 
 // Initial state
 const initialState: CartState = {
   products: [],
   itemsQty: 0,
+  checkedItems: 0,
   totalPrice: 0,
   user: null,
 };
@@ -85,21 +97,19 @@ export const cartSlice = createSlice({
         state.itemsQty = data.itemsQty;
         state.products = data.products;
         state.totalPrice = data.totalPrice;
+        state.checkedItems = calculateCheckedTotal(state.products);
       }
       if(action.payload){
         state.user = action.payload.user;
         const cartItems = action.payload.cartItems;
-        let price = 0;
-        let qty = 0;
-        let product:any = [];
-        cartItems.forEach((i:any) => {
-          price = i.product.price  * i.quantity;
-          qty += i.quantity;
-          product.push({...i.product, cartQty:i.quantity , checked: i.checked})
+        let product: Product[] = [];
+        cartItems.forEach((i: any) => {
+          product.push({ ...i.product, cartQty: i.quantity, checked: i.checked });
         });
-        state.totalPrice = price;
-        state.itemsQty = qty;
         state.products = product;
+        state.totalPrice = calculateTotalPrice(state.products);
+        state.itemsQty = state.products.reduce((total, p) => total + p.cartQty, 0);
+        state.checkedItems = calculateCheckedTotal(state.products);
       };
     },
 
@@ -130,6 +140,8 @@ export const cartSlice = createSlice({
       const { id, quantity } = action.payload;
       const existingProduct = state.products.find(product => product.id === id)
       if(existingProduct){
+        state.totalPrice = calculateTotalPrice(state.products);
+        state.checkedItems = calculateCheckedTotal(state.products);
         existingProduct.cartQty +=quantity;
         state.itemsQty +=quantity;
         if(quantity === 0){
@@ -155,8 +167,10 @@ export const cartSlice = createSlice({
       if(product){
         product.checked = checked;
       }
+      state.totalPrice = calculateTotalPrice(state.products);
+      state.checkedItems = calculateCheckedTotal(state.products);
       if(state.user){
-        console.log(123)
+        saveStateToDb({ productID: id, quantity:-10 });
       }
       if(!state.user){
         saveStateToLocalStorage(state)

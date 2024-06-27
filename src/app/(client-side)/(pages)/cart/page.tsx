@@ -12,6 +12,7 @@ const ShoppingCart = () => {
 
   const totalPrice = useSelector((state: any) => state.cart.totalPrice);
   const totalItems = useSelector((state: any) => state.cart.itemsQty);
+  const checkedItems = useSelector((state: any) => state.cart.checkedItems);
   const products = useSelector((state: any) => state.cart.products);
   const user = useSelector((state: any) => state.cart.user);
 
@@ -95,7 +96,7 @@ const ShoppingCart = () => {
             <h2 className="text-xl font-semibold mb-4">Order Summary</h2>
             <div className="flex justify-between mb-2">
               <span>Total Items:</span>
-              <span>{itemsLoading ? 0 : totalItems}</span>
+              <span>{itemsLoading ? 0 : checkedItems}</span>
             </div>
             <div className="flex justify-between mb-4">
               <span>Total Price:</span>
