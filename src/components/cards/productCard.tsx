@@ -9,8 +9,12 @@ import { addToCart } from '@/features/cart/cartSlice';
 const ProductCard = ({ data }: { data: any }) => {
   const dispatch = useDispatch();
 
+  
+
   const handleAddToCart = () => {
-    dispatch(addToCart(data));
+    setTimeout(() => {
+      dispatch(addToCart(data));
+    }, 300);
   };
 
 

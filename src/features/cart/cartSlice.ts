@@ -96,8 +96,8 @@ export const cartSlice = createSlice({
         const data = loadState();
         state.itemsQty = data.itemsQty;
         state.products = data.products;
-        state.totalPrice = data.totalPrice;
-        state.checkedItems = calculateCheckedTotal(state.products);
+        state.totalPrice = calculateTotalPrice(data.products);
+        state.checkedItems = calculateCheckedTotal(data.products);
       }
       if(action.payload){
         state.user = action.payload.user;
@@ -107,8 +107,8 @@ export const cartSlice = createSlice({
           product.push({ ...i.product, cartQty: i.quantity, checked: i.checked });
         });
         state.products = product;
-        state.totalPrice = calculateTotalPrice(state.products);
         state.itemsQty = state.products.reduce((total, p) => total + p.cartQty, 0);
+        state.totalPrice = calculateTotalPrice(state.products);
         state.checkedItems = calculateCheckedTotal(state.products);
       };
     },
@@ -140,10 +140,10 @@ export const cartSlice = createSlice({
       const { id, quantity } = action.payload;
       const existingProduct = state.products.find(product => product.id === id)
       if(existingProduct){
-        state.totalPrice = calculateTotalPrice(state.products);
-        state.checkedItems = calculateCheckedTotal(state.products);
         existingProduct.cartQty +=quantity;
         state.itemsQty +=quantity;
+        state.totalPrice = calculateTotalPrice(state.products);
+        state.checkedItems = calculateCheckedTotal(state.products);
         if(quantity === 0){
           const filteredArray = state.products.filter(product => product.id !== id)
           state.products = filteredArray;

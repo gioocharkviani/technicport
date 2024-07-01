@@ -60,7 +60,7 @@ const Select = ({ data, option, filterBy, defaultPlaceholder }: any) => {
                 {defValue}
             </button>
             {open && (
-                <div className='oacityAnim w-full relative overflow-y-auto overflow-hidden max-h-[calc(100vh-200px)] bg-[#f4f2f2] p-[10px] rounded-md mt-[10px]'>
+                <div className='oacityAnim w-full relative overflow-y-auto overflow-hidden max-h-[calc(100vh-200px)] border-[1px] border-[gray] bg-[#f5f5f5] p-[10px] rounded-md mt-[10px]'>
                     <ul className='flex flex-col gap-1'>
                         {data && data.map((item: any) => (
                             <button 
